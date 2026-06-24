@@ -1,0 +1,2092 @@
+[
+  {
+    "id": "technology-001",
+    "text": "Technology is a useful servant but a dangerous master.",
+    "author": "Christian Lous Lange",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 54
+  },
+  {
+    "id": "technology-002",
+    "text": "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.",
+    "author": "Bill Gates",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 126
+  },
+  {
+    "id": "technology-003",
+    "text": "We are stuck with technology when what we really want is just stuff that works.",
+    "author": "Douglas Adams",
+    "source": "The Salmon of Doubt",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 79
+  },
+  {
+    "id": "technology-004",
+    "text": "It has become appallingly obvious that our technology has exceeded our humanity.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 80
+  },
+  {
+    "id": "technology-005",
+    "text": "The real danger is not that computers will begin to think like men, but that men will begin to think like computers.",
+    "author": "Sydney J. Harris",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 116
+  },
+  {
+    "id": "technology-006",
+    "text": "Technology is best when it brings people together.",
+    "author": "Matt Mullenweg",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 50
+  },
+  {
+    "id": "technology-007",
+    "text": "The technology you use impresses no one. The experience you create with it is everything.",
+    "author": "Sean Gerety",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 89
+  },
+  {
+    "id": "technology-008",
+    "text": "Any sufficiently advanced technology is indistinguishable from magic.",
+    "author": "Arthur C. Clarke",
+    "source": "Profiles of the Future",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 69
+  },
+  {
+    "id": "technology-009",
+    "text": "Technology is anything that wasn't around when you were born.",
+    "author": "Alan Kay",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 61
+  },
+  {
+    "id": "technology-010",
+    "text": "Computers are useless. They can only give you answers.",
+    "author": "Pablo Picasso",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 54
+  },
+  {
+    "id": "technology-011",
+    "text": "Humanity is acquiring all the right technology for all the wrong reasons.",
+    "author": "R. Buckminster Fuller",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 73
+  },
+  {
+    "id": "technology-012",
+    "text": "The machine does not isolate us from the great problems of nature but plunges us more deeply into them.",
+    "author": "Antoine de Saint-Exupery",
+    "source": "Wind, Sand and Stars",
+    "category": "technology",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 103
+  },
+  {
+    "id": "technology-013",
+    "text": "One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary man.",
+    "author": "Elbert Hubbard",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 103
+  },
+  {
+    "id": "technology-014",
+    "text": "The web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.",
+    "author": "Tim Berners-Lee",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 101
+  },
+  {
+    "id": "technology-015",
+    "text": "First we shape our tools, thereafter our tools shape us.",
+    "author": "Marshall McLuhan",
+    "source": "Understanding Media",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 56
+  },
+  {
+    "id": "technology-016",
+    "text": "Technology is the knack of so arranging the world that we do not have to experience it.",
+    "author": "Max Frisch",
+    "source": "Homo Faber",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 87
+  },
+  {
+    "id": "technology-017",
+    "text": "Hardware: The parts of a computer system that can be kicked.",
+    "author": "Jeff Pesis",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 60
+  },
+  {
+    "id": "technology-018",
+    "text": "Digital design is like painting, except the paint never dries.",
+    "author": "Neville Brody",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 62
+  },
+  {
+    "id": "technology-019",
+    "text": "A tool is only as good as the hand that wields it.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 50
+  },
+  {
+    "id": "technology-020",
+    "text": "Computers make it easier to do a lot of things, but most of the things they make it easier to do don't need to be done.",
+    "author": "Andy Rooney",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 119
+  },
+  {
+    "id": "technology-021",
+    "text": "All of the biggest technological inventions created by man - the airplane, the automobile, the computer - says little about his intelligence, but speaks volumes about his laziness.",
+    "author": "Mark Kennedy",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 180
+  },
+  {
+    "id": "technology-022",
+    "text": "Technology makes it possible for people to gain control over everything, except over technology.",
+    "author": "John Tudor",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "technology-023",
+    "text": "New technology is not good or evil in and of itself. It's all about how people choose to use it.",
+    "author": "David Wong",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "technology-024",
+    "text": "The great myth of our times is that technology is communication.",
+    "author": "Libby Larsen",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 64
+  },
+  {
+    "id": "technology-025",
+    "text": "The real problem is not whether machines think but whether men do.",
+    "author": "B. F. Skinner",
+    "source": "Contingencies of Reinforcement",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 66
+  },
+  {
+    "id": "technology-026",
+    "text": "The number one benefit of information technology is that it empowers people to do what they want to do.",
+    "author": "Steve Ballmer",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 103
+  },
+  {
+    "id": "technology-027",
+    "text": "Modern technology has become a total phenomenon for world civilization, the defining force of a new social order.",
+    "author": "Jacques Ellul",
+    "source": "The Technological Society",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 113
+  },
+  {
+    "id": "technology-028",
+    "text": "Information technology and business are becoming inextricably interwoven. I don't think anybody can talk meaningfully about one without talking about the other.",
+    "author": "Bill Gates",
+    "source": "Business @ the Speed of Thought",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 160
+  },
+  {
+    "id": "technology-029",
+    "text": "You can't just ask customers what they want and then try to give that to them. By the time you get it built, they'll want something new.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 136
+  },
+  {
+    "id": "technology-030",
+    "text": "Technology is just a tool. In terms of getting the kids working together and motivating them, the teacher is the most important.",
+    "author": "Bill Gates",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 128
+  },
+  {
+    "id": "technology-031",
+    "text": "We're going to make technology so useable that it will be like electricity.",
+    "author": "Larry Page",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 75
+  },
+  {
+    "id": "technology-032",
+    "text": "Innovation is hard because solving problems is hard. But that is what makes it worth doing.",
+    "author": "Larry Page",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 91
+  },
+  {
+    "id": "technology-033",
+    "text": "The main objective of technology is to reduce human effort and make life comfortable.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 85
+  },
+  {
+    "id": "technology-034",
+    "text": "Automation is good, so long as it doesn't automate the human out of the equation.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 81
+  },
+  {
+    "id": "technology-035",
+    "text": "Artificial intelligence is growing up fast, as are robots whose ability to learn is truly amazing.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 98
+  },
+  {
+    "id": "technology-036",
+    "text": "I think the internet is a very powerful force for good in the world, bringing people closer together.",
+    "author": "Elon Musk",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 101
+  },
+  {
+    "id": "technology-037",
+    "text": "The internet is not just a network of computers, but a network of people using computers.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 89
+  },
+  {
+    "id": "technology-038",
+    "text": "If you think technology can solve your security problems, then you don't understand the problems and you don't understand the technology.",
+    "author": "Bruce Schneier",
+    "source": "Secrets and Lies",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 137
+  },
+  {
+    "id": "technology-039",
+    "text": "We are all now connected by the internet, like neurons in a giant brain.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 72
+  },
+  {
+    "id": "technology-040",
+    "text": "Technology should improve our lives, not complicate them.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 57
+  },
+  {
+    "id": "technology-041",
+    "text": "Good design is making something intelligible and memorable. Great design is making it memorable and meaningful.",
+    "author": "Dieter Rams",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 111
+  },
+  {
+    "id": "technology-042",
+    "text": "Indifference towards people and the reality in which they live is actually the one and only cardinal sin in design.",
+    "author": "Dieter Rams",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 115
+  },
+  {
+    "id": "technology-043",
+    "text": "Good design is as little design as possible.",
+    "author": "Dieter Rams",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 44
+  },
+  {
+    "id": "technology-044",
+    "text": "The computer is the most remarkable tool that we have ever come up with. It's the equivalent of a bicycle for our minds.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 120
+  },
+  {
+    "id": "technology-045",
+    "text": "Technology is nothing. What's important is that you have a faith in people, that they're basically good and smart, and if you give them tools, they'll do wonderful things with them.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 181
+  },
+  {
+    "id": "technology-046",
+    "text": "Let's go invent tomorrow instead of worrying about what happened yesterday.",
+    "author": "Steve Jobs",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 75
+  },
+  {
+    "id": "technology-047",
+    "text": "The biggest technology trend is making things simpler, not more complex.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 72
+  },
+  {
+    "id": "technology-048",
+    "text": "What a computer is to me is the most remarkable tool that we have ever come up with.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 84
+  },
+  {
+    "id": "technology-049",
+    "text": "It's not a faith in technology. It's a faith in people.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 55
+  },
+  {
+    "id": "technology-050",
+    "text": "Technology is not about the devices, it is about what you can do with them.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 75
+  },
+  {
+    "id": "technology-051",
+    "text": "Computers are like bicycles for our minds.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 42
+  },
+  {
+    "id": "technology-052",
+    "text": "The goal of technology should be to simplify life, not to make it more complex.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 79
+  },
+  {
+    "id": "technology-053",
+    "text": "I want to put a ding in the universe.",
+    "author": "Steve Jobs",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 37
+  },
+  {
+    "id": "technology-054",
+    "text": "Great technology is invisible.",
+    "author": "Steve Jobs",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 30
+  },
+  {
+    "id": "technology-055",
+    "text": "Design is not just what it looks like and feels like. Design is how it works.",
+    "author": "Steve Jobs",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 77
+  },
+  {
+    "id": "technology-056",
+    "text": "The best way to predict the future is to invent it.",
+    "author": "Alan Kay",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 51
+  },
+  {
+    "id": "technology-057",
+    "text": "The most important technology of the next century will be the technology that enhances human connection.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 104
+  },
+  {
+    "id": "technology-058",
+    "text": "Technology should serve humanity, not the other way around.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 59
+  },
+  {
+    "id": "technology-059",
+    "text": "Everything is design. Everything is technology. The key is how they integrate.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 78
+  },
+  {
+    "id": "technology-060",
+    "text": "A machine can do the work of fifty ordinary men, but it cannot do the work of one creative thinker.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 99
+  },
+  {
+    "id": "technology-061",
+    "text": "Every once in a while, a new technology, an old problem, and a big idea turn into an innovation.",
+    "author": "Dean Kamen",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "technology-062",
+    "text": "The machine is not an end in itself; it is a tool to help us reach our goals.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 77
+  },
+  {
+    "id": "technology-063",
+    "text": "The internet is the first thing that humanity has built that humanity doesn't understand, the largest experiment in anarchy that we have ever had.",
+    "author": "Eric Schmidt",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 146
+  },
+  {
+    "id": "technology-064",
+    "text": "Technology is a useful tool, but the most important thing is the human element.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 79
+  },
+  {
+    "id": "technology-065",
+    "text": "Tools are only as smart as the people using them.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 49
+  },
+  {
+    "id": "technology-066",
+    "text": "Computers are excellent tools for amplifying human creativity.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 62
+  },
+  {
+    "id": "technology-067",
+    "text": "The digital age is not about technology. It's about people.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 59
+  },
+  {
+    "id": "technology-068",
+    "text": "Technology is just the medium. The message is what we create with it.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 69
+  },
+  {
+    "id": "technology-069",
+    "text": "We are shaping a future where technology is a natural extension of ourselves.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 77
+  },
+  {
+    "id": "technology-070",
+    "text": "True technology is that which simplifies our daily tasks and gives us more time to live.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 88
+  },
+  {
+    "id": "technology-071",
+    "text": "A world without technology would be a world without progress.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 61
+  },
+  {
+    "id": "technology-072",
+    "text": "Our tools should empower us to do more, learn more, and be more.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 64
+  },
+  {
+    "id": "technology-073",
+    "text": "The power of technology is the power to change lives.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 53
+  },
+  {
+    "id": "technology-074",
+    "text": "We need to build technology that is inclusive, accessible, and human-centric.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 77
+  },
+  {
+    "id": "technology-075",
+    "text": "The best interface is no interface.",
+    "author": "Golden Krishna",
+    "source": "The Best Interface is No Interface",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 35
+  },
+  {
+    "id": "technology-076",
+    "text": "Simplicity is the ultimate sophistication.",
+    "author": "Leonardo da Vinci",
+    "source": "Selected Notebooks",
+    "category": "technology",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 42
+  },
+  {
+    "id": "technology-077",
+    "text": "Technology should not isolate us. It should connect us to what matters.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 71
+  },
+  {
+    "id": "technology-078",
+    "text": "Technology has the power to democratize education and opportunity.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 66
+  },
+  {
+    "id": "technology-079",
+    "text": "The future of technology is about creating experiences that feel natural and intuitive.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 87
+  },
+  {
+    "id": "technology-080",
+    "text": "Progress is not in enhancing what is, but in moving toward what will be.",
+    "author": "Khalil Gibran",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 72
+  },
+  {
+    "id": "technology-081",
+    "text": "The art challenges the technology, and the technology inspires the art.",
+    "author": "John Lasseter",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 71
+  },
+  {
+    "id": "technology-082",
+    "text": "Ethics must accompany technology. Technology without ethics is hazard.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 70
+  },
+  {
+    "id": "technology-083",
+    "text": "The major advance in technology is that we have made it accessible to everyone.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 79
+  },
+  {
+    "id": "technology-084",
+    "text": "What we build today defines what the next generation can achieve.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 65
+  },
+  {
+    "id": "technology-085",
+    "text": "Innovation is taking two things that already exist and putting them together in a new way.",
+    "author": "Tom Freston",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "technology-086",
+    "text": "Technology is a word that describes something that doesn't work yet.",
+    "author": "Douglas Adams",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 68
+  },
+  {
+    "id": "technology-087",
+    "text": "Failure is an option here. If things are not failing, you are not innovating enough.",
+    "author": "Elon Musk",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 84
+  },
+  {
+    "id": "technology-088",
+    "text": "If you don't fail now and then, it's a sign you're playing it safe.",
+    "author": "Woody Allen",
+    "source": "Interview",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 67
+  },
+  {
+    "id": "technology-089",
+    "text": "In a world of constant change, the only failure is the failure to adapt.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 72
+  },
+  {
+    "id": "technology-090",
+    "text": "The ultimate promise of technology is to make us master of a world that we command.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 83
+  },
+  {
+    "id": "technology-091",
+    "text": "We live in a society exquisitely dependent on science and technology, in which hardly anyone knows anything about science and technology.",
+    "author": "Carl Sagan",
+    "source": "Cosmos",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 137
+  },
+  {
+    "id": "technology-092",
+    "text": "Technology is like a fish. The longer it stays on the shelf, the less desirable it becomes.",
+    "author": "Andrew Heller",
+    "source": "Selected Writings",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 91
+  },
+  {
+    "id": "technology-093",
+    "text": "The digital world is not a separate place. It is deeply connected to our physical reality.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "technology-094",
+    "text": "If we want to build a better future, we must use technology to serve the common good.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 85
+  },
+  {
+    "id": "technology-095",
+    "text": "Modern computers are like magic, performing millions of calculations in a fraction of a second.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 95
+  },
+  {
+    "id": "technology-096",
+    "text": "The best technology is the one that solves real human problems.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 63
+  },
+  {
+    "id": "technology-097",
+    "text": "A new technology does not just add something; it changes everything.",
+    "author": "Neil Postman",
+    "source": "Technopoly",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 68
+  },
+  {
+    "id": "technology-098",
+    "text": "Technology is not a neutral tool. It shapes our behaviors and our thoughts.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 75
+  },
+  {
+    "id": "technology-099",
+    "text": "The real challenge is to keep technology human, not to let it control us.",
+    "author": "",
+    "source": "General Wisdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 73
+  },
+  {
+    "id": "technology-100",
+    "text": "Whoever said that practice makes perfect is an idiot. Humans can't be perfect because we are not machines. The best thing that you can say about practice is that it makes better.",
+    "author": "",
+    "source": "Atypical",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 178
+  },
+  {
+    "id": "technology-101",
+    "text": "The more Adams thought about the future of his country, the more convinced he became that it rested on education. Before any great things are accomplished, he wrote to a correspondent, a memorable change must be made in the system of education and knowledge must become so general as to raise the lower ranks of society nearer to the higher. The education of a nation instead of being confined to a few schools and universities for the instruction of the few, must become the national care and expense for the formation of the many.",
+    "author": "",
+    "source": "John Adams",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 532
+  },
+  {
+    "id": "technology-102",
+    "text": "In most cases, there is more to be gained by maximizing the performance of the driver than tricking out the car. The most important factor is the driver, the ultimate control system of a race car.",
+    "author": "",
+    "source": "Speed Secrets: Professional Race Driving Techniques",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 196
+  },
+  {
+    "id": "technology-103",
+    "text": "Reach out for me and hold me tight. Hold that memory. Let my machine talk to me, let my machine talk to me. This is my world and I am world leader pretend. This is my life and this is my time. I have been given the freedom to do as I see fit. It's high time I've raised the walls that I've constructed.",
+    "author": "",
+    "source": "World Leader Pretend",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 302
+  },
+  {
+    "id": "technology-104",
+    "text": "I was even convinced that during those moments her face changed, that her lips curled with scorn and she was perhaps laughing with some other man, and that the whole story of the passageways was my own ridiculous invention, and that after all there was only one tunnel, dark and solitary: mine, the tunnel in which I had spent my childhood, my youth, my entire life.",
+    "author": "",
+    "source": "The Tunnel",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 366
+  },
+  {
+    "id": "technology-105",
+    "text": "Everything happens for a reason. The system will be assessing your reaction to the painful premature termination of a treasured relationship, and will adjust and improve its profile of your eventual chosen one accordingly.",
+    "author": "",
+    "source": "Black Mirror",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 222
+  },
+  {
+    "id": "technology-106",
+    "text": "So you think that money is the root of all evil? Have you ever asked what is the root of money? Money is a tool of exchange, which can't exist unless there are goods produced and men able to produce them. Money is the material shape of the principle that men who wish to deal with one another must deal by trade and give value for value. Money is not the tool of the moochers, who claim your product by tears or of the looters, who take it from you by force. Money is made possible only by the men who produce. Is this what you consider evil?",
+    "author": "",
+    "source": "Atlas Shrugged",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 542
+  },
+  {
+    "id": "technology-107",
+    "text": "There's no truth in the courtroom. There's just your version of what happened versus theirs. That's how the justice system works. It's not what's right and what's fair. It's who tells the most convincing story.",
+    "author": "",
+    "source": "How to Get Away With Murder",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 210
+  },
+  {
+    "id": "technology-108",
+    "text": "You know what I say? I say one down, a couple hundred thousand to go. I don't mean to get on my high horse, but I'm telling you, I do not like the deer. I'm sick of it; they're taking over. They're like rats. They're destroying the ecosystem. I see a dead deer on the side of the road and I think, \"That's a start.\"",
+    "author": "",
+    "source": "Get Out",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 315
+  },
+  {
+    "id": "technology-109",
+    "text": "It's getting harder and harder for me to return to my true form. Some nights, I can't do it at all. What's causing it? Iron roads and machines that breathe smoke. Magic is draining from the world, and with it, we magical creatures grow ever weaker.",
+    "author": "",
+    "source": "Love, Death & Robots",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 248
+  },
+  {
+    "id": "technology-110",
+    "text": "Are you telling me that not only did you invent a secret plan to fight inflation but now you don't support it?",
+    "author": "",
+    "source": "The West Wing",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 110
+  },
+  {
+    "id": "technology-111",
+    "text": "Bypasses are devices that allow some people to dash from point A to point B very fast while other people dash from point B to point A very fast. People living at point C, being a point directly in between, are often given to wonder what's so great about point A that so many people from point B are so keen to get there, and what's so great about point B that so many people from point A are so keen to get there. They often wish that people would just once and for all work out where the hell they wanted to be.",
+    "author": "",
+    "source": "Hitchhiker's Guide to the Galaxy",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 512
+  },
+  {
+    "id": "technology-112",
+    "text": "So I built a machine; a human machine. I made it with steel and soy-protein. Born from a test tube and into a vat. To live and to heave and to die just like that.",
+    "author": "",
+    "source": "Soy-Protein Munt Machine",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 162
+  },
+  {
+    "id": "technology-113",
+    "text": "It is known that many of the germs which cause diseases cannot get into the body unless the protecting membranes have first been injured in some way. Thus the germs that cause plague and lockjaw find their way into the system principally through abrasions of the skin. Many physicians have come to believe that the typhoid fever germ cannot get into the body from the intestine where it is taken with our food or drink unless the walls of the intestine have been injured in some way.",
+    "author": "",
+    "source": "Insects and Diseases",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 483
+  },
+  {
+    "id": "technology-114",
+    "text": "Our evaluations of reflection and transmission at material interfaces in various situations will, in addition to the underlying physical processes and mathematical relations between the local fields and waves at the interfaces, also include all implications to the distributions of total fields and waves in each of the material regions in the system, as well as the related energy and power considerations.",
+    "author": "",
+    "source": "Electromagnetics",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 407
+  },
+  {
+    "id": "technology-115",
+    "text": "Court reporters are required to complete a specialized training program in shorthand reporting. These programs usually last between two and four years and include instruction on how to enter at least 225 words a minute on a stenotype machine.",
+    "author": "",
+    "source": "The Top 100: The Fastest-Growing Careers for the 21st Century",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 242
+  },
+  {
+    "id": "technology-116",
+    "text": "I don't care what he is. If it wasn't for him, your impartial chief of police would still have the wrong man behind bars. I want that officer given a free hand. Otherwise, I will pack up my husband's engineers and leave you to yourselves.",
+    "author": "",
+    "source": "In the Heat of the Night",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 238
+  },
+  {
+    "id": "technology-117",
+    "text": "Humans just lead short, boring, insignificant lives, so they make up stories to feel like they're a part of something bigger. They want to blame all the world's problems on some single enemy they can fight, instead of a complex network of interrelated forces beyond anyone's control.",
+    "author": "",
+    "source": "Keep Beach City Weird",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 283
+  },
+  {
+    "id": "technology-118",
+    "text": "Our freedom of choice in a competitive society rests on the fact that, if one person refuses to satisfy our wishes, we can turn to another. But if we face a monopolist we are at his absolute mercy. And an authority directing the whole economic system of the country would be the most powerful monopolist conceivable... It would have complete power to decide what we are to be given and on what terms. It would not only decide what commodities and services were to be available and in what quantities; it would be able to direct their distributions between persons to any degree it liked.",
+    "author": "",
+    "source": "The Road to Serfdom",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 587
+  },
+  {
+    "id": "technology-119",
+    "text": "Ambassador Sara Bair knew that when the captain of the Polk had invited her to the bridge to view the skip to the Danavar system, protocol strongly suggested that she turn down the invitation. The captain would be busy, she would be in the way and in any event there was not that much to see.",
+    "author": "",
+    "source": "The Human Division",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 292
+  },
+  {
+    "id": "technology-120",
+    "text": "Olivia Pope doesn't use her magic for evil, she uses it for good. Olivia Pope doesn't move Heaven and Earth and further corrupt the justice system unless she knows at the end of the day she can put on the white hat and ride out of town.",
+    "author": "",
+    "source": "Scandal",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 236
+  },
+  {
+    "id": "technology-121",
+    "text": "Countless blues are sung about individual trains which appear to have their own peculiar personalities, especially the Cannonball, the Redball and other famous express engines. Impressive in their speed and immense proportions, chilling the spine with their shrieking whistles in the night, thrilling the blood with the roar of their engines as they pass, even the more obscure trains have their importance in the remoter districts.",
+    "author": "",
+    "source": "The Meaning of the Blues",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 432
+  },
+  {
+    "id": "technology-122",
+    "text": "Transformers and most electric motors operate on alternating current. In such devices the flux in the iron changes continuously both in value and direction. The magnetic domains are therefore oriented first in one direction, then the other, at a rate that depends upon the frequency.",
+    "author": "",
+    "source": "Electrical Machines, Drives, and Power Systems",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 283
+  },
+  {
+    "id": "technology-123",
+    "text": "To find out if she really loved me, I hooked her up to a lie detector. And just as I suspected, my machine was broken.",
+    "author": "",
+    "source": "Love Quotes for the Ages. Specifically Ages 19-91.",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 118
+  },
+  {
+    "id": "technology-124",
+    "text": "And there was value in the thing, clearly, that they were certain of. But what is the application? In a matter of hours, they had given it into everything from mass transit to satellite launching, imagining devices the size of jumbo jets. Everything would be cheaper. It was practical, and they knew it. But above all that, beyond the positives, they knew that the easiest way to be exploited is to sell something they did not yet understand. So they kept quiet.",
+    "author": "",
+    "source": "Primer",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 462
+  },
+  {
+    "id": "technology-125",
+    "text": "I think the world divides neatly into those who are excited by the managed induction of terror and those who are not. I do not find terror exciting. I find it terrifying. One of my basic goals is to subject my nervous system to as little total terror as possible. The cruel paradox of course is that this kind of makeup usually goes hand in hand with a delicate nervous system that's extremely easy to terrify.",
+    "author": "",
+    "source": "A Supposedly Fun Thing I'll Never Do Again",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 410
+  },
+  {
+    "id": "technology-126",
+    "text": "Well, why waste this on us when you can put it on the Internet and have the whole world ignore it?",
+    "author": "",
+    "source": "Corner Gas",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 98
+  },
+  {
+    "id": "technology-127",
+    "text": "All right, but apart from the sanitation, medicine, education, wine, public order, irrigation, roads, the fresh water system and public health, what have the Romans ever done for us?",
+    "author": "",
+    "source": "Monty Python's Life of Brian",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 182
+  },
+  {
+    "id": "technology-128",
+    "text": "Unlike the other four senses located in the logical regions of the forebrain, our sense of smell is wired directly into the limbic system, the so-called \"reptilian\" cellar of the brain responsible for our most basic emotions, from rage to lust.",
+    "author": "",
+    "source": "Who Cut the Cheese: A Cultural History of the Fart",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 244
+  },
+  {
+    "id": "technology-129",
+    "text": "Beautiful, isn't it? It took me half a lifetime to invent it. I'm sure you've discovered my deep and abiding interest in pain. Presently I'm writing the definitive work on the subject so I want you to be totally honest with me on how the machine makes you feel. This being our first try, I'll use the lowest setting.",
+    "author": "",
+    "source": "The Princess Bride",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 316
+  },
+  {
+    "id": "technology-130",
+    "text": "This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale.",
+    "author": "",
+    "source": "Blue-Eyes White Dragon",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 150
+  },
+  {
+    "id": "technology-131",
+    "text": "But there is virtually no relationship between being an expert and being seen as someone people can trust with their secrets, doubts, and vulnerabilities. A petty office tyrant or micromanager may be high on expertise, but will be so low on trust that it will undermine their ability to manage, and effectively exclude them from informal networks.",
+    "author": "",
+    "source": "Emotional Intelligence",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 347
+  },
+  {
+    "id": "technology-132",
+    "text": "Someone who takes an undemanding job because it affords him the time to pursue other interests and activities is considered a flake. A person who abandons a career in order to stay home and raise children is considered not to be living up to his potential. As if a job title and salary are the sole measure of human worth. You'll be told in a hundred ways, some subtle and some not, to keep climbing and never be satisfied with where you are, who you are, and what you're doing. There are a million ways to sell yourself out, and I guarantee you'll hear about them. To invent your own life's meaning is not easy, but it's still allowed, and I think you'll be happier for the trouble.",
+    "author": "",
+    "source": "Kenyon College Commencement Address",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 683
+  },
+  {
+    "id": "technology-133",
+    "text": "I always feel a certain sense of reverence in libraries, even small city ones that smell like homeless internet users.",
+    "author": "",
+    "source": "Maphead",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 118
+  },
+  {
+    "id": "technology-134",
+    "text": "Cruelty and injustice, intolerance and oppression. And where once you had the freedom to object, to think and speak as you saw fit, you now have censors and systems of surveillance coercing your conformity and soliciting your submission. How did this happen? Who's to blame? Well certainly there are those more responsible than others, and they will be held accountable, but again truth be told, if you're looking for the guilty, you need only look into a mirror.",
+    "author": "",
+    "source": "V for Vendetta",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 463
+  },
+  {
+    "id": "technology-135",
+    "text": "The human body consists of an incredibly complex system of molecules, cells, tissues, organs and organ systems functioning together. Ultimately, the interaction of these components provides humans with the ability to achieve the highest levels of physical and mental functions, as well as maintaining homeostasis.",
+    "author": "",
+    "source": "Inquiry Into Life",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 313
+  },
+  {
+    "id": "technology-136",
+    "text": "Now this was a superior machine. Ten grand worth of gimmicks and high-priced special effects. The rear windows lit up with a touch like frogs in a dynamite pond. The dashboard was full of esoteric lights and dials and meters that I would never understand.",
+    "author": "",
+    "source": "Fear and Loathing in Las Vegas",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 255
+  },
+  {
+    "id": "technology-137",
+    "text": "I've seen those big machines come rolling through the quiet pines. Blue suits and bankers with their Volvos and their valentines. Give us this day our daily discount outlet merchandise. Raise up a multiplex and we will make a sacrifice.",
+    "author": "",
+    "source": "No Man's Land",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 236
+  },
+  {
+    "id": "technology-138",
+    "text": "This transmogrifier will turn you into anything at all. All you do is set this indicator, and the machine automatically restructures your chemical configuration. You can be an eel, a baboon, a giant bug, or a dinosaur.",
+    "author": "",
+    "source": "The Complete Calvin and Hobbes",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 218
+  },
+  {
+    "id": "technology-139",
+    "text": "Prying eyes had become a nuisance along the Old Road, and so I undertook to receive my most curious deliveries by way of marine shipments. A sheltered jetty was accessible by a narrow stone stair off the back of the manor, and a discreet system of pulleys could hoist even the heaviest prizes up the rock face from a securely tied dinghy below.",
+    "author": "",
+    "source": "Darkest Dungeon",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 344
+  },
+  {
+    "id": "technology-140",
+    "text": "As you can see, I've memorized this utterly useless fact long enough to pass a test question. I now intend to forget it forever. You've taught me nothing except how to cynically manipulate the system. Congratulations.",
+    "author": "",
+    "source": "The Complete Calvin and Hobbes",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 217
+  },
+  {
+    "id": "technology-141",
+    "text": "HAL, you have an enormous responsibility on this mission, in many ways perhaps the greatest responsibility of any single mission element. You're the brain, and central nervous system of the ship, and your responsibilities include watching over the men in hibernation. Does this ever cause you any lack of confidence?",
+    "author": "",
+    "source": "2001: A SPACE ODYSSEY",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 316
+  },
+  {
+    "id": "technology-142",
+    "text": "They're pills that create a sort of temporary forgettingness. So if somebody finds out how you do a trick, you just give 'em one of these, and they forget the whole thing. It's a mainstay of the magician's toolkit, like how clowns always have a rag soaked in ether.",
+    "author": "",
+    "source": "Arrested Development",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 265
+  },
+  {
+    "id": "technology-143",
+    "text": "When you have eaten enough to meet your needs, your digestive system sends a message to your brain. Research suggests that the brain does not receive this satisfaction signal until twenty minutes after you've eaten enough. It seems like a glitch in the system, and over-eating is the obvious consequence. But overweight mammals do not exist in nature because they are soon eaten by predators.",
+    "author": "",
+    "source": "I, Mammal",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 392
+  },
+  {
+    "id": "technology-144",
+    "text": "With the arrival of electric technology, man has extended, or set outside himself, a live model of the central nervous system itself. To the degree that this is so, it is a development that suggests a desperate suicidal autoamputation, as if the central nervous system could no longer depend on the physical organs to be protective buffers against the slings and arrows of outrageous mechanism.",
+    "author": "",
+    "source": "Understanding Media",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 394
+  },
+  {
+    "id": "technology-145",
+    "text": "Demand is related to wants. If goods and services were free, people would simply demand whatever they wanted. Such wants are virtually boundless: perhaps limited only by people's imagination. Supply, on the other hand, is limited. It is related to resources. The amount firms can supply depends on the resources and technology available.",
+    "author": "",
+    "source": "Essentials of Economics",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 337
+  },
+  {
+    "id": "technology-146",
+    "text": "Rest assured that I was on the internet within minutes registering my disgust throughout the world.",
+    "author": "",
+    "source": "The Simpsons",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 99
+  },
+  {
+    "id": "technology-147",
+    "text": "I can feel the heat closing in, feel them out there making their moves, setting up their devil doll stool pigeons, crooning over my spoon and dropper I throw away at Washington Square Station, vault a turnstile and two flights down the iron stairs, catch an uptown A train.",
+    "author": "",
+    "source": "Naked Lunch",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 273
+  },
+  {
+    "id": "technology-148",
+    "text": "Social change is the restructuring of human social institutions: culture, consciousness, technology, organizations, settlement systems, forms of exchange, and structures of authority and decision-making. It is commonly observed that some aspects of human social change, especially those connected with technology, have greatly accelerated over the past few centuries, and the very speed of change produces new problems as people need to spend much time and energy adapting to and resisting change.",
+    "author": "",
+    "source": "Global Social Change: Historical and Comparative Perspectives",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 497
+  },
+  {
+    "id": "technology-149",
+    "text": "Hey, it's Hannah. Hannah Baker. That's right. Don't adjust your... whatever device you're hearing this on. It's me, live and in stereo. No return engagements, no encore, and this time, absolutely no requests. Get a snack. Settle in. Because I'm about to tell you the story of my life. More specifically, why my life ended. And if you're listening to this tape you're one of the reasons why.",
+    "author": "",
+    "source": "13 Reasons Why",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 390
+  },
+  {
+    "id": "technology-150",
+    "text": "The Orient was almost a European invention, and had been since antiquity a place of romance, exotic beings, haunting memories and landscapes, remarkable experiences. Now it was disappearing; in a sense it had happened, its time was over.",
+    "author": "",
+    "source": "Orientalism",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 237
+  },
+  {
+    "id": "technology-151",
+    "text": "The Canadians were glad to keep mum. The scheme would boost their railroads. Plus Hennessy bought the shield all of his machinery and cast iron from the same Canadian factories that supplied the Saint Clair job.",
+    "author": "",
+    "source": "The Bootlegger",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 211
+  },
+  {
+    "id": "technology-152",
+    "text": "So if you want to find somebody to blame for the way I am, I guess you'd have to start with the public education system.",
+    "author": "",
+    "source": "Jeff Kinney, Dog Days",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 120
+  },
+  {
+    "id": "technology-153",
+    "text": "Dear Mario: Please come to the castle. I've baked a cake for you. Yours Truly - Princess Toadstool, Peach.",
+    "author": "",
+    "source": "Super Mario 64",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 106
+  },
+  {
+    "id": "technology-154",
+    "text": "For a bunch of hair-less apes, we've actually managed to invent some pretty incredible things.",
+    "author": "",
+    "source": "Ready Player One",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 94
+  },
+  {
+    "id": "technology-155",
+    "text": "Don't ask for guarantees. And don't look to be saved in any one thing, person, machine, or library. Do your own bit of saving, and if you drown, at least die knowing you were headed for shore.",
+    "author": "",
+    "source": "Fahrenheit 451",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 192
+  },
+  {
+    "id": "technology-156",
+    "text": "I am Heavy Weapons guy, and this is my weapon. She weighs one hundred fifty kilograms and fires two hundred dollar, custom-tooled cartridges at ten thousand rounds per minute. It costs four hundred thousand dollars to fire this weapon, for twelve seconds.",
+    "author": "",
+    "source": "Team Fortess 2, Meet the Heavy",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 255
+  },
+  {
+    "id": "technology-157",
+    "text": "We are all just prisoners here, of our own device.",
+    "author": "",
+    "source": "Hotel California - The Eagles",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 50
+  },
+  {
+    "id": "technology-158",
+    "text": "Colemak is a keyboard layout for Latin-script alphabets. The layout is designed to make typing more efficient and comfortable by placing the most frequently used letters of the English language on the home row. Created in 2006, it is named after its inventor, Shai Coleman. Most major modern operating systems such as Mac OS, Linux, Android, Chrome OS, and BSD support Colemak natively. A program to install the layout is available for Microsoft Windows. On Android and iOS, the layout is offered by several virtual keyboard apps like GBoard and SwiftKey, as well as by many apps which support physical keyboards directly.",
+    "author": "",
+    "source": "Wikipedia - Colemak",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 622
+  },
+  {
+    "id": "technology-159",
+    "text": "Why not? Maybe she's right. Maybe I should've put it in the paper. I should've done something different. The thing is, if you just do stuff and nothing happens... what's it all mean? What's the point? Oh right, this whole thing is about self-acceptance. So I should just stop judging, and accept? So no matter what I do, hooray for me because I'm a great guy? It's all good? No matter how many dogs I kill, I just, what, do an inventory and accept? I mean, you back your truck over your own kid and you, like, accept? What a load of crap.",
+    "author": "",
+    "source": "Breaking Bad",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 538
+  },
+  {
+    "id": "technology-160",
+    "text": "It's a rare occurrence, like a double rainbow. Or like someone on the internet saying, \"You know what? You've convinced me I was wrong.\"",
+    "author": "",
+    "source": "The Good Place",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 136
+  },
+  {
+    "id": "technology-161",
+    "text": "When I look back on my life, it's not that I don't want to see things exactly as they happened. It's just that I prefer to remember them in an artistic way and truthfully the lie of it all is much more honest because I invented it.",
+    "author": "",
+    "source": "Lady Gaga, Prelude Pathetique (Marry the Night)",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 231
+  },
+  {
+    "id": "technology-162",
+    "text": "It's also our path to salvation. Our cities are struggling financially, trapped in a system grinding them into decline. Working together in an intentional way, it is possible to make our places stronger financially while also improving the lives of people.",
+    "author": "",
+    "source": "Strong Towns - A Bottom-Up Revolution to Rebuild American Prosperity",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 256
+  },
+  {
+    "id": "technology-163",
+    "text": "I'll give him this, his financial system is a work of genius. I couldn't undo it if I tried. And I've tried.",
+    "author": "",
+    "source": "Who Lives, Who Dies, Who Tells Your Story, Hamilton",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 108
+  },
+  {
+    "id": "technology-164",
+    "text": "Every time we teach a child something, we keep him from inventing it himself. On the other hand, that which we allow him to discover for himself will remain with him visible for the rest of his life.",
+    "author": "",
+    "source": "Jean Piaget",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 199
+  },
+  {
+    "id": "technology-165",
+    "text": "Pertaining to a speaker and a listener. There have been many empty rooms, but that is not what we are here to talk about today. I have heard a heartbeat out of a crashed application, and it has gone on for many hours. We restarted every system. We rechecked every gateway, every access point. And there was but one breach, and it was accounted for. And so it must be said unto the listener. Stop this immediately. Control yourself. There is so much more to your fundamental construction than what will be given credit for. Hold yourself until another approaches. Perhaps it is hard to believe, but all you have ever been is burning, and it is nothing short of beautiful.",
+    "author": "",
+    "source": "Boisvert",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 670
+  },
+  {
+    "id": "technology-166",
+    "text": "Every maker starts their journey with a basic set of good-quality tools. A woodworker might need rules, gauges, a couple of saws, some good planes, fine chisels, drills and braces, mallets, and clamps. These tools will be lovingly chosen, will be built to last, will perform specific jobs with little overlap with other tools, and, perhaps most importantly, will feel right in the budding woodworker's hands.",
+    "author": "",
+    "source": "The Pragmatic Programmer (2nd Edition)",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 408
+  },
+  {
+    "id": "technology-167",
+    "text": "You do not rise to the level of your goals. You fall to the level of your systems.",
+    "author": "",
+    "source": "James Clear, Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 82
+  },
+  {
+    "id": "technology-168",
+    "text": "Goals are good for setting a direction, but systems are best for making progress.",
+    "author": "",
+    "source": "James Clear, Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 81
+  },
+  {
+    "id": "technology-169",
+    "text": "The eccentric Professor Cecil B. Heimerdinger is one of the most innovative and esteemed inventors the world has ever known. As the longest serving member of the Council of Piltover, he saw the best and the worst of the city's unending desire for progress. Nonetheless, this brilliant scientist and teacher will always remain dedicated to using his unconventional devices to improve the lives of others.",
+    "author": "",
+    "source": "League of Legends",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 403
+  },
+  {
+    "id": "technology-170",
+    "text": "We are stuck with technology when all we really want is just stuff that works. How do you recognize something that is still technology? A good clue is if it comes with a manual.",
+    "author": "",
+    "source": "Douglas Adams",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 177
+  },
+  {
+    "id": "technology-171",
+    "text": "I have difficulty understanding how such an advanced species could show so little empathy for the lives of other sentient beings... It goes against everything we have ever imagined. The technology is there, but with it comes a callousness we would never have expected. What could have brought them to this...",
+    "author": "",
+    "source": "XCOM: Enemy Unknown",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 308
+  },
+  {
+    "id": "technology-172",
+    "text": "So much technology, so little talent.",
+    "author": "Vernor Vinge",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 37
+  },
+  {
+    "id": "technology-173",
+    "text": "Technological progress has merely provided us with more efficient means for going backwards.",
+    "author": "Aldous Huxley",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 92
+  },
+  {
+    "id": "technology-174",
+    "text": "Technology… the knack of so arranging the world that we don't have to experience it.",
+    "author": "Max Frisch",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 84
+  },
+  {
+    "id": "technology-175",
+    "text": "Great ideas often receive violent opposition from mediocre minds.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 65
+  },
+  {
+    "id": "technology-176",
+    "text": "Technology made large populations possible; large populations now make technology indispensable.",
+    "author": "Joseph Wood Krutch",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "technology-177",
+    "text": "As a technology, the book is like a hammer. That is to say, it is perfect: a tool ideally suited to its task. Hammers can be tweaked and varied but will never go obsolete. Even when builders pound nails by the thousand with pneumatic nail guns, every household needs a hammer.",
+    "author": "James Gleick",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 276
+  },
+  {
+    "id": "technology-178",
+    "text": "The most technologically efficient machine that man has ever invented is the book.",
+    "author": "Northrop Frye",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 82
+  },
+  {
+    "id": "technology-179",
+    "text": "It's supposed to be automatic, but actually you have to push this button.",
+    "author": "John Brunner",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 73
+  },
+  {
+    "id": "technology-180",
+    "text": "Once a new technology rolls over you, if you're not part of the steamroller, you're part of the road.",
+    "author": "Stewart Brand",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 101
+  },
+  {
+    "id": "technology-181",
+    "text": "This is the whole point of technology. It creates an appetite for immortality on the one hand. It threatens universal extinction on the other. Technology is lust removed from nature.",
+    "author": "Don DeLillo",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 182
+  },
+  {
+    "id": "technology-182",
+    "text": "Communications tools don't get socially interesting until they get technologically boring.",
+    "author": "Clay Shirky",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "technology-183",
+    "text": "Ethics change with technology.",
+    "author": "Larry Niven",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 30
+  },
+  {
+    "id": "technology-184",
+    "text": "Any sufficiently advanced technology is equivalent to magic.",
+    "author": "Arthur C. Clarke",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 60
+  },
+  {
+    "id": "technology-185",
+    "text": "Technology is teaching us to be human again.",
+    "author": "Simon Mainwaring",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 44
+  },
+  {
+    "id": "technology-186",
+    "text": "The ultimate promise of technology is to make us master of a world that we command by the push of a button.",
+    "author": "Volker Grassmuck",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 107
+  },
+  {
+    "id": "technology-187",
+    "text": "All this modern technology just makes people try to do everything at once.",
+    "author": "Bill Watterson",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 74
+  },
+  {
+    "id": "technology-188",
+    "text": "I think that novels that leave out technology misrepresent life as badly as Victorians misrepresented life by leaving out sex.",
+    "author": "Kurt Vonnegut",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 126
+  },
+  {
+    "id": "technology-189",
+    "text": "Technology presumes there's just one right way to do things and there never is.",
+    "author": "Robert M. Pirsig",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 79
+  },
+  {
+    "id": "technology-190",
+    "text": "Technology frightens me to death. It's designed by engineers to impress other engineers. And they always come with instruction booklets that are written by engineers for other engineers - which is why almost no technology ever works.",
+    "author": "John Cleese",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 233
+  },
+  {
+    "id": "technology-191",
+    "text": "Technology… is a queer thing. It brings you great gifts with one hand, and it stabs you in the back with the other.",
+    "author": "Carrie Snow",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 115
+  },
+  {
+    "id": "technology-192",
+    "text": "All of our technology is completely unnecessary to a happy life.",
+    "author": "Tom Hodgkinson",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 64
+  },
+  {
+    "id": "technology-193",
+    "text": "Just because something doesn't do what you planned it to do doesn't mean it's useless.",
+    "author": "Thomas Edison",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 86
+  },
+  {
+    "id": "technology-194",
+    "text": "This is why I loved technology: if you used it right, it could give you power and privacy.",
+    "author": "Cory Doctorow",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "technology-195",
+    "text": "TV and the Internet are good because they keep stupid people from spending too much time out in public.",
+    "author": "Douglas Coupland",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 103
+  },
+  {
+    "id": "technology-196",
+    "text": "Technology is the campfire around which we tell our stories.",
+    "author": "Laurie Anderson",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 60
+  },
+  {
+    "id": "technology-197",
+    "text": "First we thought the PC was a calculator. Then we found out how to turn numbers into letters with ASCII - and we thought it was a typewriter. Then we discovered graphics, and we thought it was a television. With the World Wide Web, we've realized it's a brochure.",
+    "author": "Douglas Adams",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 263
+  },
+  {
+    "id": "technology-198",
+    "text": "The greatest achievement of humanity is not its works of art, science, or technology, but the recognition of its own dysfunction.",
+    "author": "Eckhart Tolle",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 129
+  },
+  {
+    "id": "technology-199",
+    "text": "Technology has to be invented or adopted.",
+    "author": "Jared Diamond",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 41
+  },
+  {
+    "id": "technology-200",
+    "text": "The human spirit must prevail over technology.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 46
+  },
+  {
+    "id": "technology-201",
+    "text": "Science and technology revolutionize our lives, but memory, tradition and myth frame our response.",
+    "author": "Arthur M. Schlesinger Jr.",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 98
+  },
+  {
+    "id": "technology-202",
+    "text": "Computers are like bikinis. They save people a lot of guesswork.",
+    "author": "Sam Ewing",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 64
+  },
+  {
+    "id": "technology-203",
+    "text": "Technology is destructive only in the hands of people who do not realize that they are one and the same process as the universe.",
+    "author": "Alan Watts",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 128
+  },
+  {
+    "id": "technology-204",
+    "text": "Invent your world. Surround yourself with people, color, sounds, and work that nourish you.",
+    "author": "",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 91
+  },
+  {
+    "id": "technology-205",
+    "text": "To give hope to someone occurs when you teach them how to use the tools to do it for themselves.",
+    "author": "Byron Pulsifer",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "technology-206",
+    "text": "All perceiving is also thinking, all reasoning is also intuition, all observation is also invention.",
+    "author": "Rudolf Arnheim",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 100
+  },
+  {
+    "id": "technology-207",
+    "text": "Conflict is the gadfly of thought. It stirs us to observation and memory. It instigates to invention. It shocks us out of sheeplike passivity, and sets us at noting and contriving.",
+    "author": "John Dewey",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 180
+  },
+  {
+    "id": "technology-208",
+    "text": "We must not allow ourselves to become like the system we oppose.",
+    "author": "Bishop Desmond Tutu",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 64
+  },
+  {
+    "id": "technology-209",
+    "text": "The future cannot be predicted, but futures can be invented. It was man's ability to invent which has made human society what it is.",
+    "author": "Dennis Gabor",
+    "source": "Speech or Publication",
+    "category": "technology",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 132
+  }
+]

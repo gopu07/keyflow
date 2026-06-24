@@ -1,0 +1,2132 @@
+[
+  {
+    "id": "science-001",
+    "text": "The important thing is not to stop questioning. Curiosity has its own reason for existence.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 91
+  },
+  {
+    "id": "science-002",
+    "text": "Look deep into nature, and then you will understand everything better.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 70
+  },
+  {
+    "id": "science-003",
+    "text": "The first principle is that you must not fool yourself and you are the easiest person to fool.",
+    "author": "Richard Feynman",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 94
+  },
+  {
+    "id": "science-004",
+    "text": "Somewhere, something incredible is waiting to be known.",
+    "author": "Carl Sagan",
+    "source": "Cosmos",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 55
+  },
+  {
+    "id": "science-005",
+    "text": "Science is a way of thinking much more than it is a body of knowledge.",
+    "author": "Carl Sagan",
+    "source": "Cosmos",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 70
+  },
+  {
+    "id": "science-006",
+    "text": "Intelligence is the ability to adapt to change.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 47
+  },
+  {
+    "id": "science-007",
+    "text": "Look up at the stars and not down at your feet. Try to make sense of what you see, and wonder about what makes the universe exist. Be curious.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 142
+  },
+  {
+    "id": "science-008",
+    "text": "If I have seen further it is by standing on the shoulders of Giants.",
+    "author": "Isaac Newton",
+    "source": "Letter",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 68
+  },
+  {
+    "id": "science-009",
+    "text": "You cannot teach a man anything; you can only help him find it within himself.",
+    "author": "Galileo Galilei",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 78
+  },
+  {
+    "id": "science-010",
+    "text": "It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is most adaptable to change.",
+    "author": "Charles Darwin",
+    "source": "The Origin of Species",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 141
+  },
+  {
+    "id": "science-011",
+    "text": "Chance favors the prepared mind.",
+    "author": "Louis Pasteur",
+    "source": "Speech",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 32
+  },
+  {
+    "id": "science-012",
+    "text": "The present is theirs; the future, for which I really worked, is mine.",
+    "author": "Nikola Tesla",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 70
+  },
+  {
+    "id": "science-013",
+    "text": "When you change the way you look at things, the things you look at change.",
+    "author": "Max Planck",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 74
+  },
+  {
+    "id": "science-014",
+    "text": "If you want to learn science, don't just read about it. Do it, touch it, feel it.",
+    "author": "Richard Feynman",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 81
+  },
+  {
+    "id": "science-015",
+    "text": "Science is the belief in the ignorance of experts.",
+    "author": "Richard Feynman",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 50
+  },
+  {
+    "id": "science-016",
+    "text": "We are a way for the cosmos to know itself.",
+    "author": "Carl Sagan",
+    "source": "Cosmos",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 43
+  },
+  {
+    "id": "science-017",
+    "text": "Extraordinary claims require extraordinary evidence.",
+    "author": "Carl Sagan",
+    "source": "Cosmos",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 52
+  },
+  {
+    "id": "science-018",
+    "text": "However difficult life may seem, there is always something you can do and succeed at.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 85
+  },
+  {
+    "id": "science-019",
+    "text": "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 167
+  },
+  {
+    "id": "science-020",
+    "text": "The good thing about science is that it's true whether or not you believe in it.",
+    "author": "Neil deGrasse Tyson",
+    "source": "Interview",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 80
+  },
+  {
+    "id": "science-021",
+    "text": "Science, my lad, is made up of mistakes, but they are mistakes which it is useful to make, because they lead little by little to the truth.",
+    "author": "Jules Verne",
+    "source": "Journey to the Center of the Earth",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 139
+  },
+  {
+    "id": "science-022",
+    "text": "Every brilliant experiment, like every great work of art, starts with an act of imagination.",
+    "author": "Jonah Lehrer",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 92
+  },
+  {
+    "id": "science-023",
+    "text": "In questions of science, the authority of a thousand is not worth the humble reasoning of a single individual.",
+    "author": "Galileo Galilei",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 110
+  },
+  {
+    "id": "science-024",
+    "text": "Scientific progress is the result of many minds working together over generations.",
+    "author": "Louis Pasteur",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 82
+  },
+  {
+    "id": "science-025",
+    "text": "The science of today is the technology of tomorrow.",
+    "author": "Edward Teller",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 51
+  },
+  {
+    "id": "science-026",
+    "text": "Nothing has such power to broaden the mind as the ability to investigate systematically and truly all that comes under thy observation in life.",
+    "author": "Marcus Aurelius",
+    "source": "Meditations",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 143
+  },
+  {
+    "id": "science-027",
+    "text": "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 95
+  },
+  {
+    "id": "science-028",
+    "text": "There are no shortcuts to any place worth going.",
+    "author": "Beverly Sills",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 48
+  },
+  {
+    "id": "science-029",
+    "text": "The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom.",
+    "author": "Isaac Asimov",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 106
+  },
+  {
+    "id": "science-030",
+    "text": "Science is not only a disciple of reason but, also, one of romance and passion.",
+    "author": "Stephen Hawking",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 79
+  },
+  {
+    "id": "science-031",
+    "text": "An expert is a person who has made all the mistakes that can be made in a very narrow field.",
+    "author": "Niels Bohr",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 92
+  },
+  {
+    "id": "science-032",
+    "text": "If you would be a real seeker after truth, it is necessary that at least once in your life you doubt, as far as possible, all things.",
+    "author": "Rene Descartes",
+    "source": "Discourse on the Method",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 133
+  },
+  {
+    "id": "science-033",
+    "text": "We are all connected; To each other, biologically. To the earth, chemically. To the rest of the universe atomically.",
+    "author": "Neil deGrasse Tyson",
+    "source": "Interview",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 116
+  },
+  {
+    "id": "science-034",
+    "text": "Scientific methods have been uniquely successful in revealing the nature of the physical universe.",
+    "author": "Stephen Hawking",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 98
+  },
+  {
+    "id": "science-035",
+    "text": "What you do makes a difference, and you have to decide what kind of difference you want to make.",
+    "author": "Jane Goodall",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "science-036",
+    "text": "If you can't explain it simply, you don't understand it well enough.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 68
+  },
+  {
+    "id": "science-037",
+    "text": "Science is the key to our future, and if you don't believe in science, then you're holding everybody back.",
+    "author": "Bill Nye",
+    "source": "Interview",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 106
+  },
+  {
+    "id": "science-038",
+    "text": "No amount of experimentation can ever prove me right; a single experiment can prove me wrong.",
+    "author": "Albert Einstein",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 93
+  },
+  {
+    "id": "science-039",
+    "text": "Nothing in nature is random. A thing appears random only because of our lack of knowledge.",
+    "author": "Baruch Spinoza",
+    "source": "Ethics",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "science-040",
+    "text": "Fascinating things are happening in the universe. Science is the window through which we see them.",
+    "author": "Carl Sagan",
+    "source": "Cosmos",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 98
+  },
+  {
+    "id": "science-041",
+    "text": "We must not forget that when radium was discovered, no one knew that it would prove useful in hospitals.",
+    "author": "Marie Curie",
+    "source": "Speech",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 104
+  },
+  {
+    "id": "science-042",
+    "text": "The scientific man does not aim at an immediate result. He does not expect that his advanced ideas will be readily taken up.",
+    "author": "Nikola Tesla",
+    "source": "My Inventions",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 124
+  },
+  {
+    "id": "science-043",
+    "text": "In science there are no shortcuts. Every detail must be verified with care.",
+    "author": "Marie Curie",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 75
+  },
+  {
+    "id": "science-044",
+    "text": "Science is a beautiful gift to humanity; we should not distort it.",
+    "author": "A. P. J. Abdul Kalam",
+    "source": "Speech",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 66
+  },
+  {
+    "id": "science-045",
+    "text": "The scientist is not a person who gives the right answers, he's one who asks the right questions.",
+    "author": "Claude Levi-Strauss",
+    "source": "The Raw and the Cooked",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 97
+  },
+  {
+    "id": "science-046",
+    "text": "The day science begins to study non-physical phenomena, it will make more progress in one decade than in all the previous centuries of its existence.",
+    "author": "Nikola Tesla",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 149
+  },
+  {
+    "id": "science-047",
+    "text": "Science is the great antidote to the poison of enthusiasm and superstition.",
+    "author": "Adam Smith",
+    "source": "The Wealth of Nations",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 75
+  },
+  {
+    "id": "science-048",
+    "text": "Research is what I'm doing when I don't know what I'm doing.",
+    "author": "Wernher von Braun",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 60
+  },
+  {
+    "id": "science-049",
+    "text": "What is simple is always wrong. What is not is unusable.",
+    "author": "Paul Valery",
+    "source": "Selected Writings",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 56
+  },
+  {
+    "id": "science-050",
+    "text": "There is a theory, for which there is much to be said, that gold and gems were valued originally on account of their supposed magical properties.",
+    "author": "",
+    "source": "An Outline of Intellectual Rubbish",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 145
+  },
+  {
+    "id": "science-051",
+    "text": "I do not know what I may appear to the world, but to myself I seem to have been only like a boy playing on the seashore, and diverting myself in now and then finding a smoother pebble or a prettier shell than ordinary, whilst the great ocean of truth lay all undiscovered before me.",
+    "author": "Isaac Newton",
+    "source": "Memoirs of the Life, Writings, and Discoveries of Sir Isaac Newton",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 282
+  },
+  {
+    "id": "science-052",
+    "text": "For string theory to make sense, the universe should have nine space dimensions and one time dimension, for a total of ten dimensions.",
+    "author": "",
+    "source": "The Elegant Universe: Superstrings, Hidden Dimensions, and the Quest for the Ultimate Theory",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 134
+  },
+  {
+    "id": "science-053",
+    "text": "And in the night, when the dog barks at shadows, tell him not to be afraid of what he cannot see or the things he does not yet understand. There is mystery everywhere. Beneath rocks, there is damp earth and an army of ants planning a revolution.",
+    "author": "",
+    "source": "Harbor Me",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 245
+  },
+  {
+    "id": "science-054",
+    "text": "You can know the name of a bird in all the languages of the world, but when you're finished, you'll know absolutely nothing whatever about the bird. So let's look at the bird and see what it's doing - that's what counts. I learned very early the difference between knowing the name of something and knowing something.",
+    "author": "Richard Feynman",
+    "source": "Richard Feynman",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 317
+  },
+  {
+    "id": "science-055",
+    "text": "I heard some kids telling me, how they've lost faith in the way. They've been talking world peace, and the wars in the streets. The lines on their faces so deep. A revolution or reach out and touch the day. We're overdue child.",
+    "author": "",
+    "source": "Time For Change",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 227
+  },
+  {
+    "id": "science-056",
+    "text": "And let's remember that science isn't a game of chess, although chess may be played scientifically. The other thing to remember is that if we are to organize the masses we must first organize ourselves.",
+    "author": "",
+    "source": "Invisible Man",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 202
+  },
+  {
+    "id": "science-057",
+    "text": "We stand against the small tide of those who want to make everyone unhappy with conflicting theory and thought.",
+    "author": "",
+    "source": "Fahrenheit 451",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 111
+  },
+  {
+    "id": "science-058",
+    "text": "I really don't think you have anything to worry about, Charlie Brown. After all, science has shown that a person's character isn't really established until he's at least five years old.",
+    "author": "",
+    "source": "You're A Good Man, Charlie Brown",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 185
+  },
+  {
+    "id": "science-059",
+    "text": "Don't know much about history. Don't know much biology. Don't know much about a science book. Don't know much about the French I took. But I do know that I love you, and I know that if you love me too, what a wonderful world this would be.",
+    "author": "",
+    "source": "Wonderful World",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 239
+  },
+  {
+    "id": "science-060",
+    "text": "Do you know, this morning, I was on a train that went through a city that wouldn't exist if it wasn't for you. I bought a ticket from a man who would likely be dead if it wasn't for you. I read up on my work, a whole field of scientific inquiry that only exists because of you. Now, if you wish you could have been normal, I can promise you, I do not. The world is an infinitely better place precisely because you weren't. Do you... Do you really think that? I think that sometimes it is the people who no one imagines anything of who do the things that no one can imagine.",
+    "author": "",
+    "source": "The Imitation Game",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 573
+  },
+  {
+    "id": "science-061",
+    "text": "And yeah, I believe that there's a god. I believe that there is something out there other than my thoughts. I believe it was never science against religion; it wasn't poor against wealth; it was always me against myself, and I'm so scared who's going to win.",
+    "author": "",
+    "source": "I'm so Concerned About the Ending That I Don't Even Know the Plot",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 258
+  },
+  {
+    "id": "science-062",
+    "text": "If there really is a complete unified theory that governs everything, it presumably also determines your actions. But it does so in a way that is impossible to calculate for an organism that is as complicated as a human being. The reason we say that humans have free will is because we can't predict what they will do.",
+    "author": "",
+    "source": "A Brief History of Time",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 318
+  },
+  {
+    "id": "science-063",
+    "text": "Since we are not yet fully comfortable with the idea the people from the next village are as human as ourselves, it is presumptuous in the extreme to suppose we could ever look at sociable, tool-making creatures who arose from other evolutionary paths and not see beasts but brothers, not rivals but fellow pilgrims journeying to the shrine of intelligence.",
+    "author": "",
+    "source": "Speaker for the Dead",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 357
+  },
+  {
+    "id": "science-064",
+    "text": "A faerie heart is different from a human heart. Human hearts are elastic. They have room for all sorts of passions, and they can break and heal and love again and again. Faerie hearts are evolutionarily less sophisticated. They are small and hard, like tiny grains of sand. Our hearts are too small to love more than one person in a lifetime.",
+    "author": "",
+    "source": "Tiger Lily",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 342
+  },
+  {
+    "id": "science-065",
+    "text": "There is a theory which states that if anybody ever discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened.",
+    "author": "",
+    "source": "The Hitchhiker's Guide to the Galaxy",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 276
+  },
+  {
+    "id": "science-066",
+    "text": "When I look up at the night sky, and I know that, yes, we are part of this Universe, we are in this Universe, but perhaps more important than both of those facts is that the Universe is in us. When I reflect on that fact, I look up - many people feel small, 'cause they're small and the Universe is big, but I feel big, because my atoms came from those stars.",
+    "author": "",
+    "source": "The Most Astounding Fact",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 359
+  },
+  {
+    "id": "science-067",
+    "text": "I can practically see your face and another revolutionary falls from grace. Hear the thunder in your brain. Not enough sunshine, too much rain.",
+    "author": "",
+    "source": "Swamp Thing",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 143
+  },
+  {
+    "id": "science-068",
+    "text": "In Newton's time it was possible for an educated person to have a grasp of the whole of human knowledge, at least in outline. But since then, the pace of the development of science has made this impossible. Because theories are always being changed to account for new observations, they are never properly digested or simplified so that ordinary people can understand them.",
+    "author": "",
+    "source": "A Brief History of Time",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 373
+  },
+  {
+    "id": "science-069",
+    "text": "For the same reasons that scientific standards change within each of the natural sciences, they differ extensively between them and across the divide between natural and social sciences. Indeed the differences between standards in the natural and social sciences must be wider than the others.",
+    "author": "",
+    "source": "Philosophy of Social Science (Dimensions of Philosophy) 5th Edition",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 293
+  },
+  {
+    "id": "science-070",
+    "text": "Before time began, there was the Cube. We know not where it comes from, only that it holds the power to create worlds and fill them with life. That is how our race was born. For a time we lived in harmony, but like all great power, some wanted it for good, others for evil. And so began the war. A war that ravaged our planet until it was consumed by death, and the Cube was lost to the far reaches of space. We scattered across the galaxy, hoping to find it and rebuild our world, searching every star, every world. And just when all hope seemed lost, message of a new discovery drew us to an unknown planet called... Earth. But we were already too late.",
+    "author": "",
+    "source": "Transformers",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 655
+  },
+  {
+    "id": "science-071",
+    "text": "It is indeed true that, in contrast to the exhilaration which the discoveries of the physical sciences tend to produce, the insights which we gain from the study of society more often have a dampening effect on our aspirations.",
+    "author": "",
+    "source": "The Pretence of Knowledge",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 227
+  },
+  {
+    "id": "science-072",
+    "text": "Many students do not realize the great importance of definitions to mathematics. This importance stems from the need for mathematicians to communicate with each other. If two people are trying to communicate about some subject, they must have the same understanding of its technical terms. However, there is an important structural weakness. It is impossible to define every concept.",
+    "author": "",
+    "source": "A First Course in Abstract Algebra",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 383
+  },
+  {
+    "id": "science-073",
+    "text": "What have you done? You have awakened in me all that should have stayed dormant. I have sought a tranquil existence, and had it, until I saw you. Since then my powers have failed me, for I cannot rid myself of you. In every book I read, I see your face. In every sound, I hear your voice, or the jingle of your tambourine. I've questioned my conscience through the deep hours of the night only to awaken in greater confusion.",
+    "author": "",
+    "source": "The Hunchback of Notre Dame",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 425
+  },
+  {
+    "id": "science-074",
+    "text": "I was just guessing at numbers and figures, pulling the puzzles apart. Questions of science, science and progress do not speak as loud as my heart.",
+    "author": "",
+    "source": "The Scientist",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 147
+  },
+  {
+    "id": "science-075",
+    "text": "At lunch he told Bill about a physics book he was reading about time. How the passing of time is just an illusion because all of eternity is actually taking place at once: the past never vanishes away and the future has already happened. All of history is fixed and laid out, like an infinite landscape of simultaneous events that we simply happen to travel through in one direction. Bill made a joke that he could've sworn he'd been told that somewhere before, but the guy just stared at him like he didn't get it.",
+    "author": "",
+    "source": "It's Such a Beautiful Day",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 515
+  },
+  {
+    "id": "science-076",
+    "text": "Any physical theory is always provisional, in the sense that it is only a hypothesis: you can never prove it. No matter how many times the results of experiments agree with some theory, you can never be sure that the next time the result will not contradict the theory.",
+    "author": "",
+    "source": "A Brief History of Time",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 269
+  },
+  {
+    "id": "science-077",
+    "text": "My life's work is teaching. And I believed that if you boys won that science fair, got scholarships, went off and did something great with your lives, somehow my life would have counted for something, Homer. You know what? Sometimes you really can't listen to what anybody else says. You just gotta listen inside. You're not supposed to end up in those mines. You know why? 'Cause I think you made other plans. I want you to know something. I'm proud of you.",
+    "author": "",
+    "source": "October Sky",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 458
+  },
+  {
+    "id": "science-078",
+    "text": "Since every piece of matter in the Universe is in some way affected by every other piece of matter in the Universe, it is in theory possible to extrapolate the whole of creation - every sun, every planet, their orbits, their composition and their economic and social history from, say, one small piece of fairy cake.",
+    "author": "",
+    "source": "The Restaurant at the End of the Universe",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 316
+  },
+  {
+    "id": "science-079",
+    "text": "The point is that the firm-foundation theory relies on some tricky forecasts of the extent and duration of future growth. The foundation of intrinsic value may thus be less dependable than is claimed.",
+    "author": "",
+    "source": "A Random Walk Down Wall Street",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 200
+  },
+  {
+    "id": "science-080",
+    "text": "There is a fifth dimension beyond that which is known to man. It is a dimension as vast as space and as timeless as infinity. It is the middle ground between light and shadow, between science and superstition, and it lies between the pit of man's fears and the summit of his knowledge. This is the dimension of imagination. It is an area which we call the Twilight Zone.",
+    "author": "",
+    "source": "The Twilight Zone",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 370
+  },
+  {
+    "id": "science-081",
+    "text": "Even if there is only one possible unified theory, it is just a set of rules and equations. What is it that breathes fire into the equations and makes a universe for them to describe? The usual approach of science of constructing a mathematical model cannot answer the questions of why there should be a universe for the model to describe. Why does the universe go to all the bother of existing?",
+    "author": "",
+    "source": "A Brief History of Time",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 395
+  },
+  {
+    "id": "science-082",
+    "text": "Never been near a university, never took a paper or a learned degree, and some of your friends think that's stupid of me, but it's nothing that I care about. Well I don't know how to tell the weight of the sun, and of mathematics well I want none, and I may be the Mayor of Simpleton, but I know one thing and that's I love you. When their logic grows cold and all thinking gets done, you'll be warm in the arms of the Mayor of Simpleton.",
+    "author": "",
+    "source": "The Mayor of Simpleton",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 438
+  },
+  {
+    "id": "science-083",
+    "text": "My mother had to abandon her quest, but managed to extract from the restriction itself a further delicate thought, like good poets whom the tyranny of rhyme forces into the discovery of their finest lines.",
+    "author": "",
+    "source": "In Search of Lost Time",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 205
+  },
+  {
+    "id": "science-084",
+    "text": "The chemistry of an element is determined by the manner in which its electrons are arranged in the atom. Such arrangements are the basis of the modern periodic classification of the elements: the Periodic Table.",
+    "author": "",
+    "source": "Structure and Bonding (Basic Concepts in Chemistry)",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 211
+  },
+  {
+    "id": "science-085",
+    "text": "The film which you are about to see is an account of the tragedy which befell a group of five youths, in particular Sally Hardesty and her invalid brother, Franklin. It is all the more tragic in that they were young. But, had they lived very, very long lives, they could not have expected nor would they have wished to see as much of the mad and macabre as they were to see that day. For them an idyllic summer afternoon drive became a nightmare. The events of that day were to lead to the discovery of one of the most bizarre crimes in the annals of American history, The Texas Chain Saw Massacre.",
+    "author": "",
+    "source": "The Texas Chain Saw Massacre",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 598
+  },
+  {
+    "id": "science-086",
+    "text": "Sorrow is a lonely feeling. Unsettled is a painful place. I've lived with both for far too long now since we've parted ways. I've been wrestling with my conscience, and I've found myself to blame. If there's to be any resolution, I've got to peel this pride away. Just between you and me, I've got something to say, wanna get it straight, before the sun goes down. Just between you and me, confession needs to be made, recompense is my way to freedom now.",
+    "author": "",
+    "source": "Between You and Me",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 455
+  },
+  {
+    "id": "science-087",
+    "text": "Well I don't know how to tell the weight of the sun, and of mathematics well I want none, and I may be the Mayor of Simpleton, but I know one thing and that's I love you.",
+    "author": "",
+    "source": "The Mayor of Simpleton",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 170
+  },
+  {
+    "id": "science-088",
+    "text": "For the soul there is a satisfaction of a higher type; the material is not at all necessary. Whether I apply mathematics to a couple of clods of dirt, which we call planets, or to purely arithmetical problems, it's just the same; the latter have only a higher charm for me.",
+    "author": "",
+    "source": "Carl Friedrich Gauss: Titan of Science",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 273
+  },
+  {
+    "id": "science-089",
+    "text": "We all love a good story. We all love a tantalizing mystery. We all love the underdog pressing onward against seemingly insurmountable odds. We all, in one form or another, are trying to make sense of the world around us. And all of these elements lie at the core of modern physics.",
+    "author": "",
+    "source": "The Elegant Universe: Superstrings, Hidden Dimensions, and the Quest for the Ultimate Theory",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 282
+  },
+  {
+    "id": "science-090",
+    "text": "One way to celebrate Grav-Mass is to decorate a tree with apples and other fruits. Glue them or attach them, but not too well! The idea is that occasionally a fruit should fall. Put them on the tree no more than 2 feet up, so that they won't get damaged or hurt anybody when they fall. Investigating and perfecting the methods for doing this is a great way to expose a child to the process of scientifically studying the behavior of the physical world.",
+    "author": "",
+    "source": "Grav-mass",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 452
+  },
+  {
+    "id": "science-091",
+    "text": "The firm-foundation theory argues that each investment instrument, be it a common stock or a piece of real estate, has a firm anchor of something called intrinsic value, which can be determined by careful analysis of present conditions and future prospects.",
+    "author": "",
+    "source": "A Random Walk Down Wall Street",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 257
+  },
+  {
+    "id": "science-092",
+    "text": "Must the citizen ever for a moment, or in the least degree, resign his conscience to the legislator? Why has every man a conscience then? I think that we should be men first, and subjects afterward. It is not desirable to cultivate a respect for the law, so much as for the right. The only obligation which I have a right to assume is to do at any time what I think right.",
+    "author": "",
+    "source": "Civil Disobedience",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 372
+  },
+  {
+    "id": "science-093",
+    "text": "Those who reject the argument that natural science has progressed and social science has languished take up their counterargument at the very foundations of the philosophy of natural science. To begin with, it is sometimes held that the natural sciences have not in fact made the kind of progress ordinarily attributed to them.",
+    "author": "",
+    "source": "Philosophy of Social Science (Dimensions of Philosophy) 5th Edition",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 327
+  },
+  {
+    "id": "science-094",
+    "text": "Technically, chemistry is the study of matter. But I prefer to see it as the study of change. Now, just, just think about this. Electrons change their energy levels. Molecules change their bonds. Elements combine and change into compounds. Well that's all of life, right? It's the constant, it's the cycle. It's solution, dissolution, over and over and over. It is growth then decay then transformation. It is fascinating, really.",
+    "author": "",
+    "source": "Breaking Bad",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 430
+  },
+  {
+    "id": "science-095",
+    "text": "One overarching lesson we have learned during the past hundred years is that the known laws of physics are associated with principles of symmetry.",
+    "author": "",
+    "source": "The Elegant Universe: Superstrings, Hidden Dimensions, and the Quest for the Ultimate Theory",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 146
+  },
+  {
+    "id": "science-096",
+    "text": "Math is like an atomic-powered prosthesis that you attach to your common sense, vastly multiplying its reach and strength. Despite the power of mathematics, and despite its sometimes forbidding notation and abstraction, the actual mental work involved is little different from the way we think about down-to-earth problems.",
+    "author": "",
+    "source": "How Not to Be Wrong: The Power of Mathematical Thinking",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 323
+  },
+  {
+    "id": "science-097",
+    "text": "At first they had tried to keep the finding quiet. After all, they were not absolutely sure it was an extraterrestrial message. A premature or mistaken announcement would be a public relations disaster. But worse than that, it would interfere with the data analysis. If the press descended, the science would surely suffer.",
+    "author": "",
+    "source": "Contact",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 323
+  },
+  {
+    "id": "science-098",
+    "text": "The whole fury and might of the enemy must very soon be turned on us. Hitler knows that he will have to break us in this Island or lose the war. If we can stand up to him, all Europe may be free and the life of the world may move forward into broad, sunlit uplands. But if we fail, then the whole world, including the United States, including all that we have known and cared for, will sink into the abyss of a new Dark Age made more sinister, and perhaps more protracted, by the lights of perverted science. Let us therefore brace ourselves to our duties, and so bear ourselves that, if the British Empire and its Commonwealth last for a thousand years, men will still say, \"This was their finest hour.\"",
+    "author": "",
+    "source": "Blood, Toil, Tears and Sweat",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 704
+  },
+  {
+    "id": "science-099",
+    "text": "The goal a reader seeks determines the way he reads. The effectiveness with which he reads is determined by the amount of effort and skill he puts into his reading. In general, the rule is: the more effort the better, at least in the case of books that are initially beyond our powers as readers and are therefore capable of raising us from a condition of understanding less to one of understanding more. Finally, the distinction between instruction and discovery (or between aided and unaided discovery) is important because most of us, most of the time, have to read without anyone to help us. Reading, like unaided discovery, is learning from an absent teacher. We can only do that successfully if we know how.",
+    "author": "",
+    "source": "How to Read a Book",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 713
+  },
+  {
+    "id": "science-100",
+    "text": "\"Oh, I almost forgot,\" he said. \"There's a really interesting rock formation, right as you enter the cave. I forget the exact scientific explanation, but there's something odd about the composition of the rock, so if you spread your hand out and touch it in the right spot, you can feel one patch of the stone that's about fifteen degrees colder than the rest of the rock. It's very bizarre. I'll show you where to touch as we're going in.\"",
+    "author": "",
+    "source": "Found",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 440
+  },
+  {
+    "id": "science-101",
+    "text": "Preposterous! To think that a human being could be destroyed by an animal ten thousand times smaller than a flea. It's as though an army of ants were to overthrow your Majesty's empire.",
+    "author": "Louis Pasteur",
+    "source": "The Story of Louis Pasteur",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 185
+  },
+  {
+    "id": "science-102",
+    "text": "The lessons of market history are clear. Styles and fashions in investors' evaluations of securities can and often do play a critical role in the pricing of securities. The stock market at times conforms well to the castle-in-the-air theory. For this reason, the game of investing can be extremely dangerous.",
+    "author": "",
+    "source": "A Random Walk Down Wall Street",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 308
+  },
+  {
+    "id": "science-103",
+    "text": "It's wildly irritating to have invented something as revolutionary as sarcasm, only to have it abused by amateurs.",
+    "author": "",
+    "source": "Lamb: The Gospel According to Biff, Christ's Childhood Pal",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 114
+  },
+  {
+    "id": "science-104",
+    "text": "Though understanding the meaning of actions is not directed at uncovering causes, it certainly satisfies some standards of predictive success: the correct interpretation of human actions enables us to navigate successfully in a society of other human beings. When we step back and consider the reliability of the predictions we make regarding the behavior of others, we cannot fail to be impressed with the implicit theory that growing up in society has provided us.",
+    "author": "",
+    "source": "Philosophy of Social Science (Dimensions of Philosophy) 5th Edition",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 466
+  },
+  {
+    "id": "science-105",
+    "text": "You know, when I was a kid, food was food. Before our scientific magicians poisoned the water, polluted the soil, decimated plant and animal life. Why, in my day, you could buy meat anywhere. Eggs, they had. Real butter, fresh lettuce in the stores.",
+    "author": "",
+    "source": "Soylent Green",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 249
+  },
+  {
+    "id": "science-106",
+    "text": "As an adult I have often known that peculiar legacy time brings to the traveler: the longing to seek out a place a second time, to find deliberately what we stumbled on once before, to recapture the feeling of discovery. Sometimes we search out again even a place that was not remarkable itself - we look for it simply because we remember it. If we do find it, of course, everything is different. The rough-hewn door is still there, but it's much smaller; the day is cloudy instead of brilliant; it's spring instead of autumn; we're alone instead of with three friends. Or worse, with three friends instead of alone.",
+    "author": "",
+    "source": "The Historian",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 616
+  },
+  {
+    "id": "science-107",
+    "text": "The wonders of life and the universe are mere reflections of microscopic particles engaged in a pointless dance fully choreographed by the laws of physics.",
+    "author": "",
+    "source": "The Elegant Universe: Superstrings, Hidden Dimensions, and the Quest for the Ultimate Theory",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 155
+  },
+  {
+    "id": "science-108",
+    "text": "A notereader is not yet a court reporter, but knows enough general steno theory to be able to read the character-based, paper-tape output of a stenotype machine, translate it to English, and then type it up as an official transcript. This subcontracted job resulted directly from the diffusion of the stenotype, as use of the stenotype affords a standardization of notes not possible with any manual system, permitting others to read the notes and transcribe directly from them.",
+    "author": "",
+    "source": "Closed Captioning: Subtitling, Stenography, and the Digital Convergence of Text with Television",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 478
+  },
+  {
+    "id": "science-109",
+    "text": "There is mystery everywhere. Beneath rocks, there is damp earth and an army of ants planning a revolution.",
+    "author": "",
+    "source": "Harbor Me",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 106
+  },
+  {
+    "id": "science-110",
+    "text": "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.",
+    "author": "Stephen Hawking",
+    "source": "Stephen Hawking",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 82
+  },
+  {
+    "id": "science-111",
+    "text": "Mathematics, rightly viewed, possesses not only truth, but supreme beauty - a beauty cold and austere, like that of sculpture, without appeal to any part of our weaker nature, without the gorgeous trappings of painting or music, yet sublimely pure, and capable of a stern perfection such as only the greatest art can show.",
+    "author": "",
+    "source": "A History of Western Philosophy",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 322
+  },
+  {
+    "id": "science-112",
+    "text": "Listen Morty, I hate to break it to you, but what people call \"love\" is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science.",
+    "author": "",
+    "source": "Rick and Morty",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 308
+  },
+  {
+    "id": "science-113",
+    "text": "Though the sciences cannot answer philosophical questions, individual scientists have to take sides on the right answers to them. The positions scientists take on answers to philosophical questions determine the questions they consider answerable by science and choose to address, as well as the methods they employ to answer them. Sometimes scientists take sides consciously. More often they take sides on philosophical questions by their very choice of question, and without realizing it.",
+    "author": "",
+    "source": "Philosophy of Social Science (Dimensions of Philosophy) 5th Edition",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 490
+  },
+  {
+    "id": "science-114",
+    "text": "If an exoplanet happens to transit its star, we can often determine both its mass and its radius, and hence estimate its density and possibly even its composition. More than 200 transiting hot Jupiters have been measured in this way. But when astronomers calculate their densities the numbers they obtain are generally much lower than predicted by theory.",
+    "author": "",
+    "source": "Astronomy: A Beginner's Guide to the Universe (7th Edition)",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 355
+  },
+  {
+    "id": "science-115",
+    "text": "The object of this massive tribute died as he had always lived - a private man without wealth, without property, without official title or office. Mahatma Gandhi was not a commander of great armies nor ruler of vast lands. He could boast no scientific achievements or artistic gift. Yet men, governments and dignitaries from all over the world have joined hands today to pay homage to this little brown man in the loincloth who led his country to freedom.",
+    "author": "",
+    "source": "Gandhi",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 455
+  },
+  {
+    "id": "science-116",
+    "text": "So, who cares? I always forget my chemistry book and my math book, and my English book, and my, let's see, my French book, and... well, who needs books anyway? I don't need books. I always forget all my books. I mean, it doesn't really matter if you have your books or not... Hey, isn't that Devon Graham?",
+    "author": "",
+    "source": "Halloween",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 305
+  },
+  {
+    "id": "science-117",
+    "text": "The treatment of atoms with more than one electron requires consideration of the effects of interelectronic repulsion, orbital penetration towards the nuclear shielding, and an extra quantum number which specifies the intrinsic energy of the electron in any orbital. All these considerations are necessary to allow construction of the modern form of the periodic classification of the elements.",
+    "author": "",
+    "source": "Structure and Bonding (Basic Concepts in Chemistry)",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 394
+  },
+  {
+    "id": "science-118",
+    "text": "There's a lullaby, saving us a riot. Giving back the time, stilling my desire. She knows it's mad, the snow's come back. The rose unburned, the page unturned. Dust your conscience off, you'd better stop. This stubborn mind don't feel too kind. I'll find out why it's in her eyes...",
+    "author": "",
+    "source": "Saving Us a Riot",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 281
+  },
+  {
+    "id": "science-119",
+    "text": "At a fundamental level, running is about travel. And travel is about going someplace else, someplace new. You run, you move. You get stronger and more confident. Run long enough, and you begin to equate movement with energy and growth and discovery. Sitting still? That equals sloth, atrophy, confinement. Ultimately, death.",
+    "author": "",
+    "source": "Running and Travel",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 324
+  },
+  {
+    "id": "science-120",
+    "text": "No one has ever witnessed the complete evolution of any star from birth to death. Stars take a very long time - millions, billions, even trillions of years - to evolve. Yet in less than a century, astronomers have developed a comprehensive theory of stellar evolution that is one of the best-tested in all of astronomy.",
+    "author": "",
+    "source": "Astronomy: A Beginner's Guide to the Universe (7th Edition)",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 319
+  },
+  {
+    "id": "science-121",
+    "text": "We may climb into the thin and cold realm of pure geometry and lifeless science, or sink into that of sensation. Between these extremes is the equator of life, of thought, or spirit, or poetry - a narrow belt.",
+    "author": "",
+    "source": "Essays & Poems by Ralph Waldo Emerson",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 209
+  },
+  {
+    "id": "science-122",
+    "text": "The matter between the stars is collectively termed the interstellar medium. It is made up of two components - gas and dust - intermixed throughout all of space. The gas is made up mainly of individual atoms and small molecules. The dust consists of clumps of atoms and molecules - not unlike the microscopic particles that make up smoke or soot.",
+    "author": "",
+    "source": "Astronomy: A Beginner's Guide to the Universe (7th Edition)",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 346
+  },
+  {
+    "id": "science-123",
+    "text": "Computation is essential, powerful, beautiful, challenging, ever-expanding and so is its theory.",
+    "author": "",
+    "source": "Elements of the Theory of Computation",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "science-124",
+    "text": "ALS is like a lit candle: it melts your nerves and leaves your body a pile of wax. Often, it begins with the legs and works its way up. You lose control of your thigh muscles, so that you cannot support yourself standing. You lose control of your trunk muscles, so that you cannot sit up straight. By the end, if you are still alive, you are breathing through a tube in a hole in your throat, while your soul, perfectly awake, is imprisoned inside a limp husk, perhaps able to blink, or cluck a tongue, like something from a science fiction movie, the man frozen inside his own flesh. This takes no more than five years from the day you contract the disease.",
+    "author": "",
+    "source": "Mitch Albom, tuesdays with Morrie",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 658
+  },
+  {
+    "id": "science-125",
+    "text": "I've come up with a set of rules that describe our reactions to technologies: 1. Anything that is in the world when you're born is normal and ordinary and is just a natural part of the way the world works. 2. Anything that's invented between when you're fifteen and thirty-five is new and exciting and revolutionary and you can probably get a career in it. 3. Anything invented after you're thirty-five is against the natural order of things.",
+    "author": "",
+    "source": "Douglas Adams, The Salmon of Doubt",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 442
+  },
+  {
+    "id": "science-126",
+    "text": "Most men and women will grow up to love their servitude and will never dream of revolution.",
+    "author": "",
+    "source": "Narrator and Author (Aldous Huxley), Brave New World",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 91
+  },
+  {
+    "id": "science-127",
+    "text": "Human beings were never meant to participate in a worldwide social network comprised of billions of people. We were designed by evolution to be hunter-gatherers, with the mental capacity to interact and socialize with the other members of our tribe - a tribe made up of a few hundred other people at most. Interacting with thousands or even millions of other people on a daily basis was way too much for our ape-descended melons to handle. That was why social media had been gradually driving the entire population of the world insane since it emerged back around the turn of the century.",
+    "author": "",
+    "source": "Ready Player Two",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 588
+  },
+  {
+    "id": "science-128",
+    "text": "When I was young, I entered a science fair with my very first Inator. I wasn't very clever with the names yet. It was just, you know, \"Inator.\" Just as I was about to demonstrate my invention to the judges, a kid with a baking soda volcano stole the show! The next year I tried again with my Even-Bigger-Inator. And again, my thunder was stolen by a baking soda volcano! I had enough of science. I decided to devote my life to poetry instead. Yet curiously, I still lost to a baking soda volcano!",
+    "author": "",
+    "source": "Heinz Doofenshmirtz, Phineas and Ferb",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 496
+  },
+  {
+    "id": "science-129",
+    "text": "How can you know that this account, or any account given at a previous or later time, is true? How do you know that it has any relationship to reality? If we are to rely on this inner and subjective experience as being the truth about human relationships or about ways of altering personality, then Yogi, Christian Science, dianetics, and the delusions of a psychotic individual who believes himself to be Jesus Christ, are all true, just as true as this account.",
+    "author": "",
+    "source": "Carl Rogers, On Becoming a Person",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 463
+  },
+  {
+    "id": "science-130",
+    "text": "It feels like time is passing so quickly. Damn you, Einstein! Your science is crowding in on our kiss! He was right. The passage of time depends entirely on where you're standing. Relativity Theory... it's so romantic. But it's just so tragic too.",
+    "author": "",
+    "source": "Steins;Gate",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 247
+  },
+  {
+    "id": "science-131",
+    "text": "Play is the highest form of research.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 37
+  },
+  {
+    "id": "science-132",
+    "text": "It is not the strongest of the species that survive, nor the most intelligent, but the one most responsive to change.",
+    "author": "Charles Darwin",
+    "source": "Charles Darwin",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 117
+  },
+  {
+    "id": "science-133",
+    "text": "In theory there is no difference between theory and practice. In practice there is.",
+    "author": "",
+    "source": "Yogi Berra",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 83
+  },
+  {
+    "id": "science-134",
+    "text": "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 129
+  },
+  {
+    "id": "science-135",
+    "text": "Good friends, good books, and a sleepy conscience: this is the ideal life.",
+    "author": "",
+    "source": "Mark Twain",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 74
+  },
+  {
+    "id": "science-136",
+    "text": "I am enough of an artist to draw freely upon my imagination. Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 161
+  },
+  {
+    "id": "science-137",
+    "text": "The most exciting phrase to hear in science, the one that heralds the most discoveries, is not \"Eureka!\" (I found it!) but \"That's funny...\"",
+    "author": "",
+    "source": "Isaac Asimov",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 140
+  },
+  {
+    "id": "science-138",
+    "text": "In the shooter hypothesis, a good marksman shoots at a target, creating a hole every ten centimeters. Now suppose the surface of the target is inhabited by intelligent, two-dimensional creatures. Their scientists, after observing the universe, discover a great law: \"There exists a hole in the universe every ten centimeters.\" They have mistaken the result of the marksman's momentary whim for an unalterable law of the universe. The farmer hypothesis, on the other hand, has the flavor of a horror story: Every morning on a turkey farm, the farmer comes to feed the turkeys. A scientist turkey, having observed this pattern to hold without change for almost a year, makes the following discovery: \"Every morning at eleven, food arrives.\" On the morning of Thanksgiving, the scientist announces this law to the other turkeys. But that morning at eleven, food doesn't arrive; instead, the farmer comes and kills the entire flock.",
+    "author": "",
+    "source": "The Three-Body Problem",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 928
+  },
+  {
+    "id": "science-139",
+    "text": "Music is a science that would have us laugh, sing, and dance.",
+    "author": "",
+    "source": "Guillaume de Machaut, \"The Fountain of Love\"",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 61
+  },
+  {
+    "id": "science-140",
+    "text": "I worshipped you! Your mind, your conscience, wanting to help others... the way you never gave up!",
+    "author": "",
+    "source": "Spider-Man 2018 PS4",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 98
+  },
+  {
+    "id": "science-141",
+    "text": "I would rather have questions that can't be answered than have answers that can't be questioned.",
+    "author": "Richard Feynman",
+    "source": "Richard Feynman",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "science-142",
+    "text": "In many ways, the work of a critic is easy. We risk very little, yet enjoy a position over those who offer up their work and their selves to our judgment. We thrive on negative criticism, which is fun to write and to read. But the bitter truth we critics must face, is that in the grand scheme of things, the average piece of junk is probably more meaningful than our criticism designating it so. But there are times when a critic truly risks something, and that is in the discovery and defense of the new. The world is often unkind to new talent, new creations. The new needs friends. Last night, I experienced something new: an extraordinary meal from a singularly unexpected source. To say that both the meal and its maker have challenged my preconceptions about fine cooking is a gross understatement. They have rocked me to my core. In the past, I have made no secret of my disdain for Chef Gusteau's famous motto, \"Anyone can cook\". But I realize, only now do I truly understand what he meant. Not everyone can become a great artist; but a great artist can come from anywhere. It is difficult to imagine more humble origins than those of the genius now cooking at Gusteau's, who is, in this critic's opinion, nothing less than the finest chef in France. I will be returning to Gusteau's soon, hungry for more.",
+    "author": "",
+    "source": "Ratatouille",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 1315
+  },
+  {
+    "id": "science-143",
+    "text": "I will here give a brief sketch of the progress of opinion on the Origin of Species. Until recently the great majority of naturalists believed that species were immutable productions, and had been separately created. This view has been ably maintained by many authors. Some few naturalists, on the other hand, have believed that species undergo modification, and that the existing forms of life are the descendants by true generation of pre existing forms. Passing over allusions to the subject in the classical writers, the first author who in modern times has treated it in a scientific spirit was Buffon. But as his opinions fluctuated greatly at different periods, and as he does not enter on the causes or means of the transformation of species, I need not here enter on details.",
+    "author": "",
+    "source": "On the Origin of Species",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 784
+  },
+  {
+    "id": "science-144",
+    "text": "These cases of close relationship in species either now or formerly inhabiting the seas on the eastern and western shores of North America, the Mediterranean and Japan, and the temperate lands of North America and Europe, are inexplicable on the theory of creation. We cannot maintain that such species have been created alike, in correspondence with the nearly similar physical conditions of the areas; for if we compare, for instance, certain parts of South America with parts of South Africa or Australia, we see countries closely similar in all their physical conditions, with their inhabitants utterly dissimilar.",
+    "author": "",
+    "source": "On the Origin of Species",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 618
+  },
+  {
+    "id": "science-145",
+    "text": "What do I do? System architecture. Networking and security. No one in this house can touch me on that. But does anyone appreciate that? While you were busy minoring in gender studies and singing acapella at Sarah Lawrence, I was gaining root access to NSA servers. I was one click away from starting a second Iranian Revolution. I prevent cross-site scripting, I monitor for DDoS attacks, emergency database rollbacks, and faulty transaction handlings. The Internet - heard of it? Transfers half a petabyte of data every minute. Do you have any idea how that happens? All those YouTube ones and zeroes streaming directly to your little smart phone day after day? Every joe who gets outraged if he can't get the new dubstep Skrillex remix in under 12 seconds? It's not magic, it's talent and sweat. People like me, ensuring your packets get delivered, un-sniffed. So what do I do? I make sure that one bad config on one key component doesn't bankrupt the entire company. That's what I do.",
+    "author": "",
+    "source": "Bertram Gilfoyle - Silicon Valley",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 987
+  },
+  {
+    "id": "science-146",
+    "text": "Human backpacks look a lot like monster backpacks, but if you open one up you can see that they are exactly as big on the inside as they seem from the outside, implying humans never quite mastered basic dimensional design theory.",
+    "author": "",
+    "source": "A Monster's Expedition",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 229
+  },
+  {
+    "id": "science-147",
+    "text": "The atoms of our bodies are traceable to stars that manufactured them in their cores and exploded these enriched ingredients across our galaxy, billions of years ago. For this reason, we are biologically connected to every other living thing in the world. We are chemically connected to all molecules on Earth. And we are atomically connected to all atoms in the universe. We are not figuratively, but literally stardust.",
+    "author": "",
+    "source": "Neil deGrasse Tyson",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 421
+  },
+  {
+    "id": "science-148",
+    "text": "This is how they survive. You must know this. You're too smart not to know this. They paint the world full of shadows... and then tell their children to stay close to the light. Their light. Their reasons, their judgments. Because in the darkness, there be dragons. But it isn't true. We can prove that it isn't true. In the dark, there is discovery, there is possibility, there is freedom in the dark once someone has illuminated it.",
+    "author": "",
+    "source": "Black Sails",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 434
+  },
+  {
+    "id": "science-149",
+    "text": "Nobody, even in the provinces, should ever be allowed to ask an intelligent question about pure mathematics across a dinner table. A question of this kind is quite as bad as inquiring suddenly about the state of a man's soul.",
+    "author": "",
+    "source": "Oscar Wilde",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 225
+  },
+  {
+    "id": "science-150",
+    "text": "Understanding that our understanding might be wrong is essential, and trying to figure out ways we may be mistaken is the only way science can help us find our way to the truth.",
+    "author": "",
+    "source": "Introduction to Astronomy: Crash Course Astronomy",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 177
+  },
+  {
+    "id": "science-151",
+    "text": "We are alone. Such is the curse of humanity, being surrounded by others always masking themselves while all of us feel isolated, separated from everyone else. Our sense of uniqueness and ego will always keep us this way, and it will take more than a revolution to end it. For now, we are alone.",
+    "author": "",
+    "source": "Alice Chary Garza",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 294
+  },
+  {
+    "id": "science-152",
+    "text": "Now it's time for our wrap up. Let's give it everything we've got. Ready? Begin! Artificial amateurs aren't at all amazing. Analytically, I assault, animate things. Broken barriers bounded by the bomb beat. Buildings are broken, basically I'm bombarding. Casually create catastrophes, casualties. Canceling cats got their canopies collapsing. Detonate a dime of dank daily doin' dough. Demonstrations, Don Dada on the down low. Eatin' other editors with each and every energetic. Epileptic episode, elevated etiquette. Furious fat fabulous fantastic. Flurries of funk felt feeding the fanatics. Gift got great global goods gone glorious. Gettin' Godly in his game with the goriest. Hit 'em high, hella hype, historical. Hey holocaust hints hear 'em holler at your homeboy. Imitators idolize, I intimidate. In an instant, I'll rise in a irate state. Juiced on my jams like jheri curls, jockin' joints. Justly, it's just me, writin' my journals. Kindly I'm kindling all kinds of ink on. Karate kick type Brits in my kingdom. Let me live a long life, lyrically lessons is. Learned lame louses just lose to my livery. My mind makes marvelous moves, masses. Marvel and move, many mock what I've mastered. Nap knowin' I'm nice naturally. Knack, never lack, make noise nationally. Operation, opposition, off, not optional. Out of sight, out of mind, wide beaming opticals. Perfected poem, powerful punchlines. Pummeling petty powder puffs in my prime. Quite quaint quotes keep quiet it's Quannum. Quarrelers ain't got a quarter of what we got, uh. Really raw raps, risin' up rapidly. Riding the rushing radioactivity. Super scientifical sound search sought. Silencing super fire saps that are soft. Tales ten times talented, they're too tough. Take that, challengers, get a tune up. Universal, unique untouched. Unadulterated, the raw uncut. Verb vice Lord victorious valid. Violate vibes that are vain make 'em vanished. Why I'm all well, would a wise wordsmith. Just weaving up words weeded up, on my work shift. Xerox, my X-ray-diation holes extra large. X-height letters and xylophone tones. Yellow back, yak mouth, young ones yaws. Yesterday's lawn yards sell our yawn. Zig zag zombies, zoomin' to the zenith. Zero in zen thoughts, over zealous rhyme Zea-lots. Good, can you say it faster?",
+    "author": "",
+    "source": "Alphabet Aerobics",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 2287
+  },
+  {
+    "id": "science-153",
+    "text": "And where there was that memory... others came rising like ghostly tendrils out of some part of her mind that existed beyond the purely physical, somewhere that the rejuvenations and edits of the ship's medical suite could never reach. The holm, where her soul originated from, occupying the non-realm outside spacetime; both separate but still existing within the overall cosmos. Together, the two intersected, a contact which created the miracle that was the mind, animating flesh, delivering purpose to otherwise insensate clusters of mere organic chemistry.",
+    "author": "",
+    "source": "Light Chaser",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 561
+  },
+  {
+    "id": "science-154",
+    "text": "That is the essence of a Strong Towns approach, the bottom-up revolution America desperately needs.",
+    "author": "",
+    "source": "Strong Towns - A Bottom-Up Revolution to Rebuild American Prosperity",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 99
+  },
+  {
+    "id": "science-155",
+    "text": "We cannot solve our problems with the same thinking we used when we created them.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 81
+  },
+  {
+    "id": "science-156",
+    "text": "It is not easy to find happiness in ourselves, and it is not possible to find it elsewhere. The only way to true happiness is to learn to accept and love ourselves for who we are, flaws and all. This means embracing our strengths as well as our weaknesses, and finding joy in the journey of self-discovery and self-improvement. It may not be an easy path, but it is one that is worth taking.",
+    "author": "",
+    "source": "Agnes Repplier",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 391
+  },
+  {
+    "id": "science-157",
+    "text": "The most beautiful thing we can experience is the mysterious. It is the source of all true art and all science. He to whom this emotion is a stranger, who can no longer pause to wonder and stand rapt in awe, is as good as dead: his eyes are closed.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 248
+  },
+  {
+    "id": "science-158",
+    "text": "I have no special talents. I am only passionately curious.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 58
+  },
+  {
+    "id": "science-159",
+    "text": "One, remember to look up at the stars and not down at your feet. Two, never give up work. Work gives you meaning and purpose and life is empty without it. Three, if you are lucky enough to find love, remember it is there and don't throw it away.",
+    "author": "Stephen Hawking",
+    "source": "Stephen Hawking",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 245
+  },
+  {
+    "id": "science-160",
+    "text": "Recognize that the very molecules that make up your body, the atoms that construct the molecules, are traceable to the crucibles that were once the centers of high mass stars that exploded their chemically rich guts into the galaxy, enriching pristine gas clouds with the chemistry of life. So that we are all connected to each other biologically, to the earth chemically and to the rest of the universe atomically. That's kinda cool! That makes me smile and I actually feel quite large at the end of that. It's not that we are better than the universe, we are part of the universe. We are in the universe and the universe is in us.",
+    "author": "",
+    "source": "Neil deGrasse Tyson",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 632
+  },
+  {
+    "id": "science-161",
+    "text": "There is no branch of mathematics, however abstract, which may not some day be applied to phenomena of the real world.",
+    "author": "",
+    "source": "Nikolai Lobachevsky",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 118
+  },
+  {
+    "id": "science-162",
+    "text": "If a cluttered desk is a sign of a cluttered mind, of what, then, is an empty desk a sign?",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "science-163",
+    "text": "There are two ways to live: you can live as if nothing is a miracle; you can live as if everything is a miracle.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 112
+  },
+  {
+    "id": "science-164",
+    "text": "There's as many atoms in a single molecule of your DNA as there are stars in the typical galaxy. We are, each of us, a little universe.",
+    "author": "",
+    "source": "Neil deGrasse Tyson, Cosmos",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 135
+  },
+  {
+    "id": "science-165",
+    "text": "Time travel used to be thought of as just science fiction, but Einstein's general theory of relativity allows for the possibility that we could warp space-time so much that you could go off in a rocket and return before you set out.",
+    "author": "Stephen Hawking",
+    "source": "Stephen Hawking",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 232
+  },
+  {
+    "id": "science-166",
+    "text": "Because there is a law such as gravity, the universe can and will create itself from nothing.",
+    "author": "Stephen Hawking",
+    "source": "Stephen Hawking",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 93
+  },
+  {
+    "id": "science-167",
+    "text": "The whole idea of what happens when you read a book, I find absolutely stunning. Here's some product of a tree, little black squiggles on it, you open it up, and inside your head is the voice of someone speaking, who may have been dead 3000 years, and there he is talking directly to you, what a magical thing that is.",
+    "author": "Carl Sagan",
+    "source": "Carl Sagan",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 318
+  },
+  {
+    "id": "science-168",
+    "text": "Nothing disturbs me more than the glorification of stupidity.",
+    "author": "Carl Sagan",
+    "source": "Carl Sagan",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 61
+  },
+  {
+    "id": "science-169",
+    "text": "Everything should be made as simple as possible, but not simpler.",
+    "author": "Albert Einstein",
+    "source": "Albert Einstein",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 65
+  },
+  {
+    "id": "science-170",
+    "text": "There are things so deep and complex that only intuition can reach it in our stage of development as human beings.",
+    "author": "John Astin",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 114
+  },
+  {
+    "id": "science-171",
+    "text": "How wonderful that we have met with a paradox. Now we have some hope of making progress.",
+    "author": "Niels Bohr",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 88
+  },
+  {
+    "id": "science-172",
+    "text": "It is through science that we prove, but through intuition that we discover.",
+    "author": "Henri Poincaré",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 76
+  },
+  {
+    "id": "science-173",
+    "text": "Logic will get you from A to B. Imagination will take you everywhere.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 69
+  },
+  {
+    "id": "science-174",
+    "text": "One may say the eternal mystery of the world is its comprehensibility.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 70
+  },
+  {
+    "id": "science-175",
+    "text": "Do not worry about your difficulties in Mathematics. I can assure you mine are still greater.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 93
+  },
+  {
+    "id": "science-176",
+    "text": "Ethical axioms are found and tested not very differently from the axioms of science. Truth is what stands the test of experience.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 129
+  },
+  {
+    "id": "science-177",
+    "text": "Every day I remind myself that my inner and outer life are based on the labors of other men, living and dead, and that I must exert myself in order to give in the same measure as I have received and am still receiving.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 218
+  },
+  {
+    "id": "science-178",
+    "text": "Gravitation cannot be held responsible for people falling in love. How on earth can you explain in terms of chemistry and physics so important a biological phenomenon as first love? Put your hand on a stove for a minute and it seems like an hour. Sit with that special girl for an hour and it seems like a minute. That's relativity.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "hard",
+    "length": 332
+  },
+  {
+    "id": "science-179",
+    "text": "I never teach my pupils. I only attempt to provide the conditions in which they can learn.",
+    "author": "Albert Einstein",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 90
+  },
+  {
+    "id": "science-180",
+    "text": "I never did anything worth doing by accident, nor did any of my inventions come by accident",
+    "author": "Thomas Edison",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 91
+  },
+  {
+    "id": "science-181",
+    "text": "To invent, you need a good imagination and a pile of junk.",
+    "author": "Thomas Edison",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 58
+  },
+  {
+    "id": "science-182",
+    "text": "God always takes the simplest way.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 34
+  },
+  {
+    "id": "science-183",
+    "text": "Think how hard physics would be if particles could think.",
+    "author": "Murray Gell-Mann",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 57
+  },
+  {
+    "id": "science-184",
+    "text": "I never think of the future. It comes soon enough.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 50
+  },
+  {
+    "id": "science-185",
+    "text": "The beginning of knowledge is the discovery of something we do not understand.",
+    "author": "Frank Herbert",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 78
+  },
+  {
+    "id": "science-186",
+    "text": "Nothing in life is to be feared. It is only to be understood.",
+    "author": "Marie Curie",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 61
+  },
+  {
+    "id": "science-187",
+    "text": "Life is like riding a bicycle. To keep your balance you must keep moving.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 73
+  },
+  {
+    "id": "science-188",
+    "text": "Feeling and longing are the motive forces behind all human endeavor and human creations.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 88
+  },
+  {
+    "id": "science-189",
+    "text": "The highest stage in moral ure at which we can arrive is when we recognize that we ought to control our thoughts.",
+    "author": "Charles Darwin",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 113
+  },
+  {
+    "id": "science-190",
+    "text": "Let me tell you the secret that has led me to my goal: my strength lies solely in my tenacity",
+    "author": "Louis Pasteur",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 93
+  },
+  {
+    "id": "science-191",
+    "text": "I believe that a simple and unassuming manner of life is best for everyone, best both for the body and the mind.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 112
+  },
+  {
+    "id": "science-192",
+    "text": "This world, after all our science and sciences, is still a miracle; wonderful, inscrutable, magical and more, to whosoever will think of it.",
+    "author": "Thomas Carlyle",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 140
+  },
+  {
+    "id": "science-193",
+    "text": "Try not to become a man of success, but rather try to become a man of value.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 76
+  },
+  {
+    "id": "science-194",
+    "text": "When the solution is simple, God is answering.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 46
+  },
+  {
+    "id": "science-195",
+    "text": "Action will remove the doubts that theory cannot solve.",
+    "author": "Tehyi Hsieh",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 55
+  },
+  {
+    "id": "science-196",
+    "text": "Courage is the discovery that you may not win, and trying when you know you can lose.",
+    "author": "",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 85
+  },
+  {
+    "id": "science-197",
+    "text": "A man should look for what is, and not for what he thinks should be.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 68
+  },
+  {
+    "id": "science-198",
+    "text": "The greatest discovery of our generation is that human beings can alter their lives by altering their attitudes of mind. As you think, so shall you be.",
+    "author": "William James",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 151
+  },
+  {
+    "id": "science-199",
+    "text": "Peace cannot be kept by force. It can only be achieved by understanding.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 72
+  },
+  {
+    "id": "science-200",
+    "text": "Be less curious about people and more curious about ideas.",
+    "author": "Marie Curie",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 58
+  },
+  {
+    "id": "science-201",
+    "text": "Every great advance in science has issued from a new audacity of the imagination.",
+    "author": "John Dewey",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 81
+  },
+  {
+    "id": "science-202",
+    "text": "Through pride we are ever deceiving ourselves. But deep down below the surface of the average conscience a still, small voice says to us, Something is out of tune.",
+    "author": "Carl Jung",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 163
+  },
+  {
+    "id": "science-203",
+    "text": "The universe is made of stories, not atoms.",
+    "author": "Muriel Rukeyser",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "easy",
+    "length": 43
+  },
+  {
+    "id": "science-204",
+    "text": "Setting an example is not the main means of influencing another, it is the only means.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 86
+  },
+  {
+    "id": "science-205",
+    "text": "We know from science that nothing in the universe exists as an isolated or independent entity.",
+    "author": "Margaret Wheatley",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 94
+  },
+  {
+    "id": "science-206",
+    "text": "Anyone who doesn't take truth seriously in small matters cannot be trusted in large ones either.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 96
+  },
+  {
+    "id": "science-207",
+    "text": "Knowledge has three degrees  opinion, science, illumination. The means or instrument of the first is sense; of the second, dialectic; of the third, intuition.",
+    "author": "Plotinus",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "hard",
+    "length": 159
+  },
+  {
+    "id": "science-208",
+    "text": "Imagination will often carry us to worlds that never were. But without it we go nowhere.",
+    "author": "Carl Sagan",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "medium",
+    "length": 88
+  },
+  {
+    "id": "science-209",
+    "text": "Discovery consists of seeing what everybody has seen and thinking what nobody else has thought.",
+    "author": "Jonathan Swift",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 95
+  },
+  {
+    "id": "science-210",
+    "text": "Bad times have a scientific value. These are occasions a good learner would not miss.",
+    "author": "Ralph Emerson",
+    "source": "Speech or Publication",
+    "category": "science",
+    "license": "Fair Use",
+    "difficulty": "medium",
+    "length": 85
+  },
+  {
+    "id": "science-211",
+    "text": "Imagination is everything. It is the preview of life's coming attractions.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 74
+  },
+  {
+    "id": "science-212",
+    "text": "The true sign of intelligence is not knowledge but imagination.",
+    "author": "Albert Einstein",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 63
+  },
+  {
+    "id": "science-213",
+    "text": "What I cannot create, I do not understand.",
+    "author": "Richard Feynman",
+    "source": "Historical Quote",
+    "category": "science",
+    "license": "Public Domain",
+    "difficulty": "easy",
+    "length": 42
+  }
+]
