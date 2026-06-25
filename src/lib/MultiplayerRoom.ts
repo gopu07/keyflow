@@ -1,5 +1,5 @@
 import { db } from "../firebase";
-import { ref, set, update, onValue, get, Unsubscribe, onDisconnect, remove } from "firebase/database";
+import { ref, set, update, onValue, get, Unsubscribe, onDisconnect, remove, query, orderByChild, endAt } from "firebase/database";
 import { TestConfig } from "./TestConfig";
 
 export interface PlayerData {
@@ -17,6 +17,7 @@ export interface RoomState {
     snippetAuthor?: string;
     config: TestConfig;
     started: boolean;
+    createdAt: number;
     players: { [id: string]: PlayerData };
 }
 
@@ -51,6 +52,7 @@ export class MultiplayerRoom {
             snippetAuthor: snippetAuthor,
             config: config,
             started: false,
+            createdAt: Date.now(),
             players: {
                 [this.playerId]: {
                     id: this.playerId,
@@ -64,6 +66,9 @@ export class MultiplayerRoom {
         };
 
         await set(roomRef, initialRoom);
+
+        // Clean up stale rooms in the background (fire-and-forget)
+        MultiplayerRoom.cleanupStaleRooms();
         
         // FIX: The root cause of "ghost" players filling up the room was the lack of onDisconnect handling.
         // Firebase automatically runs this remove() command on the server side when the client's socket drops.
@@ -143,6 +148,32 @@ export class MultiplayerRoom {
             onDisconnect(playerRef).cancel();
         } catch (e) {
             console.error("Failed to remove player on disconnect", e);
+        }
+    }
+
+    /**
+     * Deletes rooms older than 1 hour.
+     * Runs in the background whenever a new room is created.
+     */
+    private static async cleanupStaleRooms(): Promise<void> {
+        try {
+            const ONE_HOUR_MS = 60 * 60 * 1000;
+            const cutoff = Date.now() - ONE_HOUR_MS;
+            const roomsRef = ref(db, "rooms");
+            const staleQuery = query(roomsRef, orderByChild("createdAt"), endAt(cutoff));
+            const snapshot = await get(staleQuery);
+
+            if (snapshot.exists()) {
+                const staleRooms = snapshot.val();
+                const deletePromises = Object.keys(staleRooms).map((roomCode) => {
+                    return remove(ref(db, `rooms/${roomCode}`));
+                });
+                await Promise.all(deletePromises);
+                console.log(`[Cleanup] Deleted ${Object.keys(staleRooms).length} stale room(s)`);
+            }
+        } catch (e) {
+            // Non-critical — don't let cleanup failures break room creation
+            console.error("[Cleanup] Failed to clean up stale rooms", e);
         }
     }
 
