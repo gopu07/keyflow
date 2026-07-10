@@ -36,22 +36,6 @@ export const HostWaitingModal: React.FC<HostWaitingModalProps> = ({
         }
     };
 
-    const handleShare = async () => {
-        if ("share" in navigator) {
-            try {
-                await navigator.share({
-                    title: 'Typefast Race',
-                    text: 'Join my typing race!',
-                    url: joinLink,
-                });
-            } catch (e) {
-                console.error("Failed to share", e);
-            }
-        } else {
-            handleCopyLink();
-        }
-    };
-
     return (
         <div className="modal-overlay">
             <div className="modal-content">
@@ -69,11 +53,6 @@ export const HostWaitingModal: React.FC<HostWaitingModalProps> = ({
                     <button className="modal-btn secondary" onClick={handleCopyCode}>
                         {copiedCode ? "✓ Copied" : "Copy Code"}
                     </button>
-                    {"share" in navigator && (
-                        <button className="modal-btn secondary" onClick={handleShare}>
-                            Share
-                        </button>
-                    )}
                 </div>
 
                 <div className="modal-status">

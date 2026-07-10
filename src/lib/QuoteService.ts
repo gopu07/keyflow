@@ -34,7 +34,7 @@ export class QuoteService {
 
     private loadRecentlyUsed(): void {
         try {
-            const stored = localStorage.getItem("typefast_recently_used_quotes");
+            const stored = localStorage.getItem("keyflow_recently_used_quotes");
             if (stored) {
                 this.recentlyUsedIds = JSON.parse(stored);
             }
@@ -45,7 +45,7 @@ export class QuoteService {
 
     private saveRecentlyUsed(): void {
         try {
-            localStorage.setItem("typefast_recently_used_quotes", JSON.stringify(this.recentlyUsedIds));
+            localStorage.setItem("keyflow_recently_used_quotes", JSON.stringify(this.recentlyUsedIds));
         } catch (e) {
             console.error("Failed to save recently used quotes", e);
         }

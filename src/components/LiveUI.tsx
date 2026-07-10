@@ -5,7 +5,8 @@ import HiddenTextInput from './HiddenTextInput';
 import ProgressIndicator from './ProgressIndicator';
 import { KeystrokeRecorder } from '../lib/KeystrokeRecorder';
 import LiveSnippetAnalyzer from '../lib/LiveSnippetAnalyzer';
-import { HostWaitingModal } from './HostWaitingModal';
+import { PlayerData, RoomState, sortPlayers } from '../lib/MultiplayerRoom';
+import { getSyncedTime } from '../firebase';
 
 import { IKeystrokeLog } from '../lib/KeystrokeRecorder';
 import { TestConfig, TestMode, TimeOption, WordsOption } from '../lib/TestConfig';
@@ -16,7 +17,7 @@ interface ILiveUIProps {
     snippetAuthor?: string;
     config: TestConfig;
     onConfigChange: (config: TestConfig) => void;
-    onFinish: (keystrokes: IKeystrokeLog[], finalSnippet?: string) => void;
+    onFinish: (keystrokes: IKeystrokeLog[], finalSnippet?: string, wpm?: number, accuracy?: number) => void;
     multiplayerRoomCode?: string;
     multiplayerStarted?: boolean;
     isHost?: boolean;
@@ -24,7 +25,10 @@ interface ILiveUIProps {
     onProgressUpdate?: (progress: number, wpm: number, accuracy: number) => void;
     onCreateRace?: () => void;
     onJoinRace?: () => void;
-    mpPlayersCount?: number;
+    mpPlayers?: PlayerData[];
+    mpRoomState?: RoomState | null;
+    currentPlayerId?: string;
+    onToggleReady?: (ready: boolean) => void;
     onStartTyping?: () => void;
 }
 
@@ -33,6 +37,7 @@ interface ILiveUIState {
     elapsedSeconds: number;
     startTime: Date | null;
     isTouchDevice: boolean;
+    copiedInviteLink: boolean;
 }
 
 class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
@@ -46,7 +51,8 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             typedText: "",
             elapsedSeconds: 0,
             startTime: null,
-            isTouchDevice: false
+            isTouchDevice: false,
+            copiedInviteLink: false
         };
         this.onTypedTextChange = this.onTypedTextChange.bind(this);
         this.handleCategorySelect = this.handleCategorySelect.bind(this);
@@ -69,11 +75,81 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     }
 
     public componentDidUpdate(prevProps: ILiveUIProps) {
-        if (this.props.multiplayerRoomCode && this.props.multiplayerStarted && !prevProps.multiplayerStarted) {
-            if (this.state.startTime === null) {
-                this.startTimer();
-            }
+        // Single player timer start
+        if (!this.props.multiplayerRoomCode && this.state.startTime !== null && this.timerInterval === null) {
+            // Started typing
         }
+
+        // Multiplayer auto finish on status transition
+        if (this.props.multiplayerRoomCode && this.props.mpRoomState && this.props.mpRoomState.status === "finished" && (!prevProps.mpRoomState || prevProps.mpRoomState.status !== "finished")) {
+            if (this.timerInterval) {
+                clearInterval(this.timerInterval);
+                this.timerInterval = null;
+            }
+            this.props.onFinish(
+                this.keystrokeRecorder.getKeystrokes(),
+                undefined,
+                this.getWPM(),
+                this.getAccuracy()
+            );
+        }
+
+        // Multiplayer local timer start when status becomes "running"
+        if (this.props.multiplayerRoomCode && 
+            this.props.mpRoomState?.status === "running" && 
+            this.props.mpRoomState?.raceStartTimestamp && 
+            this.timerInterval === null) {
+            this.startMultiplayerTimer(this.props.mpRoomState.raceStartTimestamp);
+        }
+
+        // Multiplayer local state reset when room is reset to "waiting"
+        if (this.props.multiplayerRoomCode && 
+            this.props.mpRoomState?.status === "waiting" && 
+            prevProps.mpRoomState?.status !== "waiting") {
+            if (this.timerInterval) {
+                clearInterval(this.timerInterval);
+                this.timerInterval = null;
+            }
+            this.setState({
+                elapsedSeconds: 0,
+                startTime: null,
+                typedText: ""
+            });
+            this.keystrokeRecorder = new KeystrokeRecorder();
+        }
+    }
+
+    public startMultiplayerTimer(raceStartTimestamp: number) {
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+        }
+
+        const updateTimer = () => {
+            const now = getSyncedTime();
+            const elapsed = Math.floor((now - raceStartTimestamp) / 1000);
+
+            const isMeFinished = this.props.mpPlayers?.find(p => p.id === this.props.currentPlayerId)?.finished;
+            if (isMeFinished) {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+                return;
+            }
+
+            this.setState({ elapsedSeconds: Math.max(0, elapsed) }, () => {
+                if (this.props.onProgressUpdate && this.state.typedText.length > 0) {
+                    this.props.onProgressUpdate(
+                        this.percentageCompleted(),
+                        this.getWPM(),
+                        this.getAccuracy()
+                    );
+                }
+            });
+        };
+
+        updateTimer();
+        this.timerInterval = setInterval(updateTimer, 500);
     }
 
     private handleContainerClick = () => {
@@ -161,7 +237,12 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             if (this.timerInterval) {
                 clearInterval(this.timerInterval);
             }
-            this.props.onFinish(this.keystrokeRecorder.getKeystrokes());
+            this.props.onFinish(
+                this.keystrokeRecorder.getKeystrokes(),
+                undefined,
+                this.getWPM(),
+                this.getAccuracy()
+            );
         }
     }
 
@@ -190,7 +271,11 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
 
     public onCharacterKeypress(character: string) {
         if (this.state.startTime === null) {
-            this.startTimer();
+            if (!this.props.multiplayerRoomCode) {
+                this.startTimer();
+            } else {
+                this.setState({ startTime: new Date() });
+            }
             if (this.props.onStartTyping) {
                 this.props.onStartTyping();
             }
@@ -200,7 +285,11 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
 
     public onBackspaceKeypress() {
         if (this.state.startTime === null) {
-            this.startTimer();
+            if (!this.props.multiplayerRoomCode) {
+                this.startTimer();
+            } else {
+                this.setState({ startTime: new Date() });
+            }
             if (this.props.onStartTyping) {
                 this.props.onStartTyping();
             }
@@ -213,13 +302,14 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     }
 
     public getWPM(): number {
-        if (!this.state.startTime || this.state.elapsedSeconds === 0) {
+        const elapsed = this.state.elapsedSeconds;
+
+        if (elapsed === 0) {
             return 0;
         }
-        const elapsedMinutes = this.state.elapsedSeconds / 60;
-        const firstMistakeIndex = this.liveSnippetAnalyzer().firstMistakeIndex();
-        const correctCharsCount = firstMistakeIndex !== null ? firstMistakeIndex : this.state.typedText.length;
-        return Math.round((correctCharsCount / 5) / elapsedMinutes);
+        const elapsedMinutes = elapsed / 60;
+        const typedLength = this.state.typedText.length;
+        return Math.round((typedLength / 5) / elapsedMinutes);
     }
 
     public getAccuracy(): number {
@@ -249,25 +339,154 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         return `${minsStr}:${secsStr}`;
     }
 
+    public getSortedPlayers(): PlayerData[] {
+        return sortPlayers(this.props.mpPlayers || [], this.props.mpRoomState?.rankings || []);
+    }
+
+    public getRank(): number {
+        if (!this.props.multiplayerRoomCode || !this.props.mpPlayers) {
+            return 1;
+        }
+        
+        const sorted = this.getSortedPlayers();
+        const rank = sorted.findIndex(p => p.id === this.props.currentPlayerId) + 1;
+        return rank > 0 ? rank : 1;
+    }
+
+    public formatRank(rank: number): string {
+        if (rank === 1) return "1st";
+        if (rank === 2) return "2nd";
+        if (rank === 3) return "3rd";
+        return `${rank}th`;
+    }
+
     public render() {
         const wpm = this.getWPM();
         const accuracy = this.getAccuracy();
         const { config } = this.props;
-        const isTyping = this.state.startTime !== null;
+        
+        const isCountdown = this.props.mpRoomState?.status === "countdown";
+        const isWaiting = this.props.mpRoomState?.status === "waiting";
+        const isFinished = this.props.mpRoomState?.status === "finished";
+        const isDisabled = !!this.props.multiplayerRoomCode && (isCountdown || isWaiting || isFinished);
 
         let timeString: string;
-        if (config.mode === 'time') {
+        if (this.props.multiplayerRoomCode) {
+            timeString = this.formatTime(this.props.mpRoomState?.elapsedSeconds || 0);
+        } else if (config.mode === 'time') {
             const remaining = Math.max(0, config.timeOption - this.state.elapsedSeconds);
             timeString = this.formatTime(remaining);
         } else {
             timeString = this.formatTime(this.state.elapsedSeconds);
         }
 
-        const isDisabled = !!this.props.multiplayerRoomCode && !this.props.isHost && !this.props.multiplayerStarted;
+        // Render Lobby if room is waiting
+        if (this.props.multiplayerRoomCode && isWaiting && this.props.mpRoomState) {
+            const players = this.props.mpPlayers || [];
+            const me = players.find(p => p.id === this.props.currentPlayerId);
+            const isReady = me?.ready || false;
+            
+            const joinLink = `${window.location.origin}${window.location.pathname}?room=${this.props.multiplayerRoomCode}`;
+            
+            // Start button conditions: >=2 players and all guest players are ready
+            const guests = players.filter(p => p.id !== this.props.mpRoomState?.hostId);
+            const allGuestsReady = guests.length > 0 && guests.every(p => p.ready);
+            const canStart = players.length >= 2 && allGuestsReady;
+
+            const copied = this.state.copiedInviteLink;
+            const handleCopy = async () => {
+                try {
+                    await navigator.clipboard.writeText(joinLink);
+                    this.setState({ copiedInviteLink: true });
+                    setTimeout(() => this.setState({ copiedInviteLink: false }), 2000);
+                } catch (e) {
+                    console.error(e);
+                }
+            };
+
+            return (
+                <div className="mp-lobby-container">
+                    <div className="mp-lobby-header">
+                        <div className="lobby-title-section">
+                            <span className="lobby-room-label">ROOM CODE</span>
+                            <h2 className="lobby-room-code">{this.props.multiplayerRoomCode}</h2>
+                        </div>
+                        <button className="copy-link-btn" onClick={handleCopy}>
+                            {copied ? "✓ Link Copied" : "Copy Invite Link"}
+                        </button>
+                    </div>
+
+                    <div className="mp-lobby-players-grid">
+                        {players.map((player) => {
+                            const isHostPlayer = player.id === this.props.mpRoomState?.hostId;
+                            return (
+                                <div key={player.id} className="mp-lobby-player-card">
+                                    <div className="mp-player-avatar">
+                                        {player.displayName.charAt(0).toUpperCase()}
+                                    </div>
+                                    <div className="mp-player-details">
+                                        <div className="mp-player-name-row">
+                                            <span className="mp-player-name">{player.displayName}</span>
+                                            {isHostPlayer && <span className="mp-badge-host">Host</span>}
+                                        </div>
+                                        <div className="mp-player-meta">
+                                            <span className={`mp-ready-status ${player.ready ? 'ready' : 'not-ready'}`}>
+                                                {player.ready ? "Ready" : "Waiting"}
+                                            </span>
+                                            {player.ping !== undefined && (
+                                                <span className="mp-player-ping">⚡ {player.ping}ms</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    <div className="mp-lobby-actions">
+                        {!this.props.isHost ? (
+                            <button 
+                                className={`lobby-action-btn ${isReady ? 'cancel-btn' : 'ready-btn'}`}
+                                onClick={() => this.props.onToggleReady && this.props.onToggleReady(!isReady)}
+                            >
+                                {isReady ? "Cancel Ready" : "I'm Ready"}
+                            </button>
+                        ) : (
+                            <button 
+                                className="lobby-action-btn start-btn"
+                                onClick={() => this.props.onStart && this.props.onStart()}
+                                disabled={!canStart}
+                            >
+                                {players.length < 2 
+                                    ? "Waiting for players to join..." 
+                                    : !allGuestsReady 
+                                        ? "Waiting for players to get ready..." 
+                                        : "Start Race"}
+                            </button>
+                        )}
+                        
+                        {!this.props.isHost && isReady && (
+                            <div className="waiting-host-msg">
+                                <span className="waiting-spinner-pulse">●</span> Waiting for host to start...
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
 
         return (
             <div className="live-ui-container" onClick={this.handleContainerClick}>
-                {!isTyping && !this.props.multiplayerRoomCode && (
+                {/* Countdown Overlay */}
+                {this.props.multiplayerRoomCode && isCountdown && this.props.mpRoomState && (
+                    <div className="countdown-overlay">
+                        <div className="countdown-number">
+                            {(this.props.mpRoomState.countdown === 0) ? "GO!" : this.props.mpRoomState.countdown}
+                        </div>
+                    </div>
+                )}
+
+                {!this.state.startTime && !this.props.multiplayerRoomCode && (
                     <div className="test-config-selector">
                         <div className="mode-selector">
                             <span className={config.mode === 'quote' ? 'active' : ''} onClick={() => this.handleModeSelect('quote')}>quote</span>
@@ -313,18 +532,10 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                     </div>
                 )}
 
-                {this.props.multiplayerRoomCode && !this.props.isHost && (
-                    <div className="multiplayer-room-info">
+                {this.props.multiplayerRoomCode && (
+                    <div className="multiplayer-room-info" style={{ marginBottom: "16px" }}>
                         Room: <span className="room-code-tag">{this.props.multiplayerRoomCode}</span>
                     </div>
-                )}
-
-                {this.props.multiplayerRoomCode && this.props.isHost && !this.props.multiplayerStarted && (
-                    <HostWaitingModal 
-                        roomCode={this.props.multiplayerRoomCode}
-                        playersCount={this.props.mpPlayersCount || 1}
-                        onStart={() => this.props.onStart && this.props.onStart()}
-                    />
                 )}
 
                 <div className="live-stats-header">
@@ -340,6 +551,12 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                         <span className="stat-value">{timeString}</span>
                         <span className="stat-label">Time</span>
                     </div>
+                    {this.props.multiplayerRoomCode && (
+                        <div className="stat-item">
+                            <span className="stat-value">{this.formatRank(this.getRank())}</span>
+                            <span className="stat-label">Rank</span>
+                        </div>
+                    )}
                 </div>
 
                 {this.state.isTouchDevice ? (
@@ -364,26 +581,54 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                     />
                 )}
 
-                {isDisabled && (
-                    <div className="multiplayer-waiting-overlay">
-                        <span className="waiting-spinner-pulse">●</span> Waiting for host to start the race...
-                    </div>
-                )}
-
                 <LiveSnippetBox
                     actualText={this.props.snippetText}
                     typedText={this.state.typedText} />
                 {this.props.snippetAuthor && this.props.snippetAuthor.trim() !== "" && (
-                    <div className="snippet-author">
+                    <div className="snippet-author" style={{ marginBottom: "20px" }}>
                         — {this.props.snippetAuthor.trim()}
                     </div>
                 )}
-                <ProgressIndicator percentage={this.percentageCompleted()} />
 
-                {!isTyping && !this.props.multiplayerRoomCode && (
+                {/* Progress Indicators */}
+                {!this.props.multiplayerRoomCode ? (
+                    <ProgressIndicator percentage={this.percentageCompleted()} />
+                ) : (
+                    this.props.mpPlayers && (
+                        <div className="mp-race-progress-container">
+                            {this.getSortedPlayers().map((player) => {
+                                const isCurrent = player.id === this.props.currentPlayerId;
+                                return (
+                                    <div key={player.id} className={`mp-player-progress-row ${isCurrent ? 'current-player' : ''}`}>
+                                        <div className="mp-player-progress-info">
+                                            <span className="mp-player-progress-name">
+                                                {player.displayName} {isCurrent && "(You)"}
+                                                {player.leftRace && <span className="left-tag"> (left)</span>}
+                                            </span>
+                                            <span className="mp-player-progress-stats">
+                                                {player.wpm} WPM | {player.accuracy}% Acc
+                                            </span>
+                                        </div>
+                                        <div className="mp-player-progress-bar-wrapper">
+                                            <div className="mp-player-progress-bar">
+                                                <div 
+                                                    className="mp-player-progress-bar-fill"
+                                                    style={{ width: `${player.progress}%`, backgroundColor: player.leftRace ? "var(--text-muted)" : (isCurrent ? "var(--color-accent)" : "#3b82f6") }}
+                                                />
+                                            </div>
+                                            <span className="mp-player-progress-percentage">{Math.round(player.progress)}%</span>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )
+                )}
+
+                {!this.state.startTime && !this.props.multiplayerRoomCode && (
                     <div className="multiplayer-home-links" style={{ display: "flex", gap: "24px", justifyContent: "center", marginTop: "24px" }}>
-                        <span className="analytics-toggle-link" onClick={(e) => { e.preventDefault(); this.props.onCreateRace && this.props.onCreateRace(); }}>create race</span>
-                        <span className="analytics-toggle-link" onClick={(e) => { e.preventDefault(); this.props.onJoinRace && this.props.onJoinRace(); }}>join race</span>
+                        <a href="#" role="button" className="analytics-toggle-link" onClick={(e) => { e.preventDefault(); this.props.onCreateRace && this.props.onCreateRace(); }}>create race</a>
+                        <a href="#" role="button" className="analytics-toggle-link" onClick={(e) => { e.preventDefault(); this.props.onJoinRace && this.props.onJoinRace(); }}>join race</a>
                     </div>
                 )}
             </div>

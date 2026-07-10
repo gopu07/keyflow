@@ -1,5 +1,5 @@
-import { db } from "../firebase";
-import { ref, set, update, onValue, get, Unsubscribe, onDisconnect, remove, query, orderByChild, endAt } from "firebase/database";
+import { db, getSyncedTime } from "../firebase";
+import { ref, set, update, onValue, get, Unsubscribe, onDisconnect, remove, query, orderByChild, endAt, runTransaction } from "firebase/database";
 import { TestConfig } from "./TestConfig";
 
 export interface PlayerData {
@@ -9,6 +9,8 @@ export interface PlayerData {
     wpm: number;
     accuracy: number;
     finished: boolean;
+    ready: boolean;
+    ping?: number;
     leftRace?: boolean;
 }
 
@@ -19,7 +21,37 @@ export interface RoomState {
     started: boolean;
     createdAt: number;
     players: { [id: string]: PlayerData };
+    hostId: string;
+    status: "waiting" | "countdown" | "running" | "finished";
+    countdown?: number;
+    elapsedSeconds: number;
+    winnerId?: string;
+    winnerName?: string;
+    rankings?: string[]; // playerIds in finish order
+    raceStartTimestamp?: number;
 }
+
+export function sortPlayers(players: PlayerData[], rankings: string[] = []): PlayerData[] {
+    return [...players].sort((a, b) => {
+        if (a.leftRace && !b.leftRace) return 1;
+        if (!a.leftRace && b.leftRace) return -1;
+        
+        const aRank = rankings.indexOf(a.id);
+        const bRank = rankings.indexOf(b.id);
+        
+        if (aRank !== -1 && bRank !== -1) {
+            return aRank - bRank;
+        }
+        if (aRank !== -1) return -1;
+        if (bRank !== -1) return 1;
+        
+        if (b.progress !== a.progress) {
+            return b.progress - a.progress;
+        }
+        return b.wpm - a.wpm;
+    });
+}
+
 
 export class MultiplayerRoom {
     public roomCode: string;
@@ -27,6 +59,10 @@ export class MultiplayerRoom {
     public displayName: string = "";
     public isHost: boolean;
     private unsubscribe: Unsubscribe | null = null;
+    private _disconnected: boolean = false;
+
+    private countdownInterval: any = null;
+    private timerInterval: any = null;
 
     constructor(roomCode?: string, isHost: boolean = false) {
         this.roomCode = roomCode ? roomCode.toUpperCase() : this.generateRoomCode();
@@ -53,6 +89,9 @@ export class MultiplayerRoom {
             config: config,
             started: false,
             createdAt: Date.now(),
+            hostId: this.playerId,
+            status: "waiting",
+            elapsedSeconds: 0,
             players: {
                 [this.playerId]: {
                     id: this.playerId,
@@ -60,7 +99,8 @@ export class MultiplayerRoom {
                     progress: 0,
                     wpm: 0,
                     accuracy: 100,
-                    finished: false
+                    finished: false,
+                    ready: true
                 }
             }
         };
@@ -70,8 +110,6 @@ export class MultiplayerRoom {
         // Clean up stale rooms in the background (fire-and-forget)
         MultiplayerRoom.cleanupStaleRooms();
         
-        // FIX: The root cause of "ghost" players filling up the room was the lack of onDisconnect handling.
-        // Firebase automatically runs this remove() command on the server side when the client's socket drops.
         const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
         await onDisconnect(playerRef).remove();
     }
@@ -87,6 +125,11 @@ export class MultiplayerRoom {
         }
 
         const roomData = snapshot.val() as RoomState;
+
+        // Prevent joining a race that's already started
+        if (roomData.status && roomData.status !== "waiting") {
+            throw new Error("Race has already started or finished");
+        }
         
         // Add player to the room
         const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
@@ -96,7 +139,8 @@ export class MultiplayerRoom {
             progress: 0,
             wpm: 0,
             accuracy: 100,
-            finished: false
+            finished: false,
+            ready: false
         };
 
         await set(playerRef, playerData);
@@ -112,32 +156,238 @@ export class MultiplayerRoom {
 
         const roomRef = ref(db, `rooms/${this.roomCode}`);
         this.unsubscribe = onValue(roomRef, (snapshot) => {
+            if (this._disconnected) return;
             if (snapshot.exists()) {
                 onUpdate(snapshot.val() as RoomState);
             } else {
                 onUpdate(null);
             }
+        }, (error) => {
+            console.error("[Multiplayer] Firebase listener error:", error);
+            onUpdate(null);
         });
     }
 
     public async updateProgress(progress: number, wpm: number, accuracy: number, finished: boolean): Promise<void> {
-        const playerProgressRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
-        await update(playerProgressRef, {
-            progress,
-            wpm,
-            accuracy,
-            finished
-        });
+        if (this._disconnected) return;
+        try {
+            const playerProgressRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
+            await update(playerProgressRef, {
+                progress,
+                wpm,
+                accuracy,
+                finished
+            });
+        } catch (e) {
+            console.error("[Multiplayer] Failed to update progress (room may be gone)", e);
+        }
     }
 
-    public async startRace(): Promise<void> {
-        const startedRef = ref(db, `rooms/${this.roomCode}`);
-        await update(startedRef, {
-            started: true
-        });
+    public async toggleReady(ready: boolean): Promise<void> {
+        if (this._disconnected) return;
+        try {
+            const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
+            await update(playerRef, { ready });
+        } catch (e) {
+            console.error("[Multiplayer] Failed to toggle ready status", e);
+        }
+    }
+
+    public async updatePing(ping: number): Promise<void> {
+        if (this._disconnected) return;
+        try {
+            const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
+            await update(playerRef, { ping });
+        } catch (e) {
+            // Room may be gone
+        }
+    }
+
+    public async claimHost(newHostId: string): Promise<void> {
+        if (this._disconnected) return;
+        try {
+            const roomRef = ref(db, `rooms/${this.roomCode}`);
+            await update(roomRef, {
+                hostId: newHostId
+            });
+            if (newHostId === this.playerId) {
+                this.isHost = true;
+            }
+        } catch (e) {
+            console.error("[Multiplayer] Failed to claim host", e);
+        }
+    }
+
+    public async startCountdown(): Promise<void> {
+        if (this._disconnected || !this.isHost) return;
+        try {
+            const roomRef = ref(db, `rooms/${this.roomCode}`);
+            await update(roomRef, {
+                status: "countdown",
+                countdown: 3,
+                started: true
+            });
+
+            this.cleanup();
+
+            let currentCountdown = 3;
+            this.countdownInterval = setInterval(async () => {
+                if (this._disconnected) {
+                    clearInterval(this.countdownInterval);
+                    return;
+                }
+                currentCountdown--;
+                if (currentCountdown >= 0) {
+                    await update(roomRef, {
+                        countdown: currentCountdown
+                    });
+                }
+                
+                if (currentCountdown === 0) {
+                    clearInterval(this.countdownInterval);
+                    this.countdownInterval = null;
+                    await update(roomRef, {
+                        status: "running",
+                        elapsedSeconds: 0,
+                        countdown: 0,
+                        raceStartTimestamp: getSyncedTime()
+                    });
+                }
+            }, 1000);
+        } catch (e) {
+            console.error("[Multiplayer] Failed to start countdown", e);
+        }
+    }
+
+    public resumeCountdown(currentValue: number): void {
+        if (this._disconnected || !this.isHost) return;
+        if (this.countdownInterval) return;
+
+        console.log(`[Host Migration] Resuming countdown from ${currentValue}`);
+        const roomRef = ref(db, `rooms/${this.roomCode}`);
+        let currentCountdown = currentValue;
+        
+        this.countdownInterval = setInterval(async () => {
+            if (this._disconnected) {
+                clearInterval(this.countdownInterval);
+                return;
+            }
+            currentCountdown--;
+            if (currentCountdown >= 0) {
+                await update(roomRef, {
+                    countdown: currentCountdown
+                });
+            }
+            
+            if (currentCountdown === 0) {
+                clearInterval(this.countdownInterval);
+                this.countdownInterval = null;
+                await update(roomRef, {
+                    status: "running",
+                    elapsedSeconds: 0,
+                    countdown: 0,
+                    raceStartTimestamp: getSyncedTime()
+                });
+            }
+        }, 1000);
+    }
+
+    public startRaceTimer(): void {
+        // Timer runs locally synced to raceStartTimestamp
+    }
+
+    public resumeRaceTimer(currentElapsed: number): void {
+        // Timer runs locally synced to raceStartTimestamp
+    }
+
+    public async finishRace(wpm: number, accuracy: number): Promise<void> {
+        if (this._disconnected) return;
+        
+        const roomRef = ref(db, `rooms/${this.roomCode}`);
+        
+        try {
+            await runTransaction(roomRef, (currentRoomState) => {
+                if (!currentRoomState) return currentRoomState;
+                
+                if (currentRoomState.players && currentRoomState.players[this.playerId]) {
+                    const p = currentRoomState.players[this.playerId];
+                    p.progress = 100;
+                    p.wpm = wpm;
+                    p.accuracy = accuracy;
+                    p.finished = true;
+                }
+                
+                if (!currentRoomState.rankings) {
+                    currentRoomState.rankings = [];
+                }
+                
+                if (!currentRoomState.rankings.includes(this.playerId)) {
+                    currentRoomState.rankings.push(this.playerId);
+                }
+                
+                if (!currentRoomState.winnerId) {
+                    currentRoomState.winnerId = this.playerId;
+                    currentRoomState.winnerName = this.displayName;
+                    currentRoomState.status = "finished";
+                    currentRoomState.started = false;
+                    if (currentRoomState.raceStartTimestamp) {
+                        currentRoomState.elapsedSeconds = Math.max(0, Math.round((getSyncedTime() - currentRoomState.raceStartTimestamp) / 1000));
+                    }
+                }
+                
+                return currentRoomState;
+            });
+        } catch (e) {
+            console.error("[Multiplayer] Failed to complete transaction for finishRace", e);
+        }
+    }
+
+    public async resetRoom(newSnippet: string, newAuthor: string, config: TestConfig): Promise<void> {
+        if (this._disconnected || !this.isHost) return;
+        this.cleanup();
+        
+        try {
+            const roomRef = ref(db, `rooms/${this.roomCode}`);
+            const snapshot = await get(roomRef);
+            if (!snapshot.exists()) return;
+            
+            const currentRoom = snapshot.val() as RoomState;
+            const updatedPlayers: { [id: string]: PlayerData } = {};
+            
+            Object.keys(currentRoom.players || {}).forEach((id) => {
+                const p = currentRoom.players[id];
+                updatedPlayers[id] = {
+                    id: p.id,
+                    displayName: p.displayName,
+                    progress: 0,
+                    wpm: 0,
+                    accuracy: 100,
+                    finished: false,
+                    ready: id === this.playerId
+                };
+            });
+            
+            const resetState: RoomState = {
+                snippetText: newSnippet,
+                snippetAuthor: newAuthor,
+                config: config,
+                started: false,
+                createdAt: Date.now(),
+                players: updatedPlayers,
+                hostId: this.playerId,
+                status: "waiting",
+                elapsedSeconds: 0
+            };
+            
+            await set(roomRef, resetState);
+        } catch (e) {
+            console.error("[Multiplayer] Failed to reset room", e);
+        }
     }
 
     public disconnect() {
+        this._disconnected = true;
+        this.cleanup();
         if (this.unsubscribe) {
             this.unsubscribe();
             this.unsubscribe = null;
@@ -151,10 +401,17 @@ export class MultiplayerRoom {
         }
     }
 
-    /**
-     * Deletes rooms older than 1 hour.
-     * Runs in the background whenever a new room is created.
-     */
+    public cleanup() {
+        if (this.countdownInterval) {
+            clearInterval(this.countdownInterval);
+            this.countdownInterval = null;
+        }
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    }
+
     private static async cleanupStaleRooms(): Promise<void> {
         try {
             const ONE_HOUR_MS = 60 * 60 * 1000;
@@ -172,12 +429,13 @@ export class MultiplayerRoom {
                 console.log(`[Cleanup] Deleted ${Object.keys(staleRooms).length} stale room(s)`);
             }
         } catch (e) {
-            // Non-critical — don't let cleanup failures break room creation
             console.error("[Cleanup] Failed to clean up stale rooms", e);
         }
     }
 
     public async leaveRoom(activeRace: boolean): Promise<void> {
+        this._disconnected = true;
+        this.cleanup();
         if (this.unsubscribe) {
             this.unsubscribe();
             this.unsubscribe = null;
@@ -185,14 +443,11 @@ export class MultiplayerRoom {
         try {
             const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
             if (activeRace) {
-                // Mark as Left Race in Firebase so other players see it
                 await update(playerRef, {
                     leftRace: true
                 });
-                // Cancel onDisconnect since we are handling leaving cleanly
                 await onDisconnect(playerRef).cancel();
             } else {
-                // Remove player node entirely from Firebase
                 await remove(playerRef);
                 await onDisconnect(playerRef).cancel();
             }

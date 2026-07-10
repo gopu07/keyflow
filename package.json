@@ -1,8 +1,8 @@
 {
-  "name": "typefast",
+  "name": "keyflow",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gopu07.github.io/typefast",
+  "homepage": "https://gopu07.github.io/keyflow",
   "dependencies": {
     "@types/lodash": "^4.14.150",
     "firebase": "^12.15.0",

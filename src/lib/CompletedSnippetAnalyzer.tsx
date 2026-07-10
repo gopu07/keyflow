@@ -7,26 +7,41 @@ class CompletedSnippetAnalyzer {
 
     constructor(snippetText: string, keystrokeLogs: IKeystrokeLog[]) {
         this.snippetText = snippetText;
-        this.keystrokeLogs = keystrokeLogs;
+        this.keystrokeLogs = keystrokeLogs || [];
     }
 
     public averageSpeed(): number {
-        let firstLog = _.first(this.keystrokeLogs)!;
-        let lastLog = _.last(this.keystrokeLogs)!;
-        let firstLogTimestamp = firstLog.timestamp;
-        let lastLogTimestamp = lastLog.timestamp;
+        if (!this.keystrokeLogs || this.keystrokeLogs.length === 0) {
+            return 0;
+        }
+        const firstLog = _.first(this.keystrokeLogs);
+        const lastLog = _.last(this.keystrokeLogs);
+        if (!firstLog || !lastLog) return 0;
+        
+        const firstLogTimestamp = new Date(firstLog.timestamp);
+        const lastLogTimestamp = new Date(lastLog.timestamp);
 
-        let nTypedChars = this.snippetText.length - 1;
+        let nTypedChars = this.keystrokeLogs.filter(log => log.key.type === "character").length - 
+                          this.keystrokeLogs.filter(log => log.key.type === "backspace").length;
+        
+        if (nTypedChars <= 0) return 0;
+        nTypedChars = Math.min(nTypedChars, this.snippetText.length);
+
         return calculateWPM(firstLogTimestamp, lastLogTimestamp, nTypedChars);
     }
 
     public speedsAtIndices(): number[] {
+        if (!this.keystrokeLogs || this.keystrokeLogs.length === 0) {
+            return [];
+        }
+        
         let groupedLogs = this.logsGroupedBySnippetIndex();
 
         let finalTimestamps = _.map(groupedLogs, function(
             logs: IKeystrokeLog[],
             snippetIndex
         ) {
+            if (!logs || logs.length === 0) return new Date();
             return _.last(logs)!.timestamp;
         });
 
@@ -47,6 +62,10 @@ class CompletedSnippetAnalyzer {
     }
 
     public mistakeIndices(): number[] {
+        if (!this.keystrokeLogs || this.keystrokeLogs.length === 0) {
+            return [];
+        }
+        
         var mistakeIndices: number[] = [];
         let groupedLogs = this.logsGroupedBySnippetIndex();
 
@@ -64,6 +83,10 @@ class CompletedSnippetAnalyzer {
     }
 
     public logsGroupedBySnippetIndex(): IKeystrokeLog[][] {
+        if (!this.keystrokeLogs || this.keystrokeLogs.length === 0) {
+            return [];
+        }
+        
         let logsGroupedBySnippetIndex: IKeystrokeLog[][] = [];
         let remainingLogs: IKeystrokeLog[] = this.keystrokeLogs.slice();
         let snippetChars = this.snippetText.split("");
@@ -87,6 +110,10 @@ class CompletedSnippetAnalyzer {
     }
 
     private simulateKeystrokes(): { typed: string; expected: string; index: number; isCorrect: boolean; wasBackspaced: boolean }[] {
+        if (!this.keystrokeLogs || this.keystrokeLogs.length === 0) {
+            return [];
+        }
+        
         let allTyped: { typed: string; expected: string; index: number; isCorrect: boolean; wasBackspaced: boolean }[] = [];
         let activeLogs: ({ typed: string; expected: string; index: number; isCorrect: boolean; wasBackspaced: boolean } | null)[] = new Array(this.snippetText.length).fill(null);
         let currentCursor = 0;
@@ -122,6 +149,10 @@ class CompletedSnippetAnalyzer {
 
     public getMostMistypedCharacters(): { typed: string; expected: string; count: number }[] {
         let allTyped = this.simulateKeystrokes();
+        if (allTyped.length === 0) {
+            return [];
+        }
+        
         let incorrect = allTyped.filter(log => !log.isCorrect && log.expected !== "");
         
         let counts: { [key: string]: { typed: string; expected: string; count: number } } = {};
@@ -171,6 +202,10 @@ class CompletedSnippetAnalyzer {
     }
 
     public getPerWordWPMs(): number[] {
+        if (!this.keystrokeLogs || this.keystrokeLogs.length === 0) {
+            return [];
+        }
+        
         let groupedLogs = this.logsGroupedBySnippetIndex();
         let wordRegex = /\S+/g;
         let match;
@@ -188,11 +223,11 @@ class CompletedSnippetAnalyzer {
             if (start === 0) {
                 let firstLog = _.first(this.keystrokeLogs);
                 if (!firstLog) continue;
-                startTime = firstLog.timestamp;
+                startTime = new Date(firstLog.timestamp);
             } else {
                 let prevEndLogs = groupedLogs[start - 1];
                 if (!prevEndLogs || prevEndLogs.length === 0) continue;
-                startTime = _.last(prevEndLogs)!.timestamp;
+                startTime = new Date(_.last(prevEndLogs)!.timestamp);
             }
 
             let endTime = _.last(logsForEnd)!.timestamp;
@@ -238,7 +273,7 @@ function calculateRollingAvgSpeed(previousTimestamps: Date[]): number {
     let firstTimestamp = _.first(previousTimestamps)!;
     let charCount = previousTimestamps.length - 1;
 
-    return calculateWPM(firstTimestamp, lastTimestamp, charCount);
+    return calculateWPM(new Date(firstTimestamp), new Date(lastTimestamp), charCount);
 }
 
 function calculateWPM(
@@ -247,7 +282,11 @@ function calculateWPM(
     nTypedChars: number
 ) {
     let durationMilliseconds =
-        lastTimestamp.getTime() - firstTimestamp.getTime();
+        new Date(lastTimestamp).getTime() - new Date(firstTimestamp).getTime();
+
+    if (durationMilliseconds <= 0) {
+        return 0;
+    }
 
     let durationMinutes = durationMilliseconds / (1000 * 60);
 

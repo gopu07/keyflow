@@ -5,7 +5,7 @@ import ProgressIndicator from './ProgressIndicator';
 import CompletedStats from './CompletedStats';
 import { IKeystrokeLog } from '../lib/KeystrokeRecorder';
 import CompletedSnippetAnalyzer from '../lib/CompletedSnippetAnalyzer';
-import { PlayerData } from '../lib/MultiplayerRoom';
+import { PlayerData, RoomState, sortPlayers } from '../lib/MultiplayerRoom';
 
 interface ICompletedUIProps {
     snippetText: string;
@@ -13,6 +13,10 @@ interface ICompletedUIProps {
     keystrokes: IKeystrokeLog[];
     onRestart: () => void;
     multiplayerPlayersList?: PlayerData[];
+    mpRoomState?: RoomState | null;
+    currentPlayerId?: string;
+    isHost?: boolean;
+    onPlayAgain?: () => void;
 }
 
 interface ICompletedUIState {
@@ -27,6 +31,10 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
         };
     }
 
+    public getSortedPlayers(): PlayerData[] {
+        return sortPlayers(this.props.multiplayerPlayersList || [], this.props.mpRoomState?.rankings || []);
+    }
+
     public render() {
         const { snippetText, keystrokes, onRestart } = this.props;
         const { showDetails } = this.state;
@@ -37,8 +45,25 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
         const errorFrequencies = analyzer.getErrorFrequencyPerIndex();
         const mostMistyped = analyzer.getMostMistypedCharacters();
 
+        const winnerId = this.props.mpRoomState?.winnerId;
+        const winner = this.props.multiplayerPlayersList?.find(p => p.id === winnerId);
+
         return (
             <div className="completed-ui-container">
+                {/* Winner Banner */}
+                {winner && (
+                    <div className="mp-winner-banner">
+                        <span className="winner-crown">🥇</span>
+                        <div className="winner-details">
+                            <span className="winner-label">Winner</span>
+                            <h3 className="winner-name">{winner.displayName}</h3>
+                            <span className="winner-stats-summary">
+                                {winner.wpm} WPM &nbsp;•&nbsp; {winner.accuracy}% Accuracy &nbsp;•&nbsp; {this.props.mpRoomState?.elapsedSeconds}s
+                            </span>
+                        </div>
+                    </div>
+                )}
+
                 <CompletedSnippetBox
                     snippetText={snippetText}
                     keystrokeLogs={keystrokes} />
@@ -51,7 +76,8 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                 <CompletedStats
                     snippetText={snippetText}
                     keystrokes={keystrokes}
-                    onRestart={onRestart} />
+                    onRestart={onRestart}
+                    isMultiplayer={!!this.props.multiplayerPlayersList} />
 
                 {this.props.multiplayerPlayersList && (
                     <div className="leaderboard-container">
@@ -68,31 +94,60 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {[...this.props.multiplayerPlayersList]
-                                        .sort((a, b) => b.wpm - a.wpm)
-                                        .map((player, index) => {
-                                            const rank = index + 1;
-                                            return (
-                                                <tr key={player.id} className="leaderboard-row">
-                                                    <td>#{rank}</td>
-                                                    <td>{player.displayName}</td>
-                                                    <td>{player.wpm} WPM</td>
-                                                    <td>{player.accuracy}%</td>
-                                                    <td>
-                                                        {player.leftRace ? (
-                                                            <span className="player-status left-race" style={{ color: "var(--color-error)", borderColor: "var(--color-error-border)" }}>Left Race</span>
-                                                        ) : player.finished ? (
-                                                            <span className="player-status finished">Finished</span>
-                                                        ) : (
-                                                            <span className="player-status typing">Typing</span>
-                                                        )}
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
+                                    {this.getSortedPlayers().map((player, index) => {
+                                        const rank = index + 1;
+                                        const isWinner = player.id === winnerId;
+                                        const isCurrent = player.id === this.props.currentPlayerId;
+                                        return (
+                                            <tr key={player.id} className={`leaderboard-row ${isWinner ? 'winner-row' : ''} ${isCurrent ? 'current-player-row' : ''}`}>
+                                                <td>#{rank}</td>
+                                                <td>
+                                                    {player.displayName}
+                                                    {isCurrent && <span className="leaderboard-you-tag"> (You)</span>}
+                                                </td>
+                                                <td>{player.wpm} WPM</td>
+                                                <td>{player.accuracy}%</td>
+                                                <td>
+                                                    {player.leftRace ? (
+                                                        <span className="player-status left-race" style={{ color: "var(--color-error)", borderColor: "var(--color-error-border)" }}>Left Race</span>
+                                                    ) : player.finished ? (
+                                                        <span className="player-status finished">Finished</span>
+                                                    ) : (
+                                                        <span className="player-status typing">Typing ({Math.round(player.progress)}%)</span>
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                )}
+
+                {this.props.multiplayerPlayersList && (
+                    <div className="mp-completed-actions">
+                        {this.props.isHost ? (
+                            <button 
+                                className="mp-action-btn play-again-btn"
+                                onClick={this.props.onPlayAgain}
+                            >
+                                Play Again
+                            </button>
+                        ) : (
+                            <button 
+                                className="mp-action-btn play-again-btn"
+                                onClick={this.props.onPlayAgain}
+                            >
+                                Return to Lobby
+                            </button>
+                        )}
+                        <button 
+                            className="mp-action-btn leave-btn"
+                            onClick={this.props.onRestart}
+                        >
+                            Leave Room
+                        </button>
                     </div>
                 )}
 

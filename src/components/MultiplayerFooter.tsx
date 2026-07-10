@@ -1,14 +1,16 @@
 import * as React from "react";
-import { PlayerData } from "../lib/MultiplayerRoom";
+import { PlayerData, sortPlayers } from "../lib/MultiplayerRoom";
 
 interface IMultiplayerFooterProps {
     players: PlayerData[];
     currentPlayerId: string;
+    rankings?: string[];
 }
 
 export default class MultiplayerFooter extends React.Component<IMultiplayerFooterProps> {
     public render() {
-        const otherPlayers = this.props.players.filter(
+        const sortedPlayers = sortPlayers(this.props.players, this.props.rankings || []);
+        const otherPlayers = sortedPlayers.filter(
             (p) => p.id !== this.props.currentPlayerId
         );
 

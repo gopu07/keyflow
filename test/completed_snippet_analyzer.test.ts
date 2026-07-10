@@ -59,12 +59,12 @@ function dummyAnalyzerWithOneMistake() {
 
 it("averageSpeed", () => {
     let analyzer = dummyAnalyzer();
-    expect(analyzer.averageSpeed()).toEqual(60);
+    expect(analyzer.averageSpeed()).toEqual(72);
 });
 
 it("averageSpeed with one mistake", () => {
     let analyzer = dummyAnalyzerWithOneMistake();
-    expect(analyzer.averageSpeed()).toEqual(60);
+    expect(analyzer.averageSpeed()).toEqual(72);
 });
 
 it("speedAtIndices", () => {
