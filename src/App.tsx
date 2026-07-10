@@ -24,6 +24,8 @@ interface IAppState {
     snippetAuthor?: string;
     config: TestConfig;
     isCustomSetup: boolean;
+    previousRun?: { snippetText: string; keystrokes: IKeystrokeLog[] };
+    finalStats?: { wpm: number; accuracy: number; mistakes: number; elapsedSeconds: number };
     
     // Multiplayer State
     mpRoom: MultiplayerRoom | null;
@@ -432,31 +434,61 @@ class App extends React.Component<IAppProps, IAppState> {
         }
     }
 
-    private onMultiplayerProgressUpdate(progress: number, wpm: number, accuracy: number) {
+    private onMultiplayerProgressUpdate(progress: number, wpm: number, accuracy: number, errors: number) {
         if (this.state.mpRoom) {
-            this.state.mpRoom.updateProgress(progress, wpm, accuracy, false);
+            this.state.mpRoom.updateProgress(progress, wpm, accuracy, errors, false);
         }
     }
 
-    public onLiveUIFinish(keystrokeLogs: IKeystrokeLog[], finalSnippet?: string, wpm?: number, accuracy?: number) {
+    public onLiveUIFinish(
+        keystrokeLogs: IKeystrokeLog[],
+        finalSnippet?: string,
+        wpm?: number,
+        accuracy?: number,
+        mistakes?: number,
+        elapsedSeconds?: number
+    ) {
+        const finalWpm = wpm !== undefined ? wpm : 0;
+        const finalAccuracy = accuracy !== undefined ? accuracy : 100;
+        const finalMistakes = mistakes !== undefined ? mistakes : 0;
+        const finalElapsed = elapsedSeconds !== undefined ? elapsedSeconds : 0;
+        const currentSnippet = finalSnippet || this.state.snippetText;
+
         if (this.state.state === "multiplayer" && this.state.mpRoom) {
-            const finalWpm = wpm !== undefined ? wpm : 0;
-            const finalAccuracy = accuracy !== undefined ? accuracy : 100;
-            
             if (this.state.mpRoomState && this.state.mpRoomState.status === "running") {
-                this.state.mpRoom.finishRace(finalWpm, finalAccuracy);
+                this.state.mpRoom.finishRace(finalWpm, finalAccuracy, finalMistakes);
             }
 
             this.setState({
                 mpLobbyState: "completed",
                 keystrokeLogs: keystrokeLogs,
-                snippetText: finalSnippet || this.state.snippetText
+                snippetText: currentSnippet,
+                finalStats: {
+                    wpm: finalWpm,
+                    accuracy: finalAccuracy,
+                    mistakes: finalMistakes,
+                    elapsedSeconds: finalElapsed
+                },
+                previousRun: {
+                    snippetText: currentSnippet,
+                    keystrokes: keystrokeLogs
+                }
             });
         } else {
             this.setState({
                 state: "completed",
                 keystrokeLogs: keystrokeLogs,
-                snippetText: finalSnippet || this.state.snippetText
+                snippetText: currentSnippet,
+                finalStats: {
+                    wpm: finalWpm,
+                    accuracy: finalAccuracy,
+                    mistakes: finalMistakes,
+                    elapsedSeconds: finalElapsed
+                },
+                previousRun: {
+                    snippetText: currentSnippet,
+                    keystrokes: keystrokeLogs
+                }
             });
         }
     }
@@ -473,6 +505,41 @@ class App extends React.Component<IAppProps, IAppState> {
             });
         }
     }
+
+    public onRestartSameSnippet = async (abandonedKeystrokes?: IKeystrokeLog[]) => {
+        this.stopPingLoop();
+        if (this.state.mpRoom) {
+            this.state.mpRoom.disconnect();
+        }
+
+        const logs = abandonedKeystrokes || this.state.keystrokeLogs;
+        const hasKeystrokes = logs && logs.length > 0;
+        
+        if (!this._isMounted) return;
+
+        this.setState({
+            state: "live",
+            keystrokeLogs: undefined,
+            isCustomSetup: false,
+            mpRoom: null,
+            mpPlayers: [],
+            mpRoomState: null,
+            mpStarted: false,
+            mpRole: null,
+            mpLobbyState: "name_entry",
+            mpNameInput: "",
+            mpRoomCodeInput: "",
+            mpError: "",
+            mpLoading: false,
+            toastMessage: null,
+            isTyping: false,
+            finalStats: undefined,
+            previousRun: hasKeystrokes ? {
+                snippetText: this.state.snippetText,
+                keystrokes: logs
+            } : this.state.previousRun
+        });
+    };
 
     public async onRestart() {
         this.stopPingLoop();
@@ -694,6 +761,12 @@ class App extends React.Component<IAppProps, IAppState> {
                         currentPlayerId={this.state.mpRoom ? this.state.mpRoom.playerId : ""}
                         onToggleReady={(ready) => this.state.mpRoom?.toggleReady(ready)}
                         onStartTyping={() => this.setState({ isTyping: true })}
+                        previousRunKeystrokes={
+                            this.state.previousRun && this.state.previousRun.snippetText === this.state.snippetText
+                                ? this.state.previousRun.keystrokes
+                                : undefined
+                        }
+                        onRestartSameSnippet={this.onRestartSameSnippet}
                     />
                 );
             } else {
@@ -708,6 +781,8 @@ class App extends React.Component<IAppProps, IAppState> {
                         currentPlayerId={this.state.mpRoom ? this.state.mpRoom.playerId : ""}
                         isHost={this.state.mpRole === "host"}
                         onPlayAgain={this.handlePlayAgain}
+                        finalStats={this.state.finalStats}
+                        onRestartSameSnippet={this.onRestartSameSnippet}
                     />
                 );
             }
@@ -740,6 +815,12 @@ class App extends React.Component<IAppProps, IAppState> {
                     onCreateRace={() => this.setState({ state: "multiplayer", mpLobbyState: "name_entry", mpRole: "host", mpError: "", mpNameInput: "", mpRoomCodeInput: "" })}
                     onJoinRace={() => this.setState({ state: "multiplayer", mpLobbyState: "name_entry", mpRole: "guest", mpError: "", mpNameInput: "", mpRoomCodeInput: "" })}
                     onStartTyping={() => this.setState({ isTyping: true })}
+                    previousRunKeystrokes={
+                        this.state.previousRun && this.state.previousRun.snippetText === this.state.snippetText
+                            ? this.state.previousRun.keystrokes
+                            : undefined
+                    }
+                    onRestartSameSnippet={this.onRestartSameSnippet}
                 />
             );
         } else {
@@ -749,6 +830,8 @@ class App extends React.Component<IAppProps, IAppState> {
                     snippetAuthor={this.state.snippetAuthor}
                     keystrokes={this.state.keystrokeLogs!}
                     onRestart={this.onRestart}
+                    finalStats={this.state.finalStats}
+                    onRestartSameSnippet={this.onRestartSameSnippet}
                 />
             );
         }

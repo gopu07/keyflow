@@ -17,12 +17,19 @@ interface ILiveUIProps {
     snippetAuthor?: string;
     config: TestConfig;
     onConfigChange: (config: TestConfig) => void;
-    onFinish: (keystrokes: IKeystrokeLog[], finalSnippet?: string, wpm?: number, accuracy?: number) => void;
+    onFinish: (
+        keystrokes: IKeystrokeLog[],
+        finalSnippet?: string,
+        wpm?: number,
+        accuracy?: number,
+        mistakes?: number,
+        elapsedSeconds?: number
+    ) => void;
     multiplayerRoomCode?: string;
     multiplayerStarted?: boolean;
     isHost?: boolean;
     onStart?: () => void;
-    onProgressUpdate?: (progress: number, wpm: number, accuracy: number) => void;
+    onProgressUpdate?: (progress: number, wpm: number, accuracy: number, errors: number) => void;
     onCreateRace?: () => void;
     onJoinRace?: () => void;
     mpPlayers?: PlayerData[];
@@ -30,6 +37,8 @@ interface ILiveUIProps {
     currentPlayerId?: string;
     onToggleReady?: (ready: boolean) => void;
     onStartTyping?: () => void;
+    previousRunKeystrokes?: IKeystrokeLog[];
+    onRestartSameSnippet?: (keystrokes: IKeystrokeLog[]) => void;
 }
 
 interface ILiveUIState {
@@ -38,12 +47,15 @@ interface ILiveUIState {
     startTime: Date | null;
     isTouchDevice: boolean;
     copiedInviteLink: boolean;
+    ghostCursorPos?: number;
 }
 
 class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     keystrokeRecorder: KeystrokeRecorder;
     private timerInterval: any = null;
     private textareaRef = React.createRef<HTMLTextAreaElement>();
+    private ghostAnimFrameId: any = null;
+    private ghostTimeline: { timeMs: number, cursorIndex: number }[] = [];
 
     constructor(props: ILiveUIProps) {
         super(props);
@@ -52,7 +64,8 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             elapsedSeconds: 0,
             startTime: null,
             isTouchDevice: false,
-            copiedInviteLink: false
+            copiedInviteLink: false,
+            ghostCursorPos: undefined
         };
         this.onTypedTextChange = this.onTypedTextChange.bind(this);
         this.handleCategorySelect = this.handleCategorySelect.bind(this);
@@ -74,7 +87,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         this.setState({ isTouchDevice: isTouch });
     }
 
-    public componentDidUpdate(prevProps: ILiveUIProps) {
+    public componentDidUpdate(prevProps: ILiveUIProps, prevState: ILiveUIState) {
         // Single player timer start
         if (!this.props.multiplayerRoomCode && this.state.startTime !== null && this.timerInterval === null) {
             // Started typing
@@ -90,32 +103,44 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                 this.keystrokeRecorder.getKeystrokes(),
                 undefined,
                 this.getWPM(),
-                this.getAccuracy()
+                this.getAccuracy(),
+                this.getMistakeCount(),
+                this.state.elapsedSeconds
             );
         }
 
         // Multiplayer local timer start when status becomes "running"
-        if (this.props.multiplayerRoomCode && 
-            this.props.mpRoomState?.status === "running" && 
-            this.props.mpRoomState?.raceStartTimestamp && 
+        if (this.props.multiplayerRoomCode &&
+            this.props.mpRoomState?.status === "running" &&
+            this.props.mpRoomState?.raceStartTimestamp &&
             this.timerInterval === null) {
             this.startMultiplayerTimer(this.props.mpRoomState.raceStartTimestamp);
         }
 
         // Multiplayer local state reset when room is reset to "waiting"
-        if (this.props.multiplayerRoomCode && 
-            this.props.mpRoomState?.status === "waiting" && 
+        if (this.props.multiplayerRoomCode &&
+            this.props.mpRoomState?.status === "waiting" &&
             prevProps.mpRoomState?.status !== "waiting") {
             if (this.timerInterval) {
                 clearInterval(this.timerInterval);
                 this.timerInterval = null;
             }
+            if (this.ghostAnimFrameId) {
+                cancelAnimationFrame(this.ghostAnimFrameId);
+                this.ghostAnimFrameId = null;
+            }
             this.setState({
                 elapsedSeconds: 0,
                 startTime: null,
-                typedText: ""
+                typedText: "",
+                ghostCursorPos: undefined
             });
             this.keystrokeRecorder = new KeystrokeRecorder();
+        }
+
+        // Start ghost animation when startTime transitions from null to Date
+        if (this.state.startTime !== null && prevState.startTime === null) {
+            this.startGhostAnimation();
         }
     }
 
@@ -142,7 +167,8 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                     this.props.onProgressUpdate(
                         this.percentageCompleted(),
                         this.getWPM(),
-                        this.getAccuracy()
+                        this.getAccuracy(),
+                        this.getMistakeCount()
                     );
                 }
             });
@@ -190,14 +216,14 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         this.timerInterval = setInterval(() => {
             if (this.state.startTime) {
                 const elapsed = Math.floor((new Date().getTime() - this.state.startTime.getTime()) / 1000);
-                
+
                 if (this.props.config.mode === 'time' && elapsed >= this.props.config.timeOption) {
                     this.setState({ elapsedSeconds: this.props.config.timeOption }, () => {
                         this.finishTimeModeTest();
                     });
                     return;
                 }
-                
+
                 this.setState({ elapsedSeconds: elapsed });
             }
         }, 1000);
@@ -209,7 +235,14 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         }
         const typedLength = this.state.typedText.length;
         const truncatedSnippet = this.props.snippetText.substring(0, typedLength);
-        this.props.onFinish(this.keystrokeRecorder.getKeystrokes(), truncatedSnippet);
+        this.props.onFinish(
+            this.keystrokeRecorder.getKeystrokes(),
+            truncatedSnippet,
+            this.getWPM(),
+            this.getAccuracy(),
+            this.getMistakeCount(),
+            this.state.elapsedSeconds
+        );
     }
 
     public liveSnippetAnalyzer(): LiveSnippetAnalyzer {
@@ -220,13 +253,14 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     }
 
     public onTypedTextChange(newText: string) {
-        this.setState({typedText: newText}, () => {
+        this.setState({ typedText: newText }, () => {
             this.checkFinish();
             if (this.props.onProgressUpdate) {
                 this.props.onProgressUpdate(
                     this.percentageCompleted(),
                     this.getWPM(),
-                    this.getAccuracy()
+                    this.getAccuracy(),
+                    this.getMistakeCount()
                 );
             }
         });
@@ -241,7 +275,9 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                 this.keystrokeRecorder.getKeystrokes(),
                 undefined,
                 this.getWPM(),
-                this.getAccuracy()
+                this.getAccuracy(),
+                this.getMistakeCount(),
+                this.state.elapsedSeconds
             );
         }
     }
@@ -318,17 +354,104 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         if (charKeystrokes === 0) {
             return 100;
         }
-        
+
         let correctCount = 0;
         const actualChars = this.props.snippetText.split('');
         const typedChars = this.state.typedText.split('');
         for (let i = 0; i < typedChars.length; i++) {
-            if (typedChars[i].toLowerCase() === actualChars[i].toLowerCase()) {
+            if (typedChars[i] === actualChars[i]) {
                 correctCount++;
             }
         }
-        
+
         return Math.min(100, Math.round((correctCount / charKeystrokes) * 100));
+    }
+
+    public getMistakeCount(): number {
+        const logs = this.keystrokeRecorder.getKeystrokes();
+        let mistakes = 0;
+        let currentCursor = 0;
+        for (let log of logs) {
+            if (log.key.type === "character") {
+                if (currentCursor < this.props.snippetText.length) {
+                    let expectedChar = this.props.snippetText[currentCursor];
+                    if (log.key.character !== expectedChar) {
+                        mistakes++;
+                    }
+                    currentCursor++;
+                }
+            } else if (log.key.type === "backspace") {
+                if (currentCursor > 0) {
+                    currentCursor--;
+                }
+            }
+        }
+        return mistakes;
+    }
+
+    private initGhostTimeline() {
+        if (!this.props.previousRunKeystrokes || this.props.previousRunKeystrokes.length === 0) {
+            this.ghostTimeline = [];
+            return;
+        }
+
+        const firstLogTime = new Date(this.props.previousRunKeystrokes[0].timestamp).getTime();
+        const timeline: { timeMs: number, cursorIndex: number }[] = [];
+        let currentCursor = 0;
+
+        timeline.push({ timeMs: 0, cursorIndex: 0 });
+
+        for (const log of this.props.previousRunKeystrokes) {
+            const relativeTime = new Date(log.timestamp).getTime() - firstLogTime;
+            if (log.key.type === "character") {
+                currentCursor++;
+            } else if (log.key.type === "backspace") {
+                currentCursor = Math.max(0, currentCursor - 1);
+            }
+            timeline.push({ timeMs: relativeTime, cursorIndex: currentCursor });
+        }
+
+        this.ghostTimeline = timeline;
+    }
+
+    private startGhostAnimation() {
+        if (this.ghostAnimFrameId) {
+            cancelAnimationFrame(this.ghostAnimFrameId);
+        }
+
+        this.initGhostTimeline();
+        if (this.ghostTimeline.length === 0) return;
+
+        const updateGhost = () => {
+            if (!this.state.startTime) {
+                this.ghostAnimFrameId = requestAnimationFrame(updateGhost);
+                return;
+            }
+
+            const elapsedMs = Date.now() - this.state.startTime.getTime();
+
+            // Binary search to find the correct cursor position at elapsedMs
+            let low = 0;
+            let high = this.ghostTimeline.length - 1;
+            let bestIndex = 0;
+
+            while (low <= high) {
+                const mid = Math.floor((low + high) / 2);
+                if (this.ghostTimeline[mid].timeMs <= elapsedMs) {
+                    bestIndex = mid;
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+
+            const ghostCursorPos = this.ghostTimeline[bestIndex].cursorIndex;
+            this.setState({ ghostCursorPos });
+
+            this.ghostAnimFrameId = requestAnimationFrame(updateGhost);
+        };
+
+        this.ghostAnimFrameId = requestAnimationFrame(updateGhost);
     }
 
     public formatTime(seconds: number): string {
@@ -347,7 +470,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         if (!this.props.multiplayerRoomCode || !this.props.mpPlayers) {
             return 1;
         }
-        
+
         const sorted = this.getSortedPlayers();
         const rank = sorted.findIndex(p => p.id === this.props.currentPlayerId) + 1;
         return rank > 0 ? rank : 1;
@@ -364,7 +487,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         const wpm = this.getWPM();
         const accuracy = this.getAccuracy();
         const { config } = this.props;
-        
+
         const isCountdown = this.props.mpRoomState?.status === "countdown";
         const isWaiting = this.props.mpRoomState?.status === "waiting";
         const isFinished = this.props.mpRoomState?.status === "finished";
@@ -385,9 +508,9 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             const players = this.props.mpPlayers || [];
             const me = players.find(p => p.id === this.props.currentPlayerId);
             const isReady = me?.ready || false;
-            
+
             const joinLink = `${window.location.origin}${window.location.pathname}?room=${this.props.multiplayerRoomCode}`;
-            
+
             // Start button conditions: >=2 players and all guest players are ready
             const guests = players.filter(p => p.id !== this.props.mpRoomState?.hostId);
             const allGuestsReady = guests.length > 0 && guests.every(p => p.ready);
@@ -445,26 +568,26 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
 
                     <div className="mp-lobby-actions">
                         {!this.props.isHost ? (
-                            <button 
+                            <button
                                 className={`lobby-action-btn ${isReady ? 'cancel-btn' : 'ready-btn'}`}
                                 onClick={() => this.props.onToggleReady && this.props.onToggleReady(!isReady)}
                             >
                                 {isReady ? "Cancel Ready" : "I'm Ready"}
                             </button>
                         ) : (
-                            <button 
+                            <button
                                 className="lobby-action-btn start-btn"
                                 onClick={() => this.props.onStart && this.props.onStart()}
                                 disabled={!canStart}
                             >
-                                {players.length < 2 
-                                    ? "Waiting for players to join..." 
-                                    : !allGuestsReady 
-                                        ? "Waiting for players to get ready..." 
+                                {players.length < 2
+                                    ? "Waiting for players to join..."
+                                    : !allGuestsReady
+                                        ? "Waiting for players to get ready..."
                                         : "Start Race"}
                             </button>
                         )}
-                        
+
                         {!this.props.isHost && isReady && (
                             <div className="waiting-host-msg">
                                 <span className="waiting-spinner-pulse">●</span> Waiting for host to start...
@@ -512,17 +635,17 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                         {config.mode === 'quote' && (
                             <div className="option-selector theme-selector" style={{ flexWrap: "wrap", rowGap: "8px", maxWidth: "80%" }}>
                                 {QuoteService.getInstance().getCategories().map(cat => (
-                                    <span 
-                                        key={cat} 
-                                        className={config.quoteCategory === cat ? 'active' : ''} 
+                                    <span
+                                        key={cat}
+                                        className={config.quoteCategory === cat ? 'active' : ''}
                                         onClick={() => this.handleCategorySelect(cat)}
                                         style={{ textTransform: "lowercase" }}
                                     >
                                         {cat}
                                     </span>
                                 ))}
-                                <span 
-                                    className={(config.quoteCategory === 'random' || !config.quoteCategory) ? 'active' : ''} 
+                                <span
+                                    className={(config.quoteCategory === 'random' || !config.quoteCategory) ? 'active' : ''}
                                     onClick={() => this.handleCategorySelect('random')}
                                 >
                                     random
@@ -583,7 +706,8 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
 
                 <LiveSnippetBox
                     actualText={this.props.snippetText}
-                    typedText={this.state.typedText} />
+                    typedText={this.state.typedText}
+                    ghostCursorPos={this.state.ghostCursorPos} />
                 {this.props.snippetAuthor && this.props.snippetAuthor.trim() !== "" && (
                     <div className="snippet-author" style={{ marginBottom: "20px" }}>
                         — {this.props.snippetAuthor.trim()}
@@ -611,7 +735,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                                         </div>
                                         <div className="mp-player-progress-bar-wrapper">
                                             <div className="mp-player-progress-bar">
-                                                <div 
+                                                <div
                                                     className="mp-player-progress-bar-fill"
                                                     style={{ width: `${player.progress}%`, backgroundColor: player.leftRace ? "var(--text-muted)" : (isCurrent ? "var(--color-accent)" : "#3b82f6") }}
                                                 />

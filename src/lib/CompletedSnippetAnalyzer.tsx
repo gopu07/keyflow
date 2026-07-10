@@ -79,7 +79,8 @@ class CompletedSnippetAnalyzer {
     }
 
     public mistakeCount(): number {
-        return this.mistakeIndices().length;
+        const errorCounts = this.getErrorCounts();
+        return errorCounts.corrected + errorCounts.uncorrected;
     }
 
     public logsGroupedBySnippetIndex(): IKeystrokeLog[][] {
@@ -93,7 +94,7 @@ class CompletedSnippetAnalyzer {
         _.forEach(snippetChars, function(char, index) {
             let doesNotMatchChar = function(log: IKeystrokeLog): boolean {
                 return !(
-                    log.key.type == "character" && log.key.character.toLowerCase() == char.toLowerCase()
+                    log.key.type == "character" && log.key.character == char
                 );
             };
 
@@ -126,7 +127,7 @@ class CompletedSnippetAnalyzer {
                         typed: log.key.character,
                         expected: expectedChar,
                         index: currentCursor,
-                        isCorrect: log.key.character.toLowerCase() === expectedChar.toLowerCase(),
+                        isCorrect: log.key.character === expectedChar,
                         wasBackspaced: false
                     };
                     allTyped.push(newLog);

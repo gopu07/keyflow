@@ -65,40 +65,29 @@
     margin-top: 30px;
 }
 
-.restart-button {
-    font-family: var(--font-sans);
-    font-size: 15px;
-    font-weight: 600;
-    color: #ffffff;
-    background-color: var(--color-accent);
-    border: none;
-    border-radius: 9999px;
-    padding: 12px 32px;
+.minimal-retry-btn {
+    background: transparent;
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 14px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    box-shadow: var(--shadow-md);
-    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-normal);
 }
 
-.restart-button:hover {
-    background-color: var(--color-accent-hover);
-    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
-    transform: translateY(-2px);
-}
-
-.restart-button:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-md);
-}
-
-.restart-icon {
-    transition: transform 0.4s ease;
-}
-
-.restart-button:hover .restart-icon {
+.minimal-retry-btn:hover {
+    color: var(--color-accent);
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent);
     transform: rotate(180deg);
+}
+
+.minimal-retry-btn .retry-icon {
+    display: block;
 }
 
 /* Responsiveness for Stats Grid */

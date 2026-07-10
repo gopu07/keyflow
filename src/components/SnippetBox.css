@@ -34,9 +34,7 @@
 
 .snippet-box-container .snippet-text .char-wrong {
     color: var(--color-error);
-    background-color: var(--color-error-light);
     border-bottom: 2px solid var(--color-error-border);
-    border-radius: 3px;
     transition: var(--transition-fast);
 }
 
@@ -52,15 +50,19 @@
     50% { border-color: transparent; }
 }
 
+.snippet-box-container .snippet-text .is-ghost-cursor {
+    border-left: 2px solid rgba(16, 185, 129, 0.45);
+    margin-left: -2px; /* Prevents visual layout shifts */
+    padding-left: 0;
+}
+
 .snippet-box-container .snippet-text .completed-text .char-was-correct {
     color: var(--color-untyped);
 }
 
 .snippet-box-container .snippet-text .completed-text .char-was-wrong {
     color: var(--color-error);
-    background-color: var(--color-error-light);
     border-bottom: 2px solid var(--color-error-border);
-    border-radius: 3px;
 }
 
 /* Premium Live Stats Header Styling */
@@ -123,3 +125,4 @@
     user-select: none;
     white-space: pre-line;
 }
+

@@ -23,7 +23,7 @@ class LiveSnippetAnalyzer {
                 return;
             }
 
-            if (typedChars[index].toLowerCase() !== actualChars[index].toLowerCase()) {
+            if (typedChars[index] !== actualChars[index]) {
                 firstMistakeIndex = index;
             }
         });
@@ -36,20 +36,12 @@ class LiveSnippetAnalyzer {
     }
 
     public percentageCompleted(): number {
-        let firstMistakeIndex = this.firstMistakeIndex()
-
-        let completedUntilIndex = -1;
-        if (firstMistakeIndex !== null) {
-            completedUntilIndex = firstMistakeIndex
-        } else {
-            completedUntilIndex = this.cursorIndex()
-        }
-
-        return ((completedUntilIndex + 1) / this.actualText.length) * 100;
+        if (this.actualText.length === 0) return 0;
+        return (this.typedText.length / this.actualText.length) * 100;
     }
 
     public isFinished() {
-        return this.percentageCompleted() == 100;
+        return this.typedText.length >= this.actualText.length;
     }
 }
 

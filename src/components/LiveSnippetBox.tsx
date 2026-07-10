@@ -5,7 +5,11 @@ import LiveSnippetAnalyzer from '../lib/LiveSnippetAnalyzer';
 
 import * as _ from "lodash";
 
-interface ISnippetBoxProps { actualText: string; typedText: string; }
+interface ISnippetBoxProps { 
+    actualText: string; 
+    typedText: string; 
+    ghostCursorPos?: number;
+}
 
 enum CharacterStatus { Correct, Wrong, Untyped };
 interface ICharacter { value: string; status: CharacterStatus };
@@ -32,7 +36,7 @@ class LiveSnippetBox extends React.Component<ISnippetBoxProps, {}> {
 
     public getCharacters(): ICharacter[] {
         const actualChars = this.props.actualText.split('');
-        const firstMistakePos = this.getFirstMistakeIndex()
+        const typedChars = this.props.typedText.split('');
         const cursorPos = this.getCursorIndex();
 
         const characters: ICharacter[] = [];
@@ -40,7 +44,7 @@ class LiveSnippetBox extends React.Component<ISnippetBoxProps, {}> {
             let status: CharacterStatus;
             if (index > cursorPos) {
                 status = CharacterStatus.Untyped;
-            } else if (firstMistakePos != null && (index >= firstMistakePos)) {
+            } else if (typedChars[index] !== undefined && typedChars[index] !== value) {
                 status = CharacterStatus.Wrong;
             } else {
                 status = CharacterStatus.Correct;
@@ -73,9 +77,26 @@ class LiveSnippetBox extends React.Component<ISnippetBoxProps, {}> {
             if (index === cursorPos + 1) {
                 spanClass! += " is-cursor";
             }
+            if (this.props.ghostCursorPos !== undefined && index === this.props.ghostCursorPos) {
+                spanClass! += " is-ghost-cursor";
+            }
 
             spans.push(<span key={index} className={spanClass!}>{character.value}</span>);
         });
+
+        // Append a dummy space at the end if either live cursor or ghost cursor is at the end of the passage
+        const cursorAtEnd = cursorPos + 1 === this.props.actualText.length;
+        const ghostAtEnd = this.props.ghostCursorPos === this.props.actualText.length;
+        if (cursorAtEnd || ghostAtEnd) {
+            let extraClass = "char-untyped";
+            if (cursorAtEnd) {
+                extraClass += " is-cursor";
+            }
+            if (ghostAtEnd) {
+                extraClass += " is-ghost-cursor";
+            }
+            spans.push(<span key="cursor-end" className={extraClass}>&nbsp;</span>);
+        }
 
         return spans
     }

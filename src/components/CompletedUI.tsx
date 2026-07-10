@@ -17,6 +17,13 @@ interface ICompletedUIProps {
     currentPlayerId?: string;
     isHost?: boolean;
     onPlayAgain?: () => void;
+    finalStats?: {
+        wpm: number;
+        accuracy: number;
+        mistakes: number;
+        elapsedSeconds: number;
+    };
+    onRestartSameSnippet?: () => void;
 }
 
 interface ICompletedUIState {
@@ -36,7 +43,7 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
     }
 
     public render() {
-        const { snippetText, keystrokes, onRestart } = this.props;
+        const { snippetText, keystrokes } = this.props;
         const { showDetails } = this.state;
         
         const analyzer = new CompletedSnippetAnalyzer(snippetText, keystrokes);
@@ -76,8 +83,9 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                 <CompletedStats
                     snippetText={snippetText}
                     keystrokes={keystrokes}
-                    onRestart={onRestart}
-                    isMultiplayer={!!this.props.multiplayerPlayersList} />
+                    isMultiplayer={!!this.props.multiplayerPlayersList}
+                    finalStats={this.props.finalStats}
+                    onRestartSameSnippet={this.props.onRestartSameSnippet} />
 
                 {this.props.multiplayerPlayersList && (
                     <div className="leaderboard-container">
@@ -90,6 +98,7 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                                         <th>Player</th>
                                         <th>Speed</th>
                                         <th>Accuracy</th>
+                                        <th>Mistakes</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -107,6 +116,7 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                                                 </td>
                                                 <td>{player.wpm} WPM</td>
                                                 <td>{player.accuracy}%</td>
+                                                <td>{player.errors !== undefined ? player.errors : 0}</td>
                                                 <td>
                                                     {player.leftRace ? (
                                                         <span className="player-status left-race" style={{ color: "var(--color-error)", borderColor: "var(--color-error-border)" }}>Left Race</span>

@@ -12,6 +12,7 @@ export interface PlayerData {
     ready: boolean;
     ping?: number;
     leftRace?: boolean;
+    errors?: number;
 }
 
 export interface RoomState {
@@ -168,7 +169,7 @@ export class MultiplayerRoom {
         });
     }
 
-    public async updateProgress(progress: number, wpm: number, accuracy: number, finished: boolean): Promise<void> {
+    public async updateProgress(progress: number, wpm: number, accuracy: number, errors: number, finished: boolean): Promise<void> {
         if (this._disconnected) return;
         try {
             const playerProgressRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
@@ -176,6 +177,7 @@ export class MultiplayerRoom {
                 progress,
                 wpm,
                 accuracy,
+                errors,
                 finished
             });
         } catch (e) {
@@ -300,7 +302,7 @@ export class MultiplayerRoom {
         // Timer runs locally synced to raceStartTimestamp
     }
 
-    public async finishRace(wpm: number, accuracy: number): Promise<void> {
+    public async finishRace(wpm: number, accuracy: number, errors: number): Promise<void> {
         if (this._disconnected) return;
         
         const roomRef = ref(db, `rooms/${this.roomCode}`);
@@ -314,6 +316,7 @@ export class MultiplayerRoom {
                     p.progress = 100;
                     p.wpm = wpm;
                     p.accuracy = accuracy;
+                    p.errors = errors;
                     p.finished = true;
                 }
                 
