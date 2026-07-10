@@ -73,7 +73,8 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
 
                 <CompletedSnippetBox
                     snippetText={snippetText}
-                    keystrokeLogs={keystrokes} />
+                    keystrokeLogs={keystrokes}
+                    errorFrequencies={errorFrequencies} />
                 {this.props.snippetAuthor && this.props.snippetAuthor.trim() !== "" && (
                     <div className="snippet-author">
                         — {this.props.snippetAuthor.trim()}
@@ -187,8 +188,7 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                             </div>
                             <div className="analytics-stat-card">
                                 <span className="stat-value">
-                                    {consistency.sd.toFixed(1)}
-                                    <span className="unit">WPM</span>
+                                    {consistency.percentage.toFixed(0)}%
                                 </span>
                                 <span className="stat-label">Consistency ({consistency.label})</span>
                             </div>

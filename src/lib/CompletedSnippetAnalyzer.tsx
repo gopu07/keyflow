@@ -89,24 +89,25 @@ class CompletedSnippetAnalyzer {
         }
         
         let logsGroupedBySnippetIndex: IKeystrokeLog[][] = [];
-        let remainingLogs: IKeystrokeLog[] = this.keystrokeLogs.slice();
-        let snippetChars = this.snippetText.split("");
-        _.forEach(snippetChars, function(char, index) {
-            let doesNotMatchChar = function(log: IKeystrokeLog): boolean {
-                return !(
-                    log.key.type == "character" && log.key.character == char
-                );
-            };
-
-            let logsForIndex = _.takeWhile(remainingLogs, doesNotMatchChar);
-            remainingLogs = _.drop(remainingLogs, logsForIndex.length);
-            if (remainingLogs.length > 0) {
-                logsForIndex.push(remainingLogs.shift()!);
+        for (let i = 0; i < this.snippetText.length; i++) {
+            logsGroupedBySnippetIndex[i] = [];
+        }
+        
+        let currentCursor = 0;
+        for (let log of this.keystrokeLogs) {
+            if (log.key.type === "character") {
+                if (currentCursor < this.snippetText.length) {
+                    logsGroupedBySnippetIndex[currentCursor].push(log);
+                    currentCursor++;
+                }
+            } else if (log.key.type === "backspace") {
+                if (currentCursor > 0) {
+                    currentCursor--;
+                    logsGroupedBySnippetIndex[currentCursor].push(log);
+                }
             }
-
-            logsGroupedBySnippetIndex[index] = logsForIndex;
-        });
-
+        }
+        
         return logsGroupedBySnippetIndex;
     }
 
@@ -186,13 +187,28 @@ class CompletedSnippetAnalyzer {
 
     public getErrorCounts(): { corrected: number; uncorrected: number } {
         let allTyped = this.simulateKeystrokes();
+        
+        let finalLogAtIndex: { [key: number]: any } = {};
+        for (let log of allTyped) {
+            if (!log.wasBackspaced) {
+                finalLogAtIndex[log.index] = log;
+            } else {
+                if (finalLogAtIndex[log.index] === log) {
+                    delete finalLogAtIndex[log.index];
+                }
+            }
+        }
+        
         let corrected = 0;
         let uncorrected = 0;
         
         for (let log of allTyped) {
             if (!log.isCorrect) {
                 if (log.wasBackspaced) {
-                    corrected++;
+                    let finalLog = finalLogAtIndex[log.index];
+                    if (finalLog && finalLog.isCorrect) {
+                        corrected++;
+                    }
                 } else {
                     uncorrected++;
                 }
@@ -249,19 +265,34 @@ class CompletedSnippetAnalyzer {
         return wpms;
     }
 
-    public getConsistencyScore(): { sd: number; label: "consistent" | "variable" } {
+    public getConsistencyScore(): { sd: number; percentage: number; label: "consistent" | "moderate" | "erratic" } {
         let wpms = this.getPerWordWPMs();
         if (wpms.length < 2) {
-            return { sd: 0, label: "consistent" };
+            return { sd: 0, percentage: 100, label: "consistent" };
         }
 
         let mean = _.sum(wpms) / wpms.length;
+        if (mean <= 0) {
+            return { sd: 0, percentage: 0, label: "erratic" };
+        }
+
         let squaredDiffs = _.map(wpms, wpm => Math.pow(wpm - mean, 2));
         let variance = _.sum(squaredDiffs) / wpms.length;
         let sd = Math.sqrt(variance);
 
-        let label: "consistent" | "variable" = sd < 15 ? "consistent" : "variable";
-        return { sd, label };
+        let cv = sd / mean;
+        let percentage = Math.max(0, Math.min(100, (1 - cv) * 100));
+
+        let label: "consistent" | "moderate" | "erratic";
+        if (percentage >= 80) {
+            label = "consistent";
+        } else if (percentage >= 60) {
+            label = "moderate";
+        } else {
+            label = "erratic";
+        }
+
+        return { sd, percentage, label };
     }
 }
 

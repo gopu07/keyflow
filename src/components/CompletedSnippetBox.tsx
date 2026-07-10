@@ -8,7 +8,8 @@ import * as _ from "lodash";
 
 interface ISnippetBoxProps {
     snippetText: string;
-    keystrokeLogs: IKeystrokeLog[]
+    keystrokeLogs: IKeystrokeLog[];
+    errorFrequencies?: number[];
 }
 
 class CompletedSnippetBox extends React.Component<ISnippetBoxProps, {}> {
@@ -21,12 +22,13 @@ class CompletedSnippetBox extends React.Component<ISnippetBoxProps, {}> {
 
     public getSpans(): JSX.Element[] {
         const spans: JSX.Element[] = [];
-        let mistakeIndices = this.completedSnippetAnalyzer().mistakeIndices()
+        const errorFrequencies = this.props.errorFrequencies || 
+                                 this.completedSnippetAnalyzer().getErrorFrequencyPerIndex();
 
         const chars = this.props.snippetText.split('');
         _.each(chars, function(character, index) {
             let spanClass: string;
-            if (_.includes(mistakeIndices, index)) {
+            if (errorFrequencies[index] > 0) {
                 spanClass = 'char-was-wrong';
             } else {
                 spanClass = 'char-was-correct';
