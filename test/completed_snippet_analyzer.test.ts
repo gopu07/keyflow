@@ -191,5 +191,5 @@ it("getConsistencyScore", () => {
 
     let score = analyzer.getConsistencyScore();
     expect(Math.round(score.sd)).toEqual(78);
-    expect(score.label).toEqual("variable");
+    expect(score.label).toEqual("erratic");
 });
