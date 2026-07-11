@@ -2,7 +2,9 @@ import os
 import json
 import sys
 
-quotes_dir = r"c:\Users\Devraj\Downloads\typefast-main\typefast-main\src\data\quotes"
+# Resolve quotes path relative to the script directory to run seamlessly locally and in CI/CD environments
+script_dir = os.path.dirname(os.path.abspath(__file__))
+quotes_dir = os.path.join(script_dir, "src", "data", "quotes")
 categories = [
     "books", "funfacts", "gaming", "history", "motivation", "movies", 
     "philosophy", "programming", "science", "space", "sports", "startups", "technology"
