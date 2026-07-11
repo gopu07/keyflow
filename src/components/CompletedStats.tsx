@@ -15,6 +15,7 @@ interface IProps {
         elapsedSeconds: number;
     };
     onRestartSameSnippet?: () => void;
+    lowercase?: boolean;
 }
 
 class CompletedStats extends React.Component<IProps, {}> {
@@ -25,7 +26,8 @@ class CompletedStats extends React.Component<IProps, {}> {
     public completedSnippetAnalyzer() {
         return new CompletedSnippetAnalyzer(
             this.props.snippetText,
-            this.props.keystrokes
+            this.props.keystrokes,
+            this.props.lowercase
         )
     }
 

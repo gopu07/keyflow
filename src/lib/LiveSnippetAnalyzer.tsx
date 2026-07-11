@@ -3,10 +3,12 @@ import * as _ from "lodash";
 class LiveSnippetAnalyzer {
     actualText: string
     typedText: string
+    lowercase: boolean
 
-    constructor(actualText: string, typedText: string) {
+    constructor(actualText: string, typedText: string, lowercase: boolean = false) {
         this.actualText = actualText;
         this.typedText = typedText;
+        this.lowercase = lowercase;
     }
 
     public firstMistakeIndex(): number | null {
@@ -23,7 +25,13 @@ class LiveSnippetAnalyzer {
                 return;
             }
 
-            if (typedChars[index] !== actualChars[index]) {
+            const charA = typedChars[index];
+            const charB = actualChars[index];
+            const isMatch = this.lowercase
+                ? charA.toLowerCase() === charB.toLowerCase()
+                : charA === charB;
+
+            if (!isMatch) {
                 firstMistakeIndex = index;
             }
         });

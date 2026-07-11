@@ -193,3 +193,37 @@ it("getConsistencyScore", () => {
     expect(Math.round(score.sd)).toEqual(78);
     expect(score.label).toEqual("erratic");
 });
+
+it("case-insensitive character matching when lowercase is true", () => {
+    const analyzer = new CompletedSnippetAnalyzer("AbCd", [
+        { key: { type: "character", character: "a" }, timestamp: new Date() },
+        { key: { type: "character", character: "b" }, timestamp: new Date() },
+        { key: { type: "character", character: "c" }, timestamp: new Date() },
+        { key: { type: "character", character: "d" }, timestamp: new Date() }
+    ], true);
+
+    const errorCounts = analyzer.getErrorCounts();
+    expect(errorCounts).toEqual({ corrected: 0, uncorrected: 0 });
+});
+
+it("case-sensitive character matching when lowercase is false/undefined", () => {
+    const analyzerFalse = new CompletedSnippetAnalyzer("AbCd", [
+        { key: { type: "character", character: "a" }, timestamp: new Date() },
+        { key: { type: "character", character: "B" }, timestamp: new Date() },
+        { key: { type: "character", character: "c" }, timestamp: new Date() },
+        { key: { type: "character", character: "D" }, timestamp: new Date() }
+    ], false);
+
+    const errorCountsFalse = analyzerFalse.getErrorCounts();
+    expect(errorCountsFalse.uncorrected).toEqual(4);
+
+    const analyzerDefault = new CompletedSnippetAnalyzer("AbCd", [
+        { key: { type: "character", character: "a" }, timestamp: new Date() },
+        { key: { type: "character", character: "B" }, timestamp: new Date() },
+        { key: { type: "character", character: "c" }, timestamp: new Date() },
+        { key: { type: "character", character: "D" }, timestamp: new Date() }
+    ]);
+
+    const errorCountsDefault = analyzerDefault.getErrorCounts();
+    expect(errorCountsDefault.uncorrected).toEqual(4);
+});

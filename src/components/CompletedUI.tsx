@@ -6,6 +6,7 @@ import CompletedStats from './CompletedStats';
 import { IKeystrokeLog } from '../lib/KeystrokeRecorder';
 import CompletedSnippetAnalyzer from '../lib/CompletedSnippetAnalyzer';
 import { PlayerData, RoomState, sortPlayers } from '../lib/MultiplayerRoom';
+import { TestConfig } from '../lib/TestConfig';
 
 interface ICompletedUIProps {
     snippetText: string;
@@ -24,6 +25,7 @@ interface ICompletedUIProps {
         elapsedSeconds: number;
     };
     onRestartSameSnippet?: () => void;
+    config?: TestConfig;
 }
 
 interface ICompletedUIState {
@@ -46,7 +48,7 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
         const { snippetText, keystrokes } = this.props;
         const { showDetails } = this.state;
         
-        const analyzer = new CompletedSnippetAnalyzer(snippetText, keystrokes);
+        const analyzer = new CompletedSnippetAnalyzer(snippetText, keystrokes, true);
         const errorCounts = analyzer.getErrorCounts();
         const consistency = analyzer.getConsistencyScore();
         const errorFrequencies = analyzer.getErrorFrequencyPerIndex();
@@ -74,7 +76,8 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                 <CompletedSnippetBox
                     snippetText={snippetText}
                     keystrokeLogs={keystrokes}
-                    errorFrequencies={errorFrequencies} />
+                    errorFrequencies={errorFrequencies}
+                    lowercase={true} />
                 {this.props.snippetAuthor && this.props.snippetAuthor.trim() !== "" && (
                     <div className="snippet-author">
                         — {this.props.snippetAuthor.trim()}
@@ -86,7 +89,8 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                     keystrokes={keystrokes}
                     isMultiplayer={!!this.props.multiplayerPlayersList}
                     finalStats={this.props.finalStats}
-                    onRestartSameSnippet={this.props.onRestartSameSnippet} />
+                    onRestartSameSnippet={this.props.onRestartSameSnippet}
+                    lowercase={true} />
 
                 {this.props.multiplayerPlayersList && (
                     <div className="leaderboard-container">

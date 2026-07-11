@@ -10,13 +10,15 @@ interface ISnippetBoxProps {
     snippetText: string;
     keystrokeLogs: IKeystrokeLog[];
     errorFrequencies?: number[];
+    lowercase?: boolean;
 }
 
 class CompletedSnippetBox extends React.Component<ISnippetBoxProps, {}> {
     public completedSnippetAnalyzer(): CompletedSnippetAnalyzer {
         return new CompletedSnippetAnalyzer(
             this.props.snippetText,
-            this.props.keystrokeLogs
+            this.props.keystrokeLogs,
+            this.props.lowercase
         )
     }
 

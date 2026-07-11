@@ -209,6 +209,10 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         if (this.timerInterval) {
             clearInterval(this.timerInterval);
         }
+        if (this.ghostAnimFrameId) {
+            cancelAnimationFrame(this.ghostAnimFrameId);
+            this.ghostAnimFrameId = null;
+        }
     }
 
     public startTimer() {
@@ -248,7 +252,8 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     public liveSnippetAnalyzer(): LiveSnippetAnalyzer {
         return new LiveSnippetAnalyzer(
             this.props.snippetText,
-            this.state.typedText
+            this.state.typedText,
+            true
         );
     }
 
@@ -305,19 +310,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         });
     }
 
-    private handleToggleNoPunctuation = () => {
-        this.props.onConfigChange({
-            ...this.props.config,
-            noPunctuation: !this.props.config.noPunctuation
-        });
-    };
 
-    private handleToggleLowercase = () => {
-        this.props.onConfigChange({
-            ...this.props.config,
-            lowercase: !this.props.config.lowercase
-        });
-    };
 
     public onCharacterKeypress(character: string) {
         if (this.state.startTime === null) {
@@ -373,7 +366,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         const actualChars = this.props.snippetText.split('');
         const typedChars = this.state.typedText.split('');
         for (let i = 0; i < typedChars.length; i++) {
-            if (typedChars[i] === actualChars[i]) {
+            if (typedChars[i].toLowerCase() === actualChars[i].toLowerCase()) {
                 correctCount++;
             }
         }
@@ -389,7 +382,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             if (log.key.type === "character") {
                 if (currentCursor < this.props.snippetText.length) {
                     let expectedChar = this.props.snippetText[currentCursor];
-                    if (log.key.character !== expectedChar) {
+                    if (log.key.character.toLowerCase() !== expectedChar.toLowerCase()) {
                         mistakes++;
                     }
                     currentCursor++;
@@ -631,11 +624,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                             <span className={config.mode === 'words' ? 'active' : ''} onClick={() => this.handleModeSelect('words')}>words</span>
                             <span className={config.mode === 'custom' ? 'active' : ''} onClick={() => this.handleModeSelect('custom')}>custom</span>
                         </div>
-                        <div className="divider" />
-                        <div className="toggle-selector">
-                            <span className={config.noPunctuation ? 'active' : ''} onClick={this.handleToggleNoPunctuation}>no punctuation</span>
-                            <span className={config.lowercase ? 'active' : ''} onClick={this.handleToggleLowercase}>lowercase</span>
-                        </div>
+
                         {(config.mode === 'time' || config.mode === 'words' || config.mode === 'quote') && <div className="divider" />}
                         {config.mode === 'time' && (
                             <div className="option-selector">
@@ -726,7 +715,8 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                 <LiveSnippetBox
                     actualText={this.props.snippetText}
                     typedText={this.state.typedText}
-                    ghostCursorPos={this.state.ghostCursorPos} />
+                    ghostCursorPos={this.state.ghostCursorPos}
+                    lowercase={true} />
                 {this.props.snippetAuthor && this.props.snippetAuthor.trim() !== "" && (
                     <div className="snippet-author" style={{ marginBottom: "20px" }}>
                         — {this.props.snippetAuthor.trim()}

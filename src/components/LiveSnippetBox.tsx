@@ -9,6 +9,7 @@ interface ISnippetBoxProps {
     actualText: string; 
     typedText: string; 
     ghostCursorPos?: number;
+    lowercase?: boolean;
 }
 
 enum CharacterStatus { Correct, Wrong, Untyped };
@@ -22,7 +23,8 @@ class LiveSnippetBox extends React.Component<ISnippetBoxProps, {}> {
     public liveSnippetAnalyzer(): LiveSnippetAnalyzer {
         return new LiveSnippetAnalyzer(
             this.props.actualText,
-            this.props.typedText
+            this.props.typedText,
+            this.props.lowercase
         )
     }
 
@@ -38,14 +40,24 @@ class LiveSnippetBox extends React.Component<ISnippetBoxProps, {}> {
         const actualChars = this.props.actualText.split('');
         const typedChars = this.props.typedText.split('');
         const cursorPos = this.getCursorIndex();
+        const lowercase = this.props.lowercase;
 
         const characters: ICharacter[] = [];
         _.each(actualChars, function(value, index) {
             let status: CharacterStatus;
             if (index > cursorPos) {
                 status = CharacterStatus.Untyped;
-            } else if (typedChars[index] !== undefined && typedChars[index] !== value) {
-                status = CharacterStatus.Wrong;
+            } else if (typedChars[index] !== undefined) {
+                const charA = typedChars[index];
+                const charB = value;
+                const isMatch = lowercase
+                    ? charA.toLowerCase() === charB.toLowerCase()
+                    : charA === charB;
+                if (!isMatch) {
+                    status = CharacterStatus.Wrong;
+                } else {
+                    status = CharacterStatus.Correct;
+                }
             } else {
                 status = CharacterStatus.Correct;
             }

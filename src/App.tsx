@@ -23,6 +23,7 @@ interface IAppState {
     keystrokeLogs?: IKeystrokeLog[];
     snippetText: string;
     snippetAuthor?: string;
+    testSessionId: number;
     config: TestConfig;
     isCustomSetup: boolean;
     previousRun?: { snippetText: string; keystrokes: IKeystrokeLog[] };
@@ -52,28 +53,24 @@ class App extends React.Component<IAppProps, IAppState> {
         super(props);
         const initialCategory = localStorage.getItem("keyflow_quote_category") || "random";
         const initialNoPunctuation = localStorage.getItem("keyflow_no_punctuation") === "true";
-        const initialLowercase = localStorage.getItem("keyflow_lowercase") === "true";
 
         let initialSnippetText = this.props.snippetText;
         if (initialNoPunctuation) {
             initialSnippetText = stripPunctuation(initialSnippetText);
-        }
-        if (initialLowercase) {
-            initialSnippetText = initialSnippetText.toLowerCase();
         }
 
         this.state = {
             state: "live",
             snippetText: initialSnippetText,
             snippetAuthor: "",
+            testSessionId: 0,
             config: {
                 mode: "quote",
                 timeOption: 30,
                 wordsOption: 50,
                 customText: "",
                 quoteCategory: initialCategory,
-                noPunctuation: initialNoPunctuation,
-                lowercase: initialLowercase
+                noPunctuation: initialNoPunctuation
             },
             isCustomSetup: false,
             mpRoom: null,
@@ -176,7 +173,8 @@ class App extends React.Component<IAppProps, IAppState> {
             mpError: "",
             mpLoading: false,
             toastMessage: null,
-            isTyping: false
+            isTyping: false,
+            testSessionId: this.state.testSessionId + 1
         }, async () => {
             // Generate a fresh snippet in the background after resetting UI
             try {
@@ -563,6 +561,7 @@ class App extends React.Component<IAppProps, IAppState> {
             toastMessage: null,
             isTyping: false,
             finalStats: undefined,
+            testSessionId: this.state.testSessionId + 1,
             previousRun: hasKeystrokes ? {
                 snippetText: this.state.snippetText,
                 keystrokes: logs
@@ -614,7 +613,8 @@ class App extends React.Component<IAppProps, IAppState> {
             mpError: "",
             mpLoading: false,
             toastMessage: null,
-            isTyping: false
+            isTyping: false,
+            testSessionId: this.state.testSessionId + 1
         });
     }
 
@@ -627,7 +627,6 @@ class App extends React.Component<IAppProps, IAppState> {
             localStorage.setItem("keyflow_quote_category", newConfig.quoteCategory);
         }
         localStorage.setItem("keyflow_no_punctuation", String(newConfig.noPunctuation ?? false));
-        localStorage.setItem("keyflow_lowercase", String(newConfig.lowercase ?? false));
 
         if (!isCustomSetup) {
             const res = await this.generateSnippet(newConfig);
@@ -643,7 +642,8 @@ class App extends React.Component<IAppProps, IAppState> {
             snippetText: nextSnippet,
             snippetAuthor: nextAuthor,
             state: "live",
-            keystrokeLogs: undefined
+            keystrokeLogs: undefined,
+            testSessionId: this.state.testSessionId + 1
         });
     }
 
@@ -675,12 +675,6 @@ class App extends React.Component<IAppProps, IAppState> {
 
         if (config.noPunctuation) {
             snippetText = stripPunctuation(snippetText);
-        }
-        if (config.lowercase) {
-            snippetText = snippetText.toLowerCase();
-        } else if (config.mode !== "quote") {
-            // Keep words, time, and custom modes lowercase by default
-            snippetText = snippetText.toLowerCase();
         }
 
         return { text: snippetText, author };
@@ -796,6 +790,7 @@ class App extends React.Component<IAppProps, IAppState> {
             } else if (this.state.mpLobbyState === "lobby") {
                 mainUI = (
                     <LiveUI
+                        key={`mp-${this.state.testSessionId}`}
                         snippetText={this.state.snippetText}
                         snippetAuthor={this.state.snippetAuthor}
                         config={this.state.config}
@@ -833,6 +828,7 @@ class App extends React.Component<IAppProps, IAppState> {
                         onPlayAgain={this.handlePlayAgain}
                         finalStats={this.state.finalStats}
                         onRestartSameSnippet={this.onRestartSameSnippet}
+                        config={this.state.config}
                     />
                 );
             }
@@ -857,6 +853,7 @@ class App extends React.Component<IAppProps, IAppState> {
         } else if (this.isLive()) {
             mainUI = (
                 <LiveUI
+                    key={`sp-${this.state.testSessionId}`}
                     snippetText={this.state.snippetText}
                     snippetAuthor={this.state.snippetAuthor}
                     config={this.state.config}
@@ -882,6 +879,7 @@ class App extends React.Component<IAppProps, IAppState> {
                     onRestart={this.onRestart}
                     finalStats={this.state.finalStats}
                     onRestartSameSnippet={this.onRestartSameSnippet}
+                    config={this.state.config}
                 />
             );
         }

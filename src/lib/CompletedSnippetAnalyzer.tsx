@@ -4,10 +4,12 @@ import * as _ from "lodash";
 class CompletedSnippetAnalyzer {
     snippetText: string;
     keystrokeLogs: IKeystrokeLog[];
+    lowercase: boolean;
 
-    constructor(snippetText: string, keystrokeLogs: IKeystrokeLog[]) {
+    constructor(snippetText: string, keystrokeLogs: IKeystrokeLog[], lowercase: boolean = false) {
         this.snippetText = snippetText;
         this.keystrokeLogs = keystrokeLogs || [];
+        this.lowercase = lowercase;
     }
 
     public averageSpeed(): number {
@@ -124,11 +126,14 @@ class CompletedSnippetAnalyzer {
             if (log.key.type === "character") {
                 if (currentCursor < this.snippetText.length) {
                     let expectedChar = this.snippetText[currentCursor];
+                    const isMatch = this.lowercase
+                        ? log.key.character.toLowerCase() === expectedChar.toLowerCase()
+                        : log.key.character === expectedChar;
                     let newLog = {
                         typed: log.key.character,
                         expected: expectedChar,
                         index: currentCursor,
-                        isCorrect: log.key.character === expectedChar,
+                        isCorrect: isMatch,
                         wasBackspaced: false
                     };
                     allTyped.push(newLog);

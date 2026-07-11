@@ -9,5 +9,4 @@ export interface TestConfig {
     customText: string;
     quoteCategory?: string;
     noPunctuation?: boolean;
-    lowercase?: boolean;
 }
