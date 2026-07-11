@@ -114,13 +114,14 @@ class CompletedUI extends React.Component<ICompletedUIProps, ICompletedUIState> 
                                                 <td>
                                                     {player.displayName}
                                                     {isCurrent && <span className="leaderboard-you-tag"> (You)</span>}
+                                                    {player.leftRace && player.finished && <span className="leaderboard-offline-tag" style={{ fontSize: "0.8em", opacity: 0.7 }}> (offline)</span>}
                                                 </td>
-                                                <td>{player.wpm} WPM</td>
-                                                <td>{player.accuracy}%</td>
-                                                <td>{player.errors !== undefined ? player.errors : 0}</td>
+                                                <td>{player.leftRace && !player.finished ? "—" : `${player.wpm} WPM`}</td>
+                                                <td>{player.leftRace && !player.finished ? "—" : `${player.accuracy}%`}</td>
+                                                <td>{player.leftRace && !player.finished ? "—" : (player.errors !== undefined ? player.errors : 0)}</td>
                                                 <td>
-                                                    {player.leftRace ? (
-                                                        <span className="player-status left-race" style={{ color: "var(--color-error)", borderColor: "var(--color-error-border)" }}>Left Race</span>
+                                                    {player.leftRace && !player.finished ? (
+                                                        <span className="player-status left-race" style={{ color: "var(--color-error)", borderColor: "var(--color-error-border)" }}>DNF</span>
                                                     ) : player.finished ? (
                                                         <span className="player-status finished">Finished</span>
                                                     ) : (

@@ -8,4 +8,6 @@ export interface TestConfig {
     wordsOption: WordsOption;
     customText: string;
     quoteCategory?: string;
+    noPunctuation?: boolean;
+    lowercase?: boolean;
 }

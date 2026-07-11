@@ -34,8 +34,14 @@ export interface RoomState {
 
 export function sortPlayers(players: PlayerData[], rankings: string[] = []): PlayerData[] {
     return [...players].sort((a, b) => {
-        if (a.leftRace && !b.leftRace) return 1;
-        if (!a.leftRace && b.leftRace) return -1;
+        const aFinished = a.finished;
+        const bFinished = b.finished;
+        
+        const aLeftActive = a.leftRace && !aFinished;
+        const bLeftActive = b.leftRace && !bFinished;
+        
+        if (aLeftActive && !bLeftActive) return 1;
+        if (!aLeftActive && bLeftActive) return -1;
         
         const aRank = rankings.indexOf(a.id);
         const bRank = rankings.indexOf(b.id);
@@ -120,34 +126,49 @@ export class MultiplayerRoom {
         this.displayName = displayName;
         const roomRef = ref(db, `rooms/${this.roomCode}`);
         
-        const snapshot = await get(roomRef);
-        if (!snapshot.exists()) {
-            throw new Error("Room not found");
-        }
+        let snippetText = "";
+        let snippetAuthor = "";
+        let config: TestConfig | null = null;
+        
+        const result = await runTransaction(roomRef, (currentRoomState) => {
+            if (!currentRoomState) {
+                return undefined; // aborts transaction
+            }
 
-        const roomData = snapshot.val() as RoomState;
+            if (currentRoomState.status && currentRoomState.status !== "waiting") {
+                return undefined; // aborts transaction
+            }
+            
+            if (!currentRoomState.players) {
+                currentRoomState.players = {};
+            }
+            
+            currentRoomState.players[this.playerId] = {
+                id: this.playerId,
+                displayName: displayName,
+                progress: 0,
+                wpm: 0,
+                accuracy: 100,
+                finished: false,
+                ready: false
+            };
+            
+            snippetText = currentRoomState.snippetText;
+            snippetAuthor = currentRoomState.snippetAuthor || "";
+            config = currentRoomState.config;
+            
+            return currentRoomState;
+        });
 
-        // Prevent joining a race that's already started
-        if (roomData.status && roomData.status !== "waiting") {
-            throw new Error("Race has already started or finished");
+        if (!result.committed || !config) {
+            throw new Error("Room not found or race has already started/finished");
         }
         
-        // Add player to the room
+        // Add player onDisconnect handler
         const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
-        const playerData: PlayerData = {
-            id: this.playerId,
-            displayName: displayName,
-            progress: 0,
-            wpm: 0,
-            accuracy: 100,
-            finished: false,
-            ready: false
-        };
-
-        await set(playerRef, playerData);
         await onDisconnect(playerRef).remove();
         
-        return { snippetText: roomData.snippetText, snippetAuthor: roomData.snippetAuthor, config: roomData.config };
+        return { snippetText, snippetAuthor: snippetAuthor, config };
     }
 
     public listen(onUpdate: (roomState: RoomState | null) => void) {
@@ -306,6 +327,13 @@ export class MultiplayerRoom {
         if (this._disconnected) return;
         
         const roomRef = ref(db, `rooms/${this.roomCode}`);
+        const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
+        
+        try {
+            await onDisconnect(playerRef).cancel();
+        } catch (e) {
+            console.error("[Multiplayer] Failed to cancel onDisconnect on race finish", e);
+        }
         
         try {
             await runTransaction(roomRef, (currentRoomState) => {
@@ -313,24 +341,38 @@ export class MultiplayerRoom {
                 
                 if (currentRoomState.players && currentRoomState.players[this.playerId]) {
                     const p = currentRoomState.players[this.playerId];
+                    if (p.finished) {
+                        return currentRoomState;
+                    }
+                    
                     p.progress = 100;
                     p.wpm = wpm;
                     p.accuracy = accuracy;
                     p.errors = errors;
                     p.finished = true;
+                    
+                    if (!currentRoomState.rankings) {
+                        currentRoomState.rankings = [];
+                    }
+                    
+                    if (!currentRoomState.rankings.includes(this.playerId)) {
+                        currentRoomState.rankings.push(this.playerId);
+                        p.finishOrder = currentRoomState.rankings.length;
+                    }
+                    
+                    if (!currentRoomState.winnerId && currentRoomState.rankings.length > 0) {
+                        const firstFinishedId = currentRoomState.rankings[0];
+                        currentRoomState.winnerId = firstFinishedId;
+                        currentRoomState.winnerName = currentRoomState.players[firstFinishedId]?.displayName || "";
+                    }
                 }
                 
-                if (!currentRoomState.rankings) {
-                    currentRoomState.rankings = [];
-                }
+                const players = currentRoomState.players || {};
+                const playersArray = Object.keys(players).map(k => players[k]);
+                const activePlayers = playersArray.filter(p => !p.leftRace);
+                const allFinished = activePlayers.length > 0 && activePlayers.every(p => p.finished);
                 
-                if (!currentRoomState.rankings.includes(this.playerId)) {
-                    currentRoomState.rankings.push(this.playerId);
-                }
-                
-                if (!currentRoomState.winnerId) {
-                    currentRoomState.winnerId = this.playerId;
-                    currentRoomState.winnerName = this.displayName;
+                if (allFinished) {
                     currentRoomState.status = "finished";
                     currentRoomState.started = false;
                     if (currentRoomState.raceStartTimestamp) {
@@ -359,6 +401,8 @@ export class MultiplayerRoom {
             
             Object.keys(currentRoom.players || {}).forEach((id) => {
                 const p = currentRoom.players[id];
+                if (p.leftRace) return; // filter out players who left the race
+                
                 updatedPlayers[id] = {
                     id: p.id,
                     displayName: p.displayName,
@@ -456,6 +500,56 @@ export class MultiplayerRoom {
             }
         } catch (e) {
             console.error("Failed to leave room", e);
+        }
+    }
+
+    public async handleRaceStartedOnDisconnect(): Promise<void> {
+        if (this._disconnected) return;
+        try {
+            const playerRef = ref(db, `rooms/${this.roomCode}/players/${this.playerId}`);
+            await onDisconnect(playerRef).cancel();
+            await onDisconnect(playerRef).update({
+                leftRace: true
+            });
+        } catch (e) {
+            console.error("[Multiplayer] Failed to update onDisconnect handler to leftRace", e);
+        }
+    }
+
+    public async checkAndTransitionRoomFinished(): Promise<void> {
+        if (this._disconnected) return;
+        const roomRef = ref(db, `rooms/${this.roomCode}`);
+        try {
+            await runTransaction(roomRef, (currentRoomState) => {
+                if (!currentRoomState) return currentRoomState;
+                if (currentRoomState.status !== "running") return undefined; // abort transaction if not running
+                
+                const players = currentRoomState.players || {};
+                const playersArray = Object.keys(players).map(k => players[k]);
+                
+                const activePlayers = playersArray.filter(p => !p.leftRace);
+                const allFinishedOrLeft = activePlayers.length === 0 || activePlayers.every(p => p.finished);
+                
+                if (allFinishedOrLeft) {
+                    currentRoomState.status = "finished";
+                    currentRoomState.started = false;
+                    
+                    // Set winner if not set
+                    if (!currentRoomState.winnerId && currentRoomState.rankings && currentRoomState.rankings.length > 0) {
+                        const firstFinishedId = currentRoomState.rankings[0];
+                        currentRoomState.winnerId = firstFinishedId;
+                        currentRoomState.winnerName = players[firstFinishedId]?.displayName || "";
+                    }
+                    
+                    if (currentRoomState.raceStartTimestamp) {
+                        currentRoomState.elapsedSeconds = Math.max(0, Math.round((getSyncedTime() - currentRoomState.raceStartTimestamp) / 1000));
+                    }
+                }
+                
+                return currentRoomState;
+            });
+        } catch (e) {
+            console.error("[Multiplayer] Failed to transition room to finished", e);
         }
     }
 }

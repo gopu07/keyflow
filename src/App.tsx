@@ -7,7 +7,8 @@ import CompletedUI from "./components/CompletedUI";
 import { IKeystrokeLog } from "./lib/KeystrokeRecorder";
 import SnippetGenerator from "./lib/SnippetGenerator";
 import { TestConfig } from "./lib/TestConfig";
-import words from "../data/words.json";
+import { stripPunctuation } from "./lib/stringUtils";
+import words from "./data/words.json";
 import { MultiplayerRoom, PlayerData, RoomState } from "./lib/MultiplayerRoom";
 import MultiplayerFooter from "./components/MultiplayerFooter";
 import { isFirebaseConfigured, db } from "./firebase";
@@ -50,16 +51,29 @@ class App extends React.Component<IAppProps, IAppState> {
     constructor(props: IAppProps) {
         super(props);
         const initialCategory = localStorage.getItem("keyflow_quote_category") || "random";
+        const initialNoPunctuation = localStorage.getItem("keyflow_no_punctuation") === "true";
+        const initialLowercase = localStorage.getItem("keyflow_lowercase") === "true";
+
+        let initialSnippetText = this.props.snippetText;
+        if (initialNoPunctuation) {
+            initialSnippetText = stripPunctuation(initialSnippetText);
+        }
+        if (initialLowercase) {
+            initialSnippetText = initialSnippetText.toLowerCase();
+        }
+
         this.state = {
             state: "live",
-            snippetText: this.props.snippetText,
+            snippetText: initialSnippetText,
             snippetAuthor: "",
             config: {
                 mode: "quote",
                 timeOption: 30,
                 wordsOption: 50,
                 customText: "",
-                quoteCategory: initialCategory
+                quoteCategory: initialCategory,
+                noPunctuation: initialNoPunctuation,
+                lowercase: initialLowercase
             },
             isCustomSetup: false,
             mpRoom: null,
@@ -364,6 +378,21 @@ class App extends React.Component<IAppProps, IAppState> {
                 return;
             }
 
+            // Handle race started onDisconnect updates
+            const myPlayer = this.state.mpRoom ? playersObj[this.state.mpRoom.playerId] : null;
+            if (myPlayer && !myPlayer.finished && (roomState.status === "countdown" || roomState.status === "running")) {
+                this.state.mpRoom!.handleRaceStartedOnDisconnect();
+            }
+
+            // Auto transition room to finished if all active players finished
+            if (roomState.status === "running") {
+                const activePlayersList = playersArray.filter(p => !p.leftRace);
+                const allFinished = activePlayersList.length === 0 || activePlayersList.every(p => p.finished);
+                if (allFinished) {
+                    this.state.mpRoom!.checkAndTransitionRoomFinished();
+                }
+            }
+
             // Host migration logic
             let currentHostId = roomState.hostId;
             const activePlayers = playersArray.filter(p => !p.leftRace);
@@ -597,6 +626,8 @@ class App extends React.Component<IAppProps, IAppState> {
         if (newConfig.quoteCategory) {
             localStorage.setItem("keyflow_quote_category", newConfig.quoteCategory);
         }
+        localStorage.setItem("keyflow_no_punctuation", String(newConfig.noPunctuation ?? false));
+        localStorage.setItem("keyflow_lowercase", String(newConfig.lowercase ?? false));
 
         if (!isCustomSetup) {
             const res = await this.generateSnippet(newConfig);
@@ -617,23 +648,42 @@ class App extends React.Component<IAppProps, IAppState> {
     }
 
     private async generateSnippet(config: TestConfig): Promise<{ text: string; author?: string }> {
+        let snippetText = "";
+        let author = "";
+
         if (config.mode === "quote") {
             const category = config.quoteCategory || "random";
             try {
                 const quote = await QuoteService.getInstance().getRandomQuote(category);
-                return { text: quote.text, author: QuoteService.getInstance().formatAuthor(quote) };
+                snippetText = quote.text;
+                author = QuoteService.getInstance().formatAuthor(quote);
             } catch (e) {
                 console.error("Failed to load quote", e);
-                return { text: new SnippetGenerator().getRandomSnippet(), author: "Original" };
+                snippetText = new SnippetGenerator().getRandomSnippet();
+                author = "Original";
             }
         } else if (config.mode === "words") {
-            return { text: this.generateWordsSnippet(config.wordsOption), author: "" };
+            snippetText = this.generateWordsSnippet(config.wordsOption);
+            author = "";
         } else if (config.mode === "time") {
-            return { text: this.generateWordsSnippet(250), author: "" };
+            snippetText = this.generateWordsSnippet(250);
+            author = "";
         } else if (config.mode === "custom") {
-            return { text: config.customText.replace(/\s+/gm, " ").toLowerCase().trim(), author: "" };
+            snippetText = config.customText.replace(/\s+/gm, " ").trim();
+            author = "";
         }
-        return { text: "", author: "" };
+
+        if (config.noPunctuation) {
+            snippetText = stripPunctuation(snippetText);
+        }
+        if (config.lowercase) {
+            snippetText = snippetText.toLowerCase();
+        } else if (config.mode !== "quote") {
+            // Keep words, time, and custom modes lowercase by default
+            snippetText = snippetText.toLowerCase();
+        }
+
+        return { text: snippetText, author };
     }
 
     private generateWordsSnippet(count: number): string {

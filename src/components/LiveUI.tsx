@@ -305,6 +305,20 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         });
     }
 
+    private handleToggleNoPunctuation = () => {
+        this.props.onConfigChange({
+            ...this.props.config,
+            noPunctuation: !this.props.config.noPunctuation
+        });
+    };
+
+    private handleToggleLowercase = () => {
+        this.props.onConfigChange({
+            ...this.props.config,
+            lowercase: !this.props.config.lowercase
+        });
+    };
+
     public onCharacterKeypress(character: string) {
         if (this.state.startTime === null) {
             if (!this.props.multiplayerRoomCode) {
@@ -340,7 +354,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     public getWPM(): number {
         const elapsed = this.state.elapsedSeconds;
 
-        if (elapsed === 0) {
+        if (elapsed <= 0) {
             return 0;
         }
         const elapsedMinutes = elapsed / 60;
@@ -617,6 +631,11 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                             <span className={config.mode === 'words' ? 'active' : ''} onClick={() => this.handleModeSelect('words')}>words</span>
                             <span className={config.mode === 'custom' ? 'active' : ''} onClick={() => this.handleModeSelect('custom')}>custom</span>
                         </div>
+                        <div className="divider" />
+                        <div className="toggle-selector">
+                            <span className={config.noPunctuation ? 'active' : ''} onClick={this.handleToggleNoPunctuation}>no punctuation</span>
+                            <span className={config.lowercase ? 'active' : ''} onClick={this.handleToggleLowercase}>lowercase</span>
+                        </div>
                         {(config.mode === 'time' || config.mode === 'words' || config.mode === 'quote') && <div className="divider" />}
                         {config.mode === 'time' && (
                             <div className="option-selector">
@@ -727,10 +746,10 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                                         <div className="mp-player-progress-info">
                                             <span className="mp-player-progress-name">
                                                 {player.displayName} {isCurrent && "(You)"}
-                                                {player.leftRace && <span className="left-tag"> (left)</span>}
+                                                {player.leftRace && (player.finished ? <span className="left-tag"> (offline)</span> : <span className="left-tag" style={{ color: "var(--color-error)" }}> (DNF)</span>)}
                                             </span>
                                             <span className="mp-player-progress-stats">
-                                                {player.wpm} WPM | {player.accuracy}% Acc
+                                                {player.leftRace && !player.finished ? "DNF" : `${player.wpm} WPM | ${player.accuracy}% Acc`}
                                             </span>
                                         </div>
                                         <div className="mp-player-progress-bar-wrapper">
