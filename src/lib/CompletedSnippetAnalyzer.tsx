@@ -193,27 +193,13 @@ class CompletedSnippetAnalyzer {
     public getErrorCounts(): { corrected: number; uncorrected: number } {
         let allTyped = this.simulateKeystrokes();
         
-        let finalLogAtIndex: { [key: number]: any } = {};
-        for (let log of allTyped) {
-            if (!log.wasBackspaced) {
-                finalLogAtIndex[log.index] = log;
-            } else {
-                if (finalLogAtIndex[log.index] === log) {
-                    delete finalLogAtIndex[log.index];
-                }
-            }
-        }
-        
         let corrected = 0;
         let uncorrected = 0;
         
         for (let log of allTyped) {
             if (!log.isCorrect) {
                 if (log.wasBackspaced) {
-                    let finalLog = finalLogAtIndex[log.index];
-                    if (finalLog && finalLog.isCorrect) {
-                        corrected++;
-                    }
+                    corrected++;
                 } else {
                     uncorrected++;
                 }

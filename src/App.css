@@ -1,14 +1,14 @@
 .app-container {
     position: relative;
-    max-width: 850px;
+    max-width: 1200px;
     width: 100%;
-    margin: 100px auto 50px auto;
+    margin: 48px auto 40px auto;
     padding: 0 24px;
 }
 
 @media (max-width: 768px) {
     .app-container {
-        margin: 50px auto 30px auto;
+        margin: 32px auto 24px auto;
         padding: 0 16px;
     }
 }
@@ -211,18 +211,20 @@
 .back-btn {
     background: none;
     border: none;
-    padding: 0;
-    margin: 0;
+    padding: 10px 14px;
+    margin: -10px -14px; /* Visual alignment correction */
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 14px;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     opacity: 0.6;
     transition: opacity var(--transition-fast), color var(--transition-fast);
     user-select: none;
+    border-radius: 6px;
+    min-height: 44px; /* Touch target size */
 }
 
 .back-btn:hover {

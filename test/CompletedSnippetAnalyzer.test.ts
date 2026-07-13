@@ -227,3 +227,20 @@ it("case-sensitive character matching when lowercase is false/undefined", () => 
     const errorCountsDefault = analyzerDefault.getErrorCounts();
     expect(errorCountsDefault.uncorrected).toEqual(4);
 });
+
+it("reconciles double mistyped and corrected errors correctly", () => {
+    let analyzer = new CompletedSnippetAnalyzer("abcde", [
+        { key: { type: "character", character: "a" }, timestamp: new Date() },
+        { key: { type: "character", character: "b" }, timestamp: new Date() },
+        { key: { type: "character", character: "x" }, timestamp: new Date() },
+        { key: { type: "backspace" }, timestamp: new Date() },
+        { key: { type: "character", character: "y" }, timestamp: new Date() },
+        { key: { type: "backspace" }, timestamp: new Date() },
+        { key: { type: "character", character: "z" }, timestamp: new Date() },
+        { key: { type: "character", character: "d" }, timestamp: new Date() },
+        { key: { type: "character", character: "e" }, timestamp: new Date() }
+    ]);
+
+    expect(analyzer.getErrorCounts()).toEqual({ corrected: 2, uncorrected: 1 });
+    expect(analyzer.mistakeCount()).toEqual(3);
+});

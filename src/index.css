@@ -66,9 +66,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
+  width: 1px;
+  height: 1px;
   opacity: 0;
+  font-size: 16px;
   pointer-events: none;
   border: none;
   outline: none;
@@ -158,14 +159,47 @@ body {
   .completed-stat-card .stat-label {
     font-size: 10px !important;
   }
+
+  .custom-setup-container {
+    padding: 16px !important;
+  }
+
+  .multiplayer-footer-bar {
+    padding: 10px 14px !important;
+    gap: 6px !important;
+  }
+
+  .multiplayer-footer-title {
+    font-size: 10px !important;
+  }
+
+  .opponent-progress-row {
+    gap: 8px !important;
+  }
+
+  .opponent-name {
+    width: 70px !important;
+    font-size: 12px !important;
+  }
+
+  .opponent-wpm {
+    width: 50px !important;
+    font-size: 12px !important;
+  }
+
+  body:has(.multiplayer-footer-bar) {
+    padding-bottom: 75px !important;
+  }
 }
 
 /* Mode Selector styles */
 .test-config-selector {
   display: flex;
   align-items: center;
-  gap: 24px;
-  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 12px;
+  margin-bottom: 16px;
   font-family: var(--font-sans);
   font-size: 14px;
   user-select: none;
@@ -177,7 +211,8 @@ body {
 .toggle-selector,
 .option-selector {
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .test-config-selector .divider {
@@ -192,20 +227,147 @@ body {
   color: var(--text-muted);
   cursor: pointer;
   font-weight: 500;
-  transition: color var(--transition-fast);
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px; /* Touch target enhancement */
+  transition: all var(--transition-fast);
 }
 
 .mode-selector span:hover,
 .toggle-selector span:hover,
 .option-selector span:hover {
   color: var(--text-secondary);
+  background-color: var(--bg-app);
 }
 
 .mode-selector span.active,
 .toggle-selector span.active,
 .option-selector span.active {
   color: var(--color-accent);
+  background-color: var(--color-accent-light);
   font-weight: 600;
+}
+
+/* Custom Category Dropdown Styles */
+.category-dropdown-container {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+}
+
+.category-dropdown-trigger {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  transition: all var(--transition-fast);
+}
+
+.category-dropdown-trigger:hover {
+  color: var(--text-secondary);
+  background-color: var(--bg-app);
+}
+
+.category-dropdown-trigger.active {
+  color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  font-weight: 600;
+}
+
+.category-dropdown-trigger .dropdown-arrow {
+  font-size: 10px;
+  transition: transform var(--transition-fast);
+}
+
+.category-dropdown-trigger.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.category-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 320px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 12px;
+  animation: dropdown-fade-in var(--transition-fast) ease-out;
+  z-index: 110;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.category-dropdown-item {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-transform: lowercase;
+}
+
+.category-dropdown-item:hover {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
+
+.category-dropdown-item.active {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .category-dropdown-menu {
+    width: calc(100vw - 32px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @keyframes dropdown-fade-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -8px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
 }
 
 /* Custom Test Setup Screen styles */

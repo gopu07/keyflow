@@ -48,12 +48,14 @@ interface ILiveUIState {
     isTouchDevice: boolean;
     copiedInviteLink: boolean;
     ghostCursorPos?: number;
+    isCategoryDropdownOpen: boolean;
 }
 
 class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     keystrokeRecorder: KeystrokeRecorder;
     private timerInterval: any = null;
     private textareaRef = React.createRef<HTMLTextAreaElement>();
+    private dropdownRef = React.createRef<HTMLDivElement>();
     private ghostAnimFrameId: any = null;
     private ghostTimeline: { timeMs: number, cursorIndex: number }[] = [];
 
@@ -65,14 +67,30 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             startTime: null,
             isTouchDevice: false,
             copiedInviteLink: false,
-            ghostCursorPos: undefined
+            ghostCursorPos: undefined,
+            isCategoryDropdownOpen: false
         };
         this.onTypedTextChange = this.onTypedTextChange.bind(this);
         this.handleCategorySelect = this.handleCategorySelect.bind(this);
+        this.toggleCategoryDropdown = this.toggleCategoryDropdown.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
 
         this.keystrokeRecorder = new KeystrokeRecorder();
         this.onCharacterKeypress = this.onCharacterKeypress.bind(this);
         this.onBackspaceKeypress = this.onBackspaceKeypress.bind(this);
+    }
+
+    private toggleCategoryDropdown(e: React.MouseEvent | React.TouchEvent) {
+        e.stopPropagation();
+        this.setState(prevState => ({
+            isCategoryDropdownOpen: !prevState.isCategoryDropdownOpen
+        }));
+    }
+
+    private handleClickOutside(e: Event) {
+        if (this.dropdownRef.current && !this.dropdownRef.current.contains(e.target as Node)) {
+            this.setState({ isCategoryDropdownOpen: false });
+        }
     }
 
     private handleCategorySelect(category: string) {
@@ -85,6 +103,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
     public componentDidMount() {
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         this.setState({ isTouchDevice: isTouch });
+        document.addEventListener('pointerdown', this.handleClickOutside);
     }
 
     public componentDidUpdate(prevProps: ILiveUIProps, prevState: ILiveUIState) {
@@ -213,6 +232,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
             cancelAnimationFrame(this.ghostAnimFrameId);
             this.ghostAnimFrameId = null;
         }
+        document.removeEventListener('pointerdown', this.handleClickOutside);
     }
 
     public startTimer() {
@@ -340,17 +360,47 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
         this.keystrokeRecorder.recordBackspace();
     }
 
+    private handleMobileTextareaBlur = () => {
+        const isCountdown = this.props.mpRoomState?.status === "countdown";
+        const isWaiting = this.props.mpRoomState?.status === "waiting";
+        const isFinished = this.props.mpRoomState?.status === "finished";
+        const isMeFinished = this.props.multiplayerRoomCode 
+            ? !!this.props.mpPlayers?.find(p => p.id === this.props.currentPlayerId)?.finished
+            : this.liveSnippetAnalyzer().isFinished();
+        
+        const isDisabled = (!!this.props.multiplayerRoomCode && (isCountdown || isWaiting || isFinished)) || isMeFinished;
+
+        if (!isDisabled && this.textareaRef.current) {
+            const textarea = this.textareaRef.current;
+            setTimeout(() => {
+                if (document.activeElement !== textarea) {
+                    textarea.focus();
+                }
+            }, 50);
+        }
+    };
+
     public percentageCompleted() {
         return this.liveSnippetAnalyzer().percentageCompleted();
     }
 
     public getWPM(): number {
-        const elapsed = this.state.elapsedSeconds;
-
-        if (elapsed <= 0) {
+        if (!this.state.startTime && !this.props.multiplayerRoomCode) {
             return 0;
         }
-        const elapsedMinutes = elapsed / 60;
+
+        let durationMs = 0;
+        if (this.props.multiplayerRoomCode && this.props.mpRoomState?.raceStartTimestamp) {
+            durationMs = getSyncedTime() - this.props.mpRoomState.raceStartTimestamp;
+        } else if (this.state.startTime) {
+            durationMs = new Date().getTime() - this.state.startTime.getTime();
+        }
+
+        if (durationMs <= 0) {
+            return 0;
+        }
+
+        const elapsedMinutes = durationMs / (1000 * 60);
         const typedLength = this.state.typedText.length;
         return Math.round((typedLength / 5) / elapsedMinutes);
     }
@@ -641,23 +691,41 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                             </div>
                         )}
                         {config.mode === 'quote' && (
-                            <div className="option-selector theme-selector" style={{ flexWrap: "wrap", rowGap: "8px", maxWidth: "80%" }}>
-                                {QuoteService.getInstance().getCategories().map(cat => (
-                                    <span
-                                        key={cat}
-                                        className={config.quoteCategory === cat ? 'active' : ''}
-                                        onClick={() => this.handleCategorySelect(cat)}
-                                        style={{ textTransform: "lowercase" }}
-                                    >
-                                        {cat}
-                                    </span>
-                                ))}
-                                <span
-                                    className={(config.quoteCategory === 'random' || !config.quoteCategory) ? 'active' : ''}
-                                    onClick={() => this.handleCategorySelect('random')}
+                            <div className="category-dropdown-container" ref={this.dropdownRef}>
+                                <button
+                                    className={`category-dropdown-trigger ${this.state.isCategoryDropdownOpen ? 'active' : ''}`}
+                                    onClick={this.toggleCategoryDropdown}
                                 >
-                                    random
-                                </span>
+                                    <span>category: {config.quoteCategory || 'random'}</span>
+                                    <span className="dropdown-arrow">▼</span>
+                                </button>
+                                {this.state.isCategoryDropdownOpen && (
+                                    <div className="category-dropdown-menu">
+                                        <div className="category-dropdown-grid">
+                                            {QuoteService.getInstance().getCategories().map(cat => (
+                                                <button
+                                                    key={cat}
+                                                    className={`category-dropdown-item ${config.quoteCategory === cat ? 'active' : ''}`}
+                                                    onClick={() => {
+                                                        this.handleCategorySelect(cat);
+                                                        this.setState({ isCategoryDropdownOpen: false });
+                                                    }}
+                                                >
+                                                    {cat}
+                                                </button>
+                                            ))}
+                                            <button
+                                                className={`category-dropdown-item ${(config.quoteCategory === 'random' || !config.quoteCategory) ? 'active' : ''}`}
+                                                onClick={() => {
+                                                    this.handleCategorySelect('random');
+                                                    this.setState({ isCategoryDropdownOpen: false });
+                                                }}
+                                            >
+                                                random
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
@@ -696,6 +764,7 @@ class LiveUI extends React.Component<ILiveUIProps, ILiveUIState> {
                         className="hidden-mobile-textarea"
                         value={this.state.typedText}
                         onChange={this.handleTextareaChange}
+                        onBlur={this.handleMobileTextareaBlur}
                         disabled={isDisabled}
                         autoCapitalize="off"
                         autoComplete="off"

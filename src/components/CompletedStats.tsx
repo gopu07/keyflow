@@ -54,7 +54,30 @@ class CompletedStats extends React.Component<IProps, {}> {
         if (charKeystrokes === 0) {
             return 100;
         }
-        return Math.min(100, Math.round((this.props.snippetText.length / charKeystrokes) * 100));
+
+        // Reconstruct final typed text by simulating backspaces
+        let typedText = "";
+        for (let log of logs) {
+            if (log.key.type === "character") {
+                typedText += log.key.character;
+            } else if (log.key.type === "backspace") {
+                typedText = typedText.slice(0, -1);
+            }
+        }
+
+        let correctCount = 0;
+        const actualChars = this.props.snippetText.split('');
+        const typedChars = typedText.split('');
+        for (let i = 0; i < typedChars.length; i++) {
+            const isMatch = this.props.lowercase
+                ? typedChars[i].toLowerCase() === actualChars[i].toLowerCase()
+                : typedChars[i] === actualChars[i];
+            if (isMatch) {
+                correctCount++;
+            }
+        }
+
+        return Math.min(100, Math.round((correctCount / charKeystrokes) * 100));
     }
 
     public getTimeString(): string {
