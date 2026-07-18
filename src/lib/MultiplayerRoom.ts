@@ -132,7 +132,7 @@ export class MultiplayerRoom {
         
         const result = await runTransaction(roomRef, (currentRoomState) => {
             if (!currentRoomState) {
-                return undefined; // aborts transaction
+                return currentRoomState; // do not abort on first cached guess
             }
 
             if (currentRoomState.status && currentRoomState.status !== "waiting") {
@@ -160,7 +160,7 @@ export class MultiplayerRoom {
             return currentRoomState;
         });
 
-        if (!result.committed || !config) {
+        if (!result.committed || !result.snapshot.exists() || !config) {
             throw new Error("Room not found or race has already started/finished");
         }
         
